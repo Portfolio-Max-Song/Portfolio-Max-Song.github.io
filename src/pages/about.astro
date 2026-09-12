@@ -1,0 +1,134 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import SocialIcon from '../components/SocialIcon.astro';
+import { site, socials, orgs } from '../site';
+import headshot from '../assets/images/headshot.jpg';
+import lifeArgon from '../assets/images/social/argon.jpg';
+import lifeCarnitas from '../assets/images/social/carnitas.jpg';
+import lifeDinner from '../assets/images/social/dinner.jpg';
+import lifeDog from '../assets/images/social/dog.jpg';
+import lifeGolf from '../assets/images/social/golf.jpg';
+import lifePaintball from '../assets/images/social/paintball.jpg';
+
+// Drop more files into src/assets/images/social/ and add them here — the grid
+// is three across, so nine photos fills it out evenly.
+const lifePhotos = [
+  { src: lifeGolf, alt: 'Out golfing' },
+  { src: lifePaintball, alt: 'Playing paintball' },
+  { src: lifeDog, alt: 'My dog' },
+  { src: lifeCarnitas, alt: 'Trying carnitas around Austin' },
+  { src: lifeArgon, alt: 'Out with friends' },
+  { src: lifeDinner, alt: 'Dinner with friends' },
+];
+---
+
+<Base
+  title="About"
+  description="About Max Song — mechanical engineering student at UT Austin, previously a robotics engineering intern at Contoro Robotics."
+>
+  <div class="page">
+    <div class="page-head">
+      <h1>About</h1>
+    </div>
+
+    <div class="about-body">
+      <Image src={headshot} alt="Max Song" class="about-portrait" width={320} />
+
+      <p>
+        I'm Max — a mechanical engineering student at the University of Texas at Austin on
+        the design and manufacturing track, graduating in December 2027.
+      </p>
+
+      <p>
+        Right now I'm a student technician at <a
+          href={orgs.inventionworks}
+          target="_blank"
+          rel="noopener">Texas Inventionworks</a
+        >, UT's campus makerspace, where I lead the woodshop and instruct on the machine
+        shop team. I write the preventive-maintenance schedules and standard operating
+        procedures for the shop's machines, and I've taught over a hundred students on the
+        manual mill, lathe, CNC, and 3D printers. I've also spent the last two years as a
+        structures and composites manufacturing engineer at the <a
+          href={orgs.trel}
+          target="_blank"
+          rel="noopener">Texas Rocket Engineering Lab</a
+        >, an undergraduate-led lab building a liquid bipropellant rocket.
+      </p>
+
+      <p>
+        Most recently I spent January through August 2026 at <a
+          href={orgs.contoro}
+          target="_blank"
+          rel="noopener">Contoro Robotics</a
+        >, an Austin startup building robots that unload freight from trailers and
+        containers. I released assembly drawings and BOMs across two hardware generations
+        of their robotic gripper systems, designed the end-of-line test stand that every
+        gripper was validated on before it shipped, and traveled out to a fulfillment
+        center to build and commission robots running in a live warehouse.
+      </p>
+
+      <p>
+        Before that I was a materials research intern at the <a
+          href={orgs.aimLab}
+          target="_blank"
+          rel="noopener">Architected Intelligent Matter Laboratory</a
+        > at the University of Houston, where I developed a layered casting method for
+        thin-shell elastomer parts used in acoustic metamaterial research, and calibrated
+        simulation models against tensile test data to get the analysis matching what the
+        material actually did.
+      </p>
+
+      <p>
+        Further back, I started a small leather goods business in high school called <a
+          href={orgs.songLeather}
+          target="_blank"
+          rel="noopener">Song Leather</a
+        >, designing and making sustainable wallets and bags. It taught me more about
+        product design, costing, and manufacturability than anything else I did before
+        university.
+      </p>
+
+      <p>
+        I enjoy making things that get used, and I care about making them simple,
+        repeatable, and well built. Outside of engineering, I play volleyball with UT's
+        men's club team, follow tech and markets, and spend a lot of time trying new food
+        around Austin.
+      </p>
+
+      <p>Thanks for stopping by — always happy to chat.</p>
+
+      <ul class="icons about-icons">
+        {
+          socials.map((s) => (
+            <li>
+              <a
+                href={s.href}
+                {...(s.href.startsWith('mailto:')
+                  ? {}
+                  : { target: '_blank', rel: 'noopener' })}
+              >
+                <SocialIcon name={s.icon} label={s.label} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="photo-grid">
+      {
+        lifePhotos.map((photo) => (
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            class="photo-grid-item"
+            width={480}
+            height={480}
+            loading="lazy"
+          />
+        ))
+      }
+    </div>
+  </div>
+</Base>

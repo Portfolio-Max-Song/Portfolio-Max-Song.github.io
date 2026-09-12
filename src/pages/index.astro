@@ -1,9 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import SocialIcon from '../components/SocialIcon.astro';
-import { site, socials } from '../site';
-import headshot from '../assets/images/headshot.jpg';
+import { site, socials, orgs } from '../site';
 ---
 
 <Base title={site.name}>
@@ -17,9 +15,9 @@ import headshot from '../assets/images/headshot.jpg';
       </div>
       <nav>
         <ul>
-          <li><a href="/#about">About</a></li>
-          <li><a href="/#contact">Contact</a></li>
+          <li><a href="/about.html">About</a></li>
           <li><a href="/projects.html">Projects</a></li>
+          <li><a href="/#contact">Contact</a></li>
           <li><a href={site.resume} target="_blank" rel="noopener">Resume</a></li>
         </ul>
       </nav>
@@ -27,26 +25,34 @@ import headshot from '../assets/images/headshot.jpg';
   </div>
 
   <div class="scroll-sections">
-    <section id="about" class="about-banner">
-      <div class="about-content">
-        <Image src={headshot} alt="Max Song" class="about-image" width={480} />
-        <div class="about-text">
-          <h2>About Me</h2>
-          <p class="about-description">
-            I am a third-year mechanical engineering student at the University of Texas at
-            Austin, passionate about utilizing my engineering design skills to solve
-            real-world challenges. Currently, I work as a Student Assistant at Texas
-            Inventionworks and serve as a Structures Engineer for the Texas Rocket
-            Engineering Lab, where I hope to share my love for innovation.
-          </p>
-          <p class="about-description">
-            I am also a huge fan of tech and stocks. In my free time, you can find me
-            playing volleyball with the UT men's club team or trying new foods around
-            Austin. I also love trying new things and learning new skills, one of the main
-            reasons I decided to make my own portfolio website. Feel free to visit the
-            Contact Me section or send me a message!
-          </p>
-        </div>
+    <section id="intro" class="intro-banner">
+      <div class="intro-text">
+        <p>
+          Currently a fourth-year mechanical engineering student at the University of
+          Texas at Austin. Previously at <a
+            href={orgs.contoro}
+            target="_blank"
+            rel="noopener">Contoro Robotics</a
+          > as a robotics engineering intern, engineering test fixtures and the production
+          drawings behind their robotic grippers. At school I work at <a
+            href={orgs.inventionworks}
+            target="_blank"
+            rel="noopener">Texas Inventionworks</a
+          >, the campus makerspace, and was part of the <a
+            href={orgs.trel}
+            target="_blank"
+            rel="noopener">Texas Rocket Engineering Lab</a
+          >.
+        </p>
+        <p>
+          I enjoy making things that get used, and I care about making them simple,
+          repeatable, and well built.
+        </p>
+        <p>
+          <a href="/about.html">Read more about me</a>, <a href="/projects.html"
+            >see my projects</a
+          >, or <a href={`mailto:${site.email}`}>reach me by email</a>.
+        </p>
       </div>
     </section>
 
@@ -74,14 +80,14 @@ import headshot from '../assets/images/headshot.jpg';
   </div>
 
   <script is:inline>
-    // Reveal the about/contact block once the user scrolls past the hero.
+    // Reveal the intro/contact block once the user scrolls past the hero.
     document.addEventListener('DOMContentLoaded', function () {
       const scrollSections = document.querySelector('.scroll-sections');
       window.addEventListener('scroll', function () {
         scrollSections.classList.toggle('visible', window.scrollY > 20);
       });
 
-      const aboutBanner = document.querySelector('.about-banner');
+      const introBanner = document.querySelector('.intro-banner');
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -90,7 +96,7 @@ import headshot from '../assets/images/headshot.jpg';
         },
         { threshold: 0.1 }
       );
-      observer.observe(aboutBanner);
+      observer.observe(introBanner);
 
       // Smooth-scroll same-page anchors, offset by the fixed nav.
       document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach((anchor) => {

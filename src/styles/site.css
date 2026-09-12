@@ -298,43 +298,41 @@ body.is-preload #header .content .inner {
   visibility: visible;
 }
 
-.about-banner {
+/* The home-page blurb. Short enough that it needs no heading — it sits in one
+   band below the hero and hands off to /about, /projects and email. */
+.intro-banner {
   background-color: var(--about-bg);
   padding: var(--sp-6) var(--sp-4);
   transform: translateY(50px);
   transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-.about-banner.visible {
+.intro-banner.visible {
   transform: translateY(0);
 }
 
-.about-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-6);
-  max-width: 60rem;
+.intro-text {
+  max-width: var(--measure);
   margin-inline: auto;
 }
 
-.about-image {
-  width: 14rem;
-  height: 14rem;
-  flex-shrink: 0;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+.intro-text > * + * {
+  margin-top: var(--sp-3);
 }
 
-.about-text h2,
+.intro-text a {
+  color: var(--text);
+  text-decoration-color: var(--text-faint);
+  text-underline-offset: 0.2em;
+}
+
+.intro-text a:hover {
+  text-decoration-color: var(--text);
+}
+
 .contact-text h2 {
   font-size: var(--fs-h2);
   margin-bottom: var(--sp-3);
-}
-
-.about-description + .about-description {
-  margin-top: var(--sp-2);
 }
 
 .contact-banner {
@@ -368,16 +366,102 @@ body.is-preload #header .content .inner {
   fill: currentColor;
 }
 
+/* --- About page ----------------------------------------------------------- */
+
+.page {
+  width: min(92vw, 62rem);
+  margin: calc(var(--nav-h) + var(--sp-5)) auto var(--sp-6);
+  padding: var(--sp-5) var(--sp-4);
+  background: var(--panel-bg);
+  border-radius: var(--radius);
+}
+
+.page-head {
+  text-align: center;
+  margin-bottom: var(--sp-5);
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.page-head h1 {
+  font-size: var(--fs-h1);
+}
+
+.about-body {
+  max-width: var(--measure);
+  margin-inline: auto;
+  color: var(--text-muted);
+}
+
+.about-body > * + * {
+  margin-top: var(--sp-3);
+}
+
+/* Floated so the prose wraps around it on wide screens and stacks above the
+   text on narrow ones, where the float is dropped below. */
+.about-portrait {
+  width: 11rem;
+  height: 11rem;
+  float: right;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 0 var(--sp-3) var(--sp-4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-body a {
+  color: var(--text);
+  text-decoration-color: var(--text-faint);
+  text-underline-offset: 0.2em;
+}
+
+.about-body a:hover {
+  text-decoration-color: var(--text);
+}
+
+.about-icons {
+  clear: both;
+  justify-content: flex-start;
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--rule);
+}
+
+/* Three across. Square crops so the grid reads as one block regardless of
+   what the source photos were shot at. */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-2);
+  max-width: var(--measure);
+  margin: var(--sp-6) auto 0;
+}
+
+.photo-grid-item {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
 @media (max-width: 736px) {
-  .about-content {
-    flex-direction: column;
-    gap: var(--sp-4);
-    text-align: center;
+  .about-portrait {
+    float: none;
+    display: block;
+    margin: 0 auto var(--sp-4);
+    width: 9rem;
+    height: 9rem;
   }
 
-  .about-image {
-    width: 10rem;
-    height: 10rem;
+  .about-icons {
+    justify-content: center;
+  }
+
+  .photo-grid {
+    gap: var(--sp-1);
   }
 }
 
