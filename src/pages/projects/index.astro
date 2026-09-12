@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Base
+  title="Projects"
+  description="Engineering projects by Max Song — composites manufacturing, machining, macropad design, woodworking, and more."
+>
+  <div class="portfolio-header">
+    <div class="portfolio-header-title">Projects</div>
+  </div>
+
+  {
+    projects.map((project) => (
+      <a href={`/projects/${project.id}.html`} class="project-button">
+        <Image
+          src={project.data.hero}
+          alt={project.data.heroAlt}
+          class="project-image"
+          width={640}
+          height={640}
+          loading="lazy"
+        />
+        <div class="project-info">
+          <h3 class="project-title">{project.data.title}</h3>
+          <p class="project-description">{project.data.blurb}</p>
+          <div class="project-divider" />
+          <span class="project-date">
+            <b>Skills: </b>
+            {project.data.skills.join(', ')}
+          </span>
+        </div>
+      </a>
+    ))
+  }
+</Base>

@@ -1,0 +1,84 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, description, skills, hero, heroAlt, gallery, link } = project.data;
+
+// Referencing hero.src directly would point at the untouched original, which
+// forces Astro to emit the full-size file into the build. A purpose-made
+// 1200x630 derivative is both the right shape for link previews and far smaller.
+const og = await getImage({
+  src: hero,
+  width: 1200,
+  height: 630,
+  fit: 'cover',
+  format: 'jpg',
+});
+---
+
+<Base title={title} description={description} ogImage={og.src}>
+  <div id="top" class="project-banner">
+    <div class="project-title-section">
+      <h1>{title}</h1>
+      <div class="title-underline"></div>
+    </div>
+
+    <div class="project-body">
+      <Image
+        src={hero}
+        alt={heroAlt}
+        class="section-image"
+        width={1200}
+        loading="eager"
+        fetchpriority="high"
+      />
+      <Content />
+    </div>
+
+    <p class="section-description project-skills">
+      <b>Skills: </b>{skills.join(', ')}
+    </p>
+
+    {
+      gallery.length > 0 && (
+        <div class="carousel-section">
+          <div class="carousel-container">
+            {gallery.map((item) => (
+              <div class="carousel-item">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  class="carousel-image"
+                  width={600}
+                  height={600}
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    {
+      link && (
+        <a href={link.href} class="website-button" target="_blank" rel="noopener">
+          {link.label}
+        </a>
+      )
+    }
+
+    <a href="/projects.html" class="back-link">&larr; All projects</a>
+  </div>
+</Base>

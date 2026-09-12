@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import SocialIcon from '../components/SocialIcon.astro';
+import { site, socials } from '../site';
+import headshot from '../assets/images/headshot.jpg';
+---
+
+<Base title={site.name}>
+  <div id="wrapper">
+    <header id="header">
+      <div class="content">
+        <div class="inner">
+          <h1>{site.name}</h1>
+          <p>{site.tagline}</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#contact">Contact</a></li>
+          <li><a href="/projects.html">Projects</a></li>
+          <li><a href={site.resume} target="_blank" rel="noopener">Resume</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <div class="scroll-sections">
+    <section id="about" class="about-banner">
+      <div class="about-content">
+        <Image src={headshot} alt="Max Song" class="about-image" width={480} />
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p class="about-description">
+            I am a third-year mechanical engineering student at the University of Texas at
+            Austin, passionate about utilizing my engineering design skills to solve
+            real-world challenges. Currently, I work as a Student Assistant at Texas
+            Inventionworks and serve as a Structures Engineer for the Texas Rocket
+            Engineering Lab, where I hope to share my love for innovation.
+          </p>
+          <p class="about-description">
+            I am also a huge fan of tech and stocks. In my free time, you can find me
+            playing volleyball with the UT men's club team or trying new foods around
+            Austin. I also love trying new things and learning new skills, one of the main
+            reasons I decided to make my own portfolio website. Feel free to visit the
+            Contact Me section or send me a message!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-banner">
+      <div class="contact-text">
+        <h2>Contact Me</h2>
+        <ul class="icons">
+          {
+            socials.map((s) => (
+              <li>
+                <a
+                  href={s.href}
+                  {...(s.href.startsWith('mailto:')
+                    ? {}
+                    : { target: '_blank', rel: 'noopener' })}
+                >
+                  <SocialIcon name={s.icon} label={s.label} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    // Reveal the about/contact block once the user scrolls past the hero.
+    document.addEventListener('DOMContentLoaded', function () {
+      const scrollSections = document.querySelector('.scroll-sections');
+      window.addEventListener('scroll', function () {
+        scrollSections.classList.toggle('visible', window.scrollY > 20);
+      });
+
+      const aboutBanner = document.querySelector('.about-banner');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(aboutBanner);
+
+      // Smooth-scroll same-page anchors, offset by the fixed nav.
+      document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          const hash = this.getAttribute('href').replace(/^\//, '');
+          const target = document.querySelector(hash);
+          if (!target) return;
+          e.preventDefault();
+          const navHeight = document.querySelector('.floating-nav').offsetHeight;
+          window.scrollTo({ top: target.offsetTop - navHeight, behavior: 'smooth' });
+        });
+      });
+    });
+  </script>
+</Base>

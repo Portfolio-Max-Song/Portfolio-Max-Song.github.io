@@ -1,0 +1,20 @@
+{
+  "name": "portfolio-max-song",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build && node scripts/prune-dist.mjs",
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^5.6.1"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.1"
+  }
+}

@@ -1,0 +1,20 @@
+---
+import { site, nav } from '../site';
+---
+
+<nav class="floating-nav">
+  <a href="/" class="nav-logo"><b>{site.name}</b></a>
+  <div class="nav-buttons">
+    {
+      nav.map((item) => (
+        <a
+          href={item.href}
+          class="nav-button"
+          {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
+        >
+          <b>{item.label}</b>
+        </a>
+      ))
+    }
+  </div>
+</nav>
