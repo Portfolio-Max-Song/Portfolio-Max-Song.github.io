@@ -674,6 +674,41 @@ body.is-preload #header .content .inner {
   font-weight: 600;
 }
 
+.project-body h3 {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-top: var(--sp-4);
+}
+
+/* Markdown tables — used for analysis results, so the figures are the point.
+   No min-width: the cells wrap instead, so the table fits a phone without the
+   page itself ever scrolling sideways. */
+.project-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: var(--sp-4) 0;
+  font-size: var(--fs-small);
+}
+
+.project-body th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--text-faint);
+  padding: var(--sp-1) var(--sp-2);
+}
+
+.project-body td {
+  border-bottom: 1px solid var(--rule);
+  padding: var(--sp-1) var(--sp-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.project-body tr > *:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
 .project-body a {
   color: var(--text);
   text-decoration-color: var(--text-faint);

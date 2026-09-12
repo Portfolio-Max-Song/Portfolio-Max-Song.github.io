@@ -24,7 +24,20 @@ const JPEG_QUALITY = 82;
 const DRY = process.argv.includes('--dry');
 
 /** Files that are line art / UI / CAD drawings rather than photographs. */
-const KEEP_AS_PNG = new Set(['hole-drawing.png', 'support-structure.png']);
+const KEEP_AS_PNG = new Set([
+  'hole-drawing.png',
+  'support-structure.png',
+  // Contoro: CAD viewport captures and handwritten calc scans. These are line
+  // art — JPEG rings badly on the strokes, and they are already small as PNG.
+  'test-stand-cad.png',
+  'test-stand-cad-detail.png',
+  'assembly-stand-cad.png',
+  'assembly-stand-cad-2.png',
+  'assembly-stand-cad-3.png',
+  'stabilization-bracket-cad.png',
+  'hand-calc-1.png',
+  'hand-calc-2.png',
+]);
 
 async function* walk(dir) {
   let entries;
