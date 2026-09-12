@@ -176,14 +176,3 @@ spec.
 Seeing hardware I'd drawn get installed, fail in small ways, and get fixed on a
 warehouse floor changed how I draw it. Fit issues stop being an abstraction once
 you're the one on the floor at 6am with the wrong bracket.
-
-## What I'd Change
-
-<!-- TODO Max: the one section I can't write for you, and the research says it
-     matters. Prompts:
-     - What did you get wrong on the test stand's first revision?
-     - The PDR mentions this went to Rev B (bearings changed to UCP206, shaft to
-       the Misumi NSFRBF, and the gripper interface redesigned as a clamping
-       collar). What drove those changes? That story IS this section.
-     - Anything about the drawings you'd do differently now, after seeing the
-       robots get built? -->

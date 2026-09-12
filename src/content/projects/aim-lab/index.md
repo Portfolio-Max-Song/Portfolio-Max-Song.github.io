@@ -23,13 +23,6 @@ skills:
 gallery: []
 ---
 
-<!-- TODO Max: photos needed. Good candidates, in priority order:
-     1. a cast half-sphere in hand or on the bench (the hero shot)
-     2. the steel ball mold with the acrylic jig set up
-     3. a specimen in the Instron grips mid-test
-     4. a screenshot of an Abaqus modal result
-     Drop them in ./images/ and add `hero:` plus gallery entries above. -->
-
 I spent the summer of 2025 as a materials research intern at the
 [Architected Intelligent Matter Laboratory](https://aim.me.uh.edu/) at the
 University of Houston, a lab that designs materials whose behavior comes from
@@ -80,13 +73,6 @@ measured behavior.
 **Automation.** The characterization sequence was repetitive enough to script.
 Automating it in Python took the analysis loop down by about 60%, which mattered
 because every material batch needed recharacterizing.
-
-## What I'd Change
-
-<!-- TODO Max: this section is the one I can't write for you. Two prompts:
-     - What failed first? (layers delaminating, bubbles, release tearing,
-       thickness drift, something else) and what did you change?
-     - What would you do differently on the mold or the jig next time? -->
 
 ## Validation
 
