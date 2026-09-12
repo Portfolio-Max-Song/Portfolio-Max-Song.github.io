@@ -3,6 +3,8 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 
+// `order` is set newest-first in each project's frontmatter, so the list reads
+// as a reverse-chronological history with the personal work collected last.
 const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
   (a, b) => a.data.order - b.data.order
 );
@@ -10,7 +12,7 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft)).so
 
 <Base
   title="Projects"
-  description="Engineering projects by Max Song — composites manufacturing, machining, macropad design, woodworking, and more."
+  description="Engineering projects by Max Song — robotics test fixtures, composites manufacturing, machining, and product design."
 >
   <div class="portfolio-header">
     <div class="portfolio-header-title">Projects</div>
@@ -19,15 +21,20 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft)).so
   {
     projects.map((project) => (
       <a href={`/projects/${project.id}.html`} class="project-button">
-        <Image
-          src={project.data.hero}
-          alt={project.data.heroAlt}
-          class="project-image"
-          width={640}
-          height={640}
-          loading="lazy"
-        />
+        {project.data.hero ? (
+          <Image
+            src={project.data.hero}
+            alt={project.data.heroAlt ?? project.data.title}
+            class="project-image"
+            width={640}
+            height={640}
+            loading="lazy"
+          />
+        ) : (
+          <div class="project-image project-image-empty" aria-hidden="true" />
+        )}
         <div class="project-info">
+          {project.data.org && <p class="project-org">{project.data.org}</p>}
           <h3 class="project-title">{project.data.title}</h3>
           <p class="project-description">{project.data.blurb}</p>
           <div class="project-divider" />
@@ -36,6 +43,7 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft)).so
             {project.data.skills.join(', ')}
           </span>
         </div>
+        <span class="project-when">{project.data.date}</span>
       </a>
     ))
   }

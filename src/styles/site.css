@@ -506,6 +506,13 @@ body.is-preload #header .content .inner {
   height: auto;
 }
 
+/* Stand-in for a page written before its photos arrived. */
+.project-image-empty {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  border-right: 1px solid var(--rule);
+  min-height: 9rem;
+}
+
 .project-info {
   flex: 1;
   min-width: 0;
@@ -515,8 +522,26 @@ body.is-preload #header .content .inner {
   padding: var(--sp-3) var(--sp-3) var(--sp-3) 0;
 }
 
+.project-org {
+  font-size: var(--fs-small);
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
 .project-title {
   font-size: 1.2rem;
+}
+
+/* The date sits in its own column on the right of the card, so the list reads
+   as a dated history rather than an unordered set. */
+.project-when {
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding: var(--sp-3) var(--sp-3) 0 0;
+  font-size: var(--fs-small);
+  color: var(--text-faint);
+  white-space: nowrap;
 }
 
 .project-description {
@@ -549,6 +574,11 @@ body.is-preload #header .content .inner {
   .project-info {
     padding: var(--sp-3);
   }
+
+  .project-when {
+    align-self: auto;
+    padding: 0 var(--sp-3) var(--sp-3);
+  }
 }
 
 /* --- Project page --------------------------------------------------------- */
@@ -568,7 +598,23 @@ body.is-preload #header .content .inner {
 
 .project-title-section h1 {
   font-size: var(--fs-h1);
+  margin-bottom: var(--sp-1);
+}
+
+/* Org and date under the project title, separated by a thin divider. */
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-1) var(--sp-2);
   margin-bottom: var(--sp-3);
+  font-size: var(--fs-small);
+  color: var(--text-faint);
+}
+
+.project-meta span + span::before {
+  content: '·';
+  margin-right: var(--sp-2);
 }
 
 .title-underline {

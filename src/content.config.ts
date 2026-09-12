@@ -19,14 +19,22 @@ const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      // Where the work happened, shown above the title on the index card.
+      // Omitted for the personal-projects page, which has no single org.
+      org: z.string().optional(),
+      // Display string for the card, e.g. 'January – August 2026'. Free text
+      // rather than a real date because several of these are open-ended
+      // ranges; `order` below is what actually sorts the list.
+      date: z.string(),
       // Shown on the projects index card.
       blurb: z.string(),
       // Used for <meta name="description"> and link previews. Kept separate
       // from blurb so the card copy and the search-result copy can differ.
       description: z.string(),
       skills: z.array(z.string()),
-      hero: image(),
-      heroAlt: z.string(),
+      // Optional so a page can be written before its photos exist.
+      hero: image().optional(),
+      heroAlt: z.string().optional(),
       gallery: z
         .array(z.object({ src: image(), alt: z.string() }))
         .default([]),

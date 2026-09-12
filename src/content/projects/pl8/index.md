@@ -1,19 +1,24 @@
 ---
 title: Project PL-8
-order: 7
+org: Project PL-8 – UT Austin
+date: Dates to confirm
+order: 5
 blurb: >-
-  I've always enjoyed car restoration shows like Rust to Riches, so when I heard
-  about PL-8's mission I didn't hesitate to apply. As a shell team engineer, I
-  designed the exterior shell panels and their integration with the chassis using
-  Blender and Inventor.
+  Shell team engineer on PL-8, a student-built two-seater hypercar. I designed
+  the exterior shell panels and their integration with the chassis in Blender and
+  Inventor, splitting the body into seven panels that could actually be laid up
+  in basalt fiber composite.
 description: >-
-  Shell panel design and chassis integration for PL-8's two-seater hypercar —
-  composite manufacturability, aerodynamics, and 3D modeling in Blender.
+  Shell panel design and chassis integration for PL-8's two-seater hypercar -
+  automotive surfacing in Blender and Inventor, seven-panel body breakup, and
+  basalt fiber composite manufacturability.
 skills:
   - Automotive Surfacing
   - Composites Design
-  - Blender & Inventor
+  - Blender & Autodesk Inventor
   - Design for Manufacturing (DFM)
+  - Design for Assembly (DFA)
+  - Team Collaboration
 hero: ./images/shell-cad.jpg
 heroAlt: CAD model of the PL-8 hypercar shell
 gallery:
@@ -23,6 +28,8 @@ gallery:
     alt: Engineering drawing of a shell panel
   - src: ./images/shell-cad.jpg
     alt: Shell CAD with panel breakup
+  - src: ./images/brainstorm.jpg
+    alt: Early concept sketches and inspiration collage
   - src: ./images/scale-model.jpg
     alt: Scale model produced from the CAD
 ---

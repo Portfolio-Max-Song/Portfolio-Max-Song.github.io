@@ -1,25 +1,35 @@
 ---
-title: Machining Projects
-order: 4
+title: Texas Inventionworks
+org: Texas Inventionworks – UT Austin Makerspace
+date: August 2024 – present
+order: 3
 blurb: >-
-  Member of the Machine Shop Team at Texas Inventionworks, UT Austin's
-  makerspace. I ran weekly hands-on trainings on the manual mill and lathe, and
-  manufactured both personal and shop projects on manual and CNC machines.
+  Student technician at UT Austin's makerspace, working as woodshop lead and
+  machine shop instructor. I direct a team of student staff on preventive
+  maintenance and shop SOPs, teach the mill, lathe, CNC and 3D printers, and
+  build shop projects and Instructables to get more students through the door.
 description: >-
-  Manual mill, lathe, and CNC work at Texas Inventionworks — plus running weekly
-  machining trainings and writing shop documentation for student makers.
+  Woodshop lead and machine shop instructor at Texas Inventionworks — preventive
+  maintenance and SOPs for 12+ machines, over 100 students trained on manual and
+  CNC equipment, and shop documentation written to lower the barrier to entry.
 skills:
   - Manual Mill & Lathe
   - CNC Machining
+  - Shop Leadership
   - Curriculum Building
+  - Preventive Maintenance
   - Technical Writing
 hero: ./images/machined-part.jpg
 heroAlt: Machined aluminum part on the mill
 gallery:
+  - src: ./images/trainings.jpg
+    alt: Students in a machining training session
   - src: ./images/machined-part.jpg
     alt: Finished machined part
   - src: ./images/project-12.jpg
     alt: Machining project in progress
+  - src: ./images/bolt-action-pen.jpg
+    alt: Machined bolt action pen
   - src: ./images/lathe-1.jpg
     alt: Turning a part on the manual lathe
   - src: ./images/lathe-3.jpg

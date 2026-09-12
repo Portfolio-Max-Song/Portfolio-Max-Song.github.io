@@ -13,36 +13,48 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, description, skills, hero, heroAlt, gallery, link } = project.data;
+const { title, org, date, description, skills, hero, heroAlt, gallery, link } =
+  project.data;
 
 // Referencing hero.src directly would point at the untouched original, which
 // forces Astro to emit the full-size file into the build. A purpose-made
 // 1200x630 derivative is both the right shape for link previews and far smaller.
-const og = await getImage({
-  src: hero,
-  width: 1200,
-  height: 630,
-  fit: 'cover',
-  format: 'jpg',
-});
+// Pages written before their photos arrive have no hero, and so no OG image.
+const og = hero
+  ? await getImage({
+      src: hero,
+      width: 1200,
+      height: 630,
+      fit: 'cover',
+      format: 'jpg',
+    })
+  : undefined;
 ---
 
-<Base title={title} description={description} ogImage={og.src}>
+<Base title={title} description={description} ogImage={og?.src}>
   <div id="top" class="project-banner">
     <div class="project-title-section">
       <h1>{title}</h1>
+      <p class="project-meta">
+        {org && <span>{org}</span>}
+        <span>{date}</span>
+      </p>
       <div class="title-underline"></div>
     </div>
 
     <div class="project-body">
-      <Image
-        src={hero}
-        alt={heroAlt}
-        class="section-image"
-        width={1200}
-        loading="eager"
-        fetchpriority="high"
-      />
+      {
+        hero && (
+          <Image
+            src={hero}
+            alt={heroAlt ?? title}
+            class="section-image"
+            width={1200}
+            loading="eager"
+            fetchpriority="high"
+          />
+        )
+      }
       <Content />
     </div>
 
