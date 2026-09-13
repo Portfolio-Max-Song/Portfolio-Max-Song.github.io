@@ -113,3 +113,27 @@ derived clip was kept, plus 36 frames pulled out of videos before deleting them
 
 The engineering reasoning and your own hand calculations are on the Contoro
 page; the source documents are not.
+
+## Next session — projects section (queued from your last message)
+
+Done already: card layout (org + date top-right, rule under the title, no "Read
+more", uniform 15rem cards, 4:5 thumbnails), home strip translucency, left-aligned
+contact icons, bolder nav, Resume flush right.
+
+Still to do, in order:
+
+1. **Split `org` into company + role.** Frontmatter currently packs both into one
+   string ("Contoro Robotics – Robotics Engineering Intern"), which is too long
+   for the card's top-right corner and wraps to two lines. Company goes on the
+   card; company · role · date on the project page. This also answers the
+   "internship / co-op / research / organization / personal" label — the role
+   line says it without a separate tag.
+2. **Song Leather as its own project**, pulled out of Personal Projects.
+   Needs: slug `song-leather`, its 8 images moved across, `order` slot, and the
+   `/songleather` redirect retargeted.
+3. **Personal Projects reordered** so the record player leads, with
+   `record-player-finished-1.jpg` as the hero image.
+4. **Section-by-section content pass** — summarise what each project page
+   actually covers, then settle the title and blurb for each. Blurbs need to land
+   in 4 lines or fewer now that the cards are a fixed height.
+5. **PL-8 dates** still render "Dates to confirm" on the live list.
