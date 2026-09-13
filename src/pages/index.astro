@@ -29,37 +29,25 @@ import { site, socials, orgs } from '../site';
       <div class="intro-text">
         <p>
           Currently a fourth-year mechanical engineering student at the University of
-          Texas at Austin. Previously at <a
+          Texas at Austin. Previously worked at <a
             href={orgs.contoro}
             target="_blank"
             rel="noopener">Contoro Robotics</a
-          > as a robotics engineering intern, engineering test fixtures and the production
-          drawings behind their robotic grippers. At school I work at <a
+          > as a robotics engineering intern, creating test fixtures and streamlining the manufacturing process. At university, I work at <a
             href={orgs.inventionworks}
             target="_blank"
             rel="noopener">Texas Inventionworks</a
           >, the campus makerspace, and was part of the <a
             href={orgs.trel}
             target="_blank"
-            rel="noopener">Texas Rocket Engineering Lab</a
+            rel="noopener">Texas Rocket Engineering Lab (TREL)</a
           >.
         </p>
         <p>
-          I enjoy making things that get used, and I care about making them simple,
-          repeatable, and well built.
+          I enjoy making simple, useful, and repeatable things that get used.
         </p>
-        <p>
-          <a href="/about.html">Read more about me</a>, <a href="/projects.html"
-            >see my projects</a
-          >, or <a href={`mailto:${site.email}`}>reach me by email</a>.
-        </p>
-      </div>
-    </section>
 
-    <section id="contact" class="contact-banner">
-      <div class="contact-text">
-        <h2>Contact Me</h2>
-        <ul class="icons">
+        <ul id="contact" class="icons icons-inline">
           {
             socials.map((s) => (
               <li>

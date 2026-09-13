@@ -7,10 +7,12 @@
 
 :root {
   /* Palette */
-  --nav-bg: #4a5b69;
-  --about-bg: #53626e;
+  /* The two fixed/full-width bars are translucent so the background image
+     reads through them. Both carry a backdrop blur to keep text legible. */
+  --nav-bg: rgba(74, 91, 105, 0.7);
+  --about-bg: rgba(83, 98, 110, 0.72);
   --panel-bg: rgba(12, 13, 14, 0.5);
-  --panel-bg-strong: rgba(12, 13, 14, 0.65);
+  --panel-bg-strong: rgba(12, 13, 14, 0.45);
   --text: #f0f1ff;
   --text-muted: rgba(240, 241, 255, 0.75);
   --text-faint: rgba(240, 241, 255, 0.55);
@@ -148,8 +150,12 @@ a {
   align-items: center;
   gap: var(--sp-2);
   padding-inline: var(--sp-2);
+  /* Translucency lives in the background colour, not in `opacity` — opacity
+     would fade the nav text along with the bar and make it hard to read.
+     The blur keeps the labels legible over whatever scrolls underneath. */
   background-color: var(--nav-bg);
-  opacity: 0.95;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 100;
 }
 
@@ -302,6 +308,8 @@ body.is-preload #header .content .inner {
    band below the hero and hands off to /about, /projects and email. */
 .intro-banner {
   background-color: var(--about-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: var(--sp-6) var(--sp-4);
   transform: translateY(50px);
   transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -330,23 +338,19 @@ body.is-preload #header .content .inner {
   text-decoration-color: var(--text);
 }
 
-.contact-text h2 {
-  font-size: var(--fs-h2);
-  margin-bottom: var(--sp-3);
-}
-
-.contact-banner {
-  background-color: var(--panel-bg-strong);
-  padding: var(--sp-6) var(--sp-4);
-  text-align: center;
-}
-
 .icons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: var(--sp-4);
-  margin-top: var(--sp-3);
+}
+
+/* Home: the icon row closes the text column rather than sitting in a band of
+   its own, so it lines up with the prose above it and sits a little closer. */
+.icons-inline {
+  justify-content: flex-start;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
 }
 
 .icons a {
