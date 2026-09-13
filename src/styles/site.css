@@ -423,14 +423,6 @@ body.is-preload #header .content .inner {
   text-decoration-color: var(--text);
 }
 
-.about-icons {
-  clear: both;
-  justify-content: flex-start;
-  margin-top: var(--sp-4);
-  padding-top: var(--sp-3);
-  border-top: 1px solid var(--rule);
-}
-
 /* Three across. Square crops so the grid reads as one block regardless of
    what the source photos were shot at. */
 .photo-grid {
@@ -460,11 +452,7 @@ body.is-preload #header .content .inner {
     height: 9rem;
   }
 
-  .about-icons {
-    justify-content: center;
-  }
-
-  .photo-grid {
+    .photo-grid {
     gap: var(--sp-1);
   }
 }
