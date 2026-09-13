@@ -10,7 +10,7 @@
   /* The two fixed/full-width bars are translucent so the background image
      reads through them. Both carry a backdrop blur to keep text legible. */
   --nav-bg: rgba(74, 91, 105, 0.7);
-  --about-bg: rgba(83, 98, 110, 0.72);
+  --about-bg: rgba(74, 91, 105, 0.7);
   --panel-bg: rgba(12, 13, 14, 0.5);
   --panel-bg-strong: rgba(12, 13, 14, 0.45);
   --text: #f0f1ff;
@@ -149,7 +149,10 @@ a {
   justify-content: space-between;
   align-items: center;
   gap: var(--sp-2);
-  padding-inline: var(--sp-2);
+  /* Padding on the left only. The last nav button carries its own inline
+     padding, so ending the bar here puts Resume's edge on the viewport edge
+     instead of leaving a gutter beside it. */
+  padding-left: var(--sp-2);
   /* Translucency lives in the background colour, not in `opacity` — opacity
      would fade the nav text along with the bar and make it hard to read.
      The blur keeps the labels legible over whatever scrolls underneath. */
@@ -169,6 +172,7 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   white-space: nowrap;
+  font-weight: 700;
 }
 
 .nav-logo {
@@ -378,9 +382,9 @@ body.is-preload #header .content .inner {
 }
 
 /* Home: the icon row closes the text column rather than sitting in a band of
-   its own, centred under the last line of the blurb. */
+   its own, flush with the left edge of the prose above it. */
 .icons-inline {
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--sp-3);
   margin-top: var(--sp-4);
 }
@@ -498,11 +502,14 @@ body.is-preload #header .content .inner {
   letter-spacing: 0.1em;
 }
 
+/* Every card is the same height so the list reads as a single column of
+   equal-weight entries rather than a ragged stack sized by its photos. */
 .project-button {
   display: flex;
   align-items: stretch;
   gap: var(--sp-4);
   width: min(90vw, 68rem);
+  height: 15rem;
   margin: var(--sp-3) auto;
   background: var(--panel-bg);
   border-radius: var(--radius);
@@ -516,12 +523,13 @@ body.is-preload #header .content .inner {
   background: var(--panel-bg-strong);
 }
 
+/* 4:5 — slightly taller than wide. Cropped rather than letterboxed, so a
+   landscape shop photo and a portrait CAD shot present identically. */
 .project-image {
-  width: 14rem;
+  width: 12rem;
+  height: 100%;
   flex-shrink: 0;
   object-fit: cover;
-  align-self: stretch;
-  height: auto;
 }
 
 /* Stand-in for a page written before its photos arrived. */
@@ -536,53 +544,67 @@ body.is-preload #header .content .inner {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--sp-1);
+  gap: var(--sp-2);
   padding: var(--sp-3) var(--sp-3) var(--sp-3) 0;
 }
 
-/* Title and date share a line, the date pushed right, so the list reads as a
-   dated history. They wrap to separate lines when the title runs long. */
+/* What it was on the left, where and when on the right, divided from the
+   description below by a rule. Baseline alignment puts the org on the same
+   line as the title; the date sits under it. */
 .project-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--sp-1) var(--sp-3);
   flex-wrap: wrap;
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--rule);
 }
 
 .project-title {
   font-size: 1.2rem;
 }
 
-.project-when {
+.project-where {
   flex-shrink: 0;
-  font-size: var(--fs-small);
-  color: var(--text-faint);
-  white-space: nowrap;
+  max-width: 14rem;
+  text-align: right;
+  line-height: 1.4;
 }
 
-/* Reads as the card's call to action. Not an anchor — the card is the link. */
-.project-more {
-  margin-top: auto;
-  padding-top: var(--sp-2);
+.project-org,
+.project-when {
+  display: block;
   font-size: var(--fs-small);
-  color: var(--text-faint);
-  transition: color 0.2s ease;
 }
 
-.project-button:hover .project-more {
-  color: var(--text);
-}
-
-.project-description {
-  font-size: var(--fs-small);
+.project-org {
   color: var(--text-muted);
 }
 
+.project-when {
+  color: var(--text-faint);
+}
+
+/* Capped so a long blurb cannot push past the fixed card height. Blurbs are
+   written to sit inside this; the clamp is a guard, not the plan. */
+.project-description {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+}
+
 @media (max-width: 736px) {
+  /* Stacked, so the fixed height no longer applies — the photo sits above the
+     text and each card is as tall as its own content. */
   .project-button {
     flex-direction: column;
     gap: 0;
+    height: auto;
   }
 
   .project-image {
@@ -594,6 +616,10 @@ body.is-preload #header .content .inner {
     padding: var(--sp-3);
   }
 
+  .project-where {
+    max-width: none;
+    text-align: left;
+  }
 }
 
 /* --- Project page --------------------------------------------------------- */

@@ -26,8 +26,8 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft)).so
             src={project.data.hero}
             alt={project.data.heroAlt ?? project.data.title}
             class="project-image"
-            width={640}
-            height={640}
+            width={480}
+            height={600}
             loading="lazy"
           />
         ) : (
@@ -36,11 +36,13 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft)).so
         <div class="project-info">
           <div class="project-head">
             <h3 class="project-title">{project.data.title}</h3>
-            <span class="project-when">{project.data.date}</span>
+            {/* Where and when, stacked at the right edge of the card. */}
+            <span class="project-where">
+              <span class="project-org">{project.data.org}</span>
+              <span class="project-when">{project.data.date}</span>
+            </span>
           </div>
           <p class="project-description">{project.data.blurb}</p>
-          {/* Not a nested link — the whole card is already the anchor. */}
-          <span class="project-more">Read more &rarr;</span>
         </div>
       </a>
     ))
