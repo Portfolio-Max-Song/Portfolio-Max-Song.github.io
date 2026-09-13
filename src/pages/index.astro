@@ -1,7 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import SocialIcon from '../components/SocialIcon.astro';
 import { site, socials, orgs } from '../site';
+import headshot from '../assets/images/headshot.jpg';
+import contoroMark from '../assets/images/contoro-mark.png';
 ---
 
 <Base title={site.name}>
@@ -26,17 +29,21 @@ import { site, socials, orgs } from '../site';
 
   <div class="scroll-sections">
     <section id="intro" class="intro-banner">
-      <div class="intro-text">
+      <div class="intro-content">
+        <Image src={headshot} alt="Max Song" class="intro-photo" width={420} />
+
+        <div class="intro-text">
         <p>
           Currently a fourth-year mechanical engineering student at the University of
           Texas at Austin. Previously worked at <a
             href={orgs.contoro}
             target="_blank"
-            rel="noopener">Contoro Robotics</a
+            rel="noopener"
+            >Contoro Robotics<Image src={contoroMark} alt="" class="org-mark" width={48} /></a
           > as a robotics engineering intern, creating test fixtures and streamlining the manufacturing process. At university, I work at <a
             href={orgs.inventionworks}
             target="_blank"
-            rel="noopener">Texas Inventionworks</a
+            rel="noopener">Texas Inventionworks (TIW)</a
           >, the campus makerspace, and was part of the <a
             href={orgs.trel}
             target="_blank"
@@ -63,6 +70,7 @@ import { site, socials, orgs } from '../site';
             ))
           }
         </ul>
+        </div>
       </div>
     </section>
   </div>

@@ -319,9 +319,38 @@ body.is-preload #header .content .inner {
   transform: translateY(0);
 }
 
+/* Portrait on the left, prose on the right. */
+.intro-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-5);
+  max-width: 62rem;
+  margin-inline: auto;
+}
+
+.intro-photo {
+  width: 13rem;
+  height: 13rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
 .intro-text {
   max-width: var(--measure);
   margin-inline: auto;
+}
+
+/* A company mark set inline with the text it names. Sized in em so it tracks
+   the font, and nudged off the baseline to sit optically centred. */
+.org-mark {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  vertical-align: -0.24em;
+  margin-left: 0.3em;
 }
 
 .intro-text > * + * {
@@ -346,9 +375,9 @@ body.is-preload #header .content .inner {
 }
 
 /* Home: the icon row closes the text column rather than sitting in a band of
-   its own, so it lines up with the prose above it and sits a little closer. */
+   its own, centred under the last line of the blurb. */
 .icons-inline {
-  justify-content: flex-start;
+  justify-content: center;
   gap: var(--sp-3);
   margin-top: var(--sp-4);
 }
@@ -368,6 +397,20 @@ body.is-preload #header .content .inner {
   width: 1.5rem;
   height: 1.5rem;
   fill: currentColor;
+}
+
+@media (max-width: 860px) {
+  /* Stack the portrait above the prose. The text stays left-aligned — centred
+     paragraphs are hard to read at this length. */
+  .intro-content {
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+
+  .intro-photo {
+    width: 10rem;
+    height: 10rem;
+  }
 }
 
 /* --- About page ----------------------------------------------------------- */
