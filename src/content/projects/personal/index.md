@@ -3,10 +3,9 @@ title: Personal Projects
 date: 2020 – present
 order: 6
 blurb: >-
-  Everything I've built outside of work and lab — Song Leather, the small leather
-  goods business I ran in high school, a custom macropad, a record player built
-  for my sister, woodworking out of the Inventionworks woodshop, and a run of
-  smaller everyday objects. This is where I try things without a deadline.
+  Everything built outside work and lab — Song Leather, a custom macropad, a record
+  player for my sister, woodworking, and smaller everyday objects. Where I try
+  things without a deadline.
 description: >-
   Personal design and fabrication work by Max Song — Song Leather, a custom
   macropad, an RFID record player, end grain woodworking, and smaller everyday

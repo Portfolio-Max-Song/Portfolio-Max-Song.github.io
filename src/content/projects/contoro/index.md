@@ -4,12 +4,9 @@ org: Contoro Robotics – Robotics Engineering Intern
 date: January – August 2026
 order: 1
 blurb: >-
-  Eight months at an Austin robotics startup building autonomous trailer- and
-  container-unloading robots. I engineered the end-of-line test stand every
-  gripper was validated on before it shipped, designed the cantilevered stand
-  that carries the gripper during assembly, released drawings and BOMs across two
-  hardware generations, and went out to a fulfillment center to commission robots
-  running in a live warehouse.
+  Eight months at an Austin robotics startup — the end-of-line test stand every
+  gripper was validated on before shipping, production drawings across two hardware
+  revisions, and commissioning robots in a live warehouse.
 description: >-
   Mechanical engineering work at Contoro Robotics — an end-of-line gripper
   validation test stand, a cantilevered gripper assembly stand sized against

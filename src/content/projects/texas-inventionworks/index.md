@@ -4,10 +4,9 @@ org: Texas Inventionworks – UT Austin Makerspace
 date: August 2024 – present
 order: 3
 blurb: >-
-  Student technician at UT Austin's makerspace, working as woodshop lead and
-  machine shop instructor. I direct a team of student staff on preventive
-  maintenance and shop SOPs, teach the mill, lathe, CNC and 3D printers, and
-  build shop projects and Instructables to get more students through the door.
+  Woodshop lead and machine shop instructor at UT's makerspace — maintenance
+  schedules and SOPs for a dozen machines, and over a hundred students taught on the
+  mill, lathe, CNC and printers.
 description: >-
   Woodshop lead and machine shop instructor at Texas Inventionworks — preventive
   maintenance and SOPs for 12+ machines, over 100 students trained on manual and

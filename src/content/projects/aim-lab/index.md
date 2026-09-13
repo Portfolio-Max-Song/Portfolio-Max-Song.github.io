@@ -4,11 +4,9 @@ org: Architected Intelligent Matter Laboratory – University of Houston
 date: June – September 2025
 order: 4
 blurb: >-
-  Materials research intern at Dr. Tian Chen's lab, running a project on my own
-  for a summer: could a thin elastomer hemisphere model fluid motion across a
-  spherical surface? I rebuilt the casting process, characterized the material
-  with OpenCV standing in for a strain gauge, simulated it in Abaqus, and built
-  an automated laser-sheet rig that measured the real thing.
+  A summer running a research question alone: could an elastomer hemisphere model
+  fluid motion across a sphere? A rebuilt casting process, OpenCV in place of a
+  strain gauge, Abaqus, and a laser-sheet rig to measure the real thing.
 description: >-
   Summer research at the University of Houston's Architected Intelligent Matter
   Laboratory — layered silicone casting to a uniform wall, OpenCV video

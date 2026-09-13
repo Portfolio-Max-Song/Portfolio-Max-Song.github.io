@@ -4,10 +4,9 @@ org: Texas Rocket Engineering Lab
 date: September 2024 – present
 order: 2
 blurb: >-
-  Structures and composites manufacturing engineer on TREL's Halcyon Mark 1, an
-  undergraduate-built liquid bipropellant rocket. I hand-laid flight-critical
-  carbon fiber structures, led development of a 48-inch fiberglass nosecone, and
-  later modeled and analyzed the lab's orbital engine test stand.
+  Structures and composites on TREL's Halcyon Mark 1 rocket — hand-laid carbon fiber
+  validated to 9,600 lbf, a 48-inch fiberglass nosecone, and the bolt analysis
+  behind a 30-foot engine test stand.
 description: >-
   Composites manufacturing and structures work at the Texas Rocket Engineering
   Lab — carbon fiber skirts and couplers validated to 9,600 lbf axial load, a
