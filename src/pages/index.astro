@@ -5,6 +5,7 @@ import SocialIcon from '../components/SocialIcon.astro';
 import { site, socials, orgs } from '../site';
 import headshot from '../assets/images/headshot.jpg';
 import contoroMark from '../assets/images/contoro-mark.png';
+import calihornMark from '../assets/images/tiw-calihorn.png';
 ---
 
 <Base title={site.name}>
@@ -39,15 +40,30 @@ import contoroMark from '../assets/images/contoro-mark.png';
             href={orgs.contoro}
             target="_blank"
             rel="noopener"
-            >Contoro Robotics<Image src={contoroMark} alt="" class="org-mark" width={48} /></a
+            ><Image src={contoroMark} alt="" class="org-mark" width={48} />Contoro Robotics</a
           > as a robotics engineering intern, creating test fixtures and streamlining the manufacturing process. At university, I work at <a
             href={orgs.inventionworks}
             target="_blank"
-            rel="noopener">Texas Inventionworks (TIW)</a
+            rel="noopener"
+            ><Image src={calihornMark} alt="" class="org-mark" width={48} />Texas Inventionworks
+            (TIW)</a
           >, the campus makerspace, and was part of the <a
             href={orgs.trel}
             target="_blank"
-            rel="noopener">Texas Rocket Engineering Lab (TREL)</a
+            rel="noopener"
+            ><svg
+              class="org-mark"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><path d="M12 2.5c2.4 2.3 3.8 5.5 3.8 8.9v3.4L12 18l-3.8-3.2v-3.4c0-3.4 1.4-6.6 3.8-8.9z"
+              ></path><circle cx="12" cy="9.4" r="1.5"></circle><path
+                d="M8.2 12.6 5.4 15l.9 3.3M15.8 12.6l2.8 2.4-.9 3.3M12 18.4v3"></path></svg
+            >Texas Rocket Engineering Lab (TREL)</a
           >.
         </p>
         <p>

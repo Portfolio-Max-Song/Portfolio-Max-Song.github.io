@@ -343,14 +343,17 @@ body.is-preload #header .content .inner {
   margin-inline: auto;
 }
 
-/* A company mark set inline with the text it names. Sized in em so it tracks
-   the font, and nudged off the baseline to sit optically centred. */
+/* A company mark set inline, immediately before the name it belongs to. Sized
+   in em so it tracks the font, and nudged off the baseline to sit optically
+   centred. The SVG variant inherits the link colour via currentColor. */
 .org-mark {
   display: inline-block;
-  width: 1.15em;
-  height: 1.15em;
-  vertical-align: -0.24em;
-  margin-left: 0.3em;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -0.26em;
+  margin-right: 0.3em;
+  /* Keeps a mark from being orphaned on the line above its name. */
+  object-fit: contain;
 }
 
 .intro-text > * + * {
