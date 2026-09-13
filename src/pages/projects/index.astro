@@ -34,16 +34,14 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft)).so
           <div class="project-image project-image-empty" aria-hidden="true" />
         )}
         <div class="project-info">
-          {project.data.org && <p class="project-org">{project.data.org}</p>}
-          <h3 class="project-title">{project.data.title}</h3>
+          <div class="project-head">
+            <h3 class="project-title">{project.data.title}</h3>
+            <span class="project-when">{project.data.date}</span>
+          </div>
           <p class="project-description">{project.data.blurb}</p>
-          <div class="project-divider" />
-          <span class="project-date">
-            <b>Skills: </b>
-            {project.data.skills.join(', ')}
-          </span>
+          {/* Not a nested link — the whole card is already the anchor. */}
+          <span class="project-more">Read more &rarr;</span>
         </div>
-        <span class="project-when">{project.data.date}</span>
       </a>
     ))
   }

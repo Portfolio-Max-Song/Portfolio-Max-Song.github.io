@@ -1,5 +1,5 @@
 ---
-title: Project PL-8
+title: Shell Panel Design for a Student-Built Hypercar
 org: Project PL-8 – UT Austin
 date: Dates to confirm
 order: 5

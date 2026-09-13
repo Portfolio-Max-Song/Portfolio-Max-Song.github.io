@@ -1,5 +1,5 @@
 ---
-title: Texas Rocket Engineering Lab
+title: Composite Rocket Structures and a Hot-Fire Test Stand
 org: Texas Rocket Engineering Lab
 date: September 2024 – present
 order: 2
