@@ -1,82 +1,197 @@
 ---
-title: Thin-Shell Elastomer Casting for Acoustic Metamaterials
+title: Measuring Fluid-Like Motion on an Elastomer Shell
 org: Architected Intelligent Matter Laboratory – University of Houston
 date: June – September 2025
 order: 4
 blurb: >-
-  Materials research intern in Dr. Tian Chen's lab at the University of Houston.
-  I developed a layered casting method that produced thin-shell elastomer
-  half-spheres to within 0.2 mm, then got the simulations to agree with the parts
-  by calibrating material models against my own tensile test data.
+  Materials research intern at Dr. Tian Chen's lab, running a project on my own
+  for a summer: could a thin elastomer hemisphere model fluid motion across a
+  spherical surface? I rebuilt the casting process, characterized the material
+  with OpenCV standing in for a strain gauge, simulated it in Abaqus, and built
+  an automated laser-sheet rig that measured the real thing.
 description: >-
-  Materials research at the University of Houston's Architected Intelligent
-  Matter Laboratory — a layered casting method holding 0.2 mm on thin-shell
-  elastomer half-spheres, and Abaqus modal models calibrated against ASTM D412
-  tensile data and OpenCV video extensometry.
+  Summer research at the University of Houston's Architected Intelligent Matter
+  Laboratory — layered silicone casting to a uniform wall, OpenCV video
+  extensometry in place of a strain gauge, Abaqus modal simulation, and a
+  servo-driven laser sheet that sliced the vibrating shell to compare measured
+  mode shapes against predicted ones.
 skills:
-  - Abaqus FEA (Static, Modal)
-  - Mechanical Testing (Instron, ASTM D412)
+  - Abaqus FEA (Modal)
   - Python (OpenCV, NumPy, Pandas)
-  - Precision Mold Design
-  - Laser Cutting
+  - Mechanical Testing (Instron, ASTM D412)
   - Elastomer Casting
-gallery: []
+  - Fixture & Jig Design
+  - Microcontrollers & Servos
+hero: ./images/mode-measured-162hz.jpg
+heroAlt: Laser-sheet image of the elastomer shell vibrating at 162 Hz, showing a polygonal standing wave
+gallery:
+  - src: ./images/strain-tracking.jpg
+    alt: OpenCV tracking gauge marks on an elastomer specimen in the Instron
+  - src: ./images/casting-jig-cad.jpg
+    alt: CAD of the pour jig holding the ball bearing mold
+  - src: ./images/casting-jig-top.jpg
+    alt: Top view of the pour jig
+  - src: ./images/half-sphere-cad.jpg
+    alt: CAD of the cast hemisphere shell
+  - src: ./images/test-rig-cad.jpg
+    alt: CAD of the laser sheet tower and test enclosure
+  - src: ./images/mode-simulated-162hz.jpg
+    alt: Abaqus modal result at 162 Hz
+  - src: ./images/mode-measured-121hz.jpg
+    alt: Measured laser-sheet mode at 121 Hz
+  - src: ./images/mode-simulated-121hz.jpg
+    alt: Abaqus modal result at 121 Hz
+  - src: ./images/speaker-validation.jpg
+    alt: Speaker output frequency validation
+  - src: ./images/laser-sheet-profile.jpg
+    alt: Laser sheet tracing the profile of the shell
+  - src: ./images/mode-slice-layer1.jpg
+    alt: One height slice of the vibrating shell
+  - src: ./images/specimen-mounted.jpg
+    alt: The shell mounted in its flange under laser illumination
 ---
 
 I spent the summer of 2025 as a materials research intern at the
 [Architected Intelligent Matter Laboratory](https://aim.me.uh.edu/) at the
-University of Houston, a lab that designs materials whose behavior comes from
-their geometry rather than their chemistry. My work supported the group's
-acoustic metamaterial research, where the acoustic response depends on the shell
-geometry holding tight tolerances.
+University of Houston. The researcher leading this line of work was away at a
+PhD program hosted by Stanford for the whole summer, so I was handed the
+question and left to run at it: **could a thin elastomer shell stretched over a
+sphere be used to model fluid motion across a spherical surface** — the kind of
+behavior the Navier–Stokes equations describe?
 
 ## Outcome
 
-I developed a layered casting method that produced thin-shell elastomer
-half-spheres to within **0.2 mm** of nominal — accurate enough for the acoustic
-work downstream to treat the geometry as known rather than as a variable. I then
-improved the accuracy of the lab's Abaqus modal simulations by **10%** by
-calibrating the material models against tensile data I generated myself, and
-automated the characterization workflow in Python, **cutting analysis time by
-60%**.
+I took the project from an inherited, unreliable casting process to a working
+measurement chain: silicone hemispheres cast to a repeatable wall within
+**0.2 mm**, a material model built from my own tensile data, an Abaqus modal
+simulation predicting where the interesting motion would be, and an automated
+laser-sheet rig that sliced the vibrating shell so real mode shapes could be
+compared against predicted ones. Calibrating the material model against measured
+data improved the modal simulation's accuracy by about **10%**, and the measured
+modes matched the simulation closely enough to be recognizable frequency by
+frequency.
 
 ## My Role
 
-I owned the casting process and the material characterization end to end: mold
-and jig design, specimen casting, tensile testing, extracting material
-properties, feeding them into the simulation models, and building the scripts
-that turned test video into usable data.
+All of it, for one summer, largely alone — the casting process and its jigs, the
+material characterization and the code behind it, learning Abaqus from scratch,
+building the test rig and its microcontroller sweep, and processing the footage
+into results.
 
-## Context and Constraints
+## Making a Shell of Uniform Thickness
 
-A four-month summer internship. The parts are thin-shell hemispheres, which is
-the hard case for casting — wall thickness wants to vary with gravity and with
-how the elastomer wets the mold, and a thin shell has no stiffness to resist
-being distorted on release.
+![CAD of the pour jig holding the ball bearing mold](./images/casting-jig-cad.jpg)
 
-## Approach
+The work I inherited was aimed at a narrower problem: making the elastomer a
+consistent thickness. Without that, nothing downstream means anything — the
+resonant frequencies move, and you can't separate a real result from a casting
+defect.
 
-**Casting.** Rather than casting the shell in one pour, I built the method up in
-layers, which let me control wall thickness instead of fighting it. The mold is
-a precision steel ball, chosen because it comes dimensionally accurate off the
-shelf and holds its finish, paired with a laser-cut acrylic jig that keeps the
-ball concentric and repeatably located between layers. The jig is the reason the
-process repeats: it takes the part's accuracy out of the operator's hands.
+The method was to pour **Mold Star silicone** over a **ball bearing** in
+successive layers. The bearing is the clever part of that setup and it wasn't
+mine: a bearing ball is manufactured as a near-perfect sphere, so it's a
+precision mold you can buy for a few dollars. The pouring arrangement around it
+was the weak point, so my first few weeks went into rebuilding it — a jig that
+holds the ball and locates it identically every pour, so consistency stops
+depending on whoever is holding it.
 
-**Characterization.** Simulation for elastomers is only as good as the material
-model, so I ran tensile tests to **ASTM D412** on an Instron and used **OpenCV
-video extensometry** to track strain optically instead of relying on grip
-displacement, which overstates strain on a soft material. Fitting the models to
-that data is what closed the 10% gap between the modal simulations and the
-measured behavior.
+![CAD of the cast hemisphere shell](./images/half-sphere-cad.jpg)
 
-**Automation.** The characterization sequence was repetitive enough to script.
-Automating it in Python took the analysis loop down by about 60%, which mattered
-because every material batch needed recharacterizing.
+I also checked whether the shell could be made some other way entirely, rather
+than assuming pour-over was right. I tried a laser-based layer-by-layer FDM
+process and a **Formlabs SLA** printer. Pour-over still won on uniformity —
+worth establishing by test rather than by assumption.
 
-## Validation
+## Characterizing the Elastomer Without a Strain Gauge
 
-Dimensional accuracy was checked against nominal on the cast parts, holding
-0.2 mm. The simulation work was validated the other direction: the calibrated
-material model was scored against measured modal behavior, and the 10% figure is
-the reduction in that disagreement.
+![OpenCV tracking gauge marks on an elastomer specimen in the Instron](./images/strain-tracking.jpg)
+
+Every candidate elastomer had to be characterized before any of it could go into
+a simulation, and a real extensometer was out of reach on both budget and lead
+time. So I built one: mark the specimen with gauge marks, film the tensile test
+on the Instron, and track the marks in **OpenCV**, converting pixels to
+millimetres from a known starting distance. The frame above is that tracker
+running — two points locked onto the gauge marks, 51.01 pixels calibrated to
+25.0 mm, 806 frames of a pull being turned into strain.
+
+It started as a workaround but it's the better measurement anyway: optical
+strain avoids the error you get from grip displacement on a soft material, where
+the crosshead travels considerably further than the gauge section actually
+stretches. Feeding those properties back into the model is what produced the 10%
+accuracy improvement.
+
+## Simulating, to Know Where to Look
+
+![Abaqus modal result](./images/abaqus-mode-final.jpg)
+
+With real material properties in hand I learned **Abaqus** and ran modal
+analyses on the shell. The simulation wasn't the deliverable — it was how I
+found the frequencies where the shell's motion would be large and distinct
+enough to actually see. A modal analysis across a wide band returns hundreds of
+modes; only a handful are worth pointing a camera at, and guessing would have
+wasted the summer.
+
+## Checking the Speaker Before Trusting It
+
+![Speaker output frequency validation](./images/speaker-validation.jpg)
+
+The shell is driven acoustically, so every measurement rests on the speaker
+actually producing the frequency it was told to. Before building results on that
+assumption I tested it, recording the output and reading the frequency back to
+confirm commanded and actual agreed. They did — it was an expensive speaker. The
+check cost an afternoon, and skipping it would have left an unverified
+assumption underneath every number that followed.
+
+## The Laser Sheet
+
+![CAD of the laser sheet tower and test enclosure](./images/test-rig-cad.jpg)
+
+To see the motion I built a jig coupling the shell to the speaker and shot it
+from directly above. A top view shows the mode pattern but flattens it — you get
+the shape, not the displacement.
+
+So I moved to a **laser sheet**. A sheet of laser light grazing the shell
+illuminates exactly one cross-section, and the camera sees that slice deform in
+real time.
+
+![Laser sheet tracing the profile of the shell](./images/laser-sheet-profile.jpg)
+
+Sweeping the sheet's height with **servos driven by a microcontroller** turns one
+slice into a stack of them. I wrote a script to step both the sheet height and
+the drive frequency automatically, so the rig could run unattended for an hour or
+two and record a full sweep. Pulling frames from that footage and combining the
+slices reconstructs the shell's complete motion instead of a single plane
+through it.
+
+![One height slice of the vibrating shell](./images/mode-slice-layer1.jpg)
+
+Pouring wet silicone over the vibrating shell made the surface motion visible a
+second way, on top of the slicing.
+
+## Measured Against Predicted
+
+The payoff is a direct comparison at matching frequencies. At **162 Hz** the
+laser sheet shows a clear polygonal standing wave around the shell:
+
+![Measured laser-sheet mode at 162 Hz](./images/mode-measured-162hz.jpg)
+
+And the Abaqus modal result at that same 162 Hz predicts the matching petal
+pattern:
+
+![Abaqus modal result at 162 Hz](./images/mode-simulated-162hz.jpg)
+
+Counting lobes in the photograph and in the simulation gives the same answer.
+That agreement is what justifies everything behind it — the casting process, the
+optically measured material model, and the simulation all have to be right for
+those two images to look alike.
+
+## What I'd Change
+
+Wall thickness drift is still the weak link. Even with the jig, thickness varies
+around the hemisphere as the silicone flows under gravity before it cures, and
+that variation moves the resonant frequencies — so some of the disagreement
+between measured and predicted modes is likely my casting rather than the model.
+Picking it up again, I'd attack that first: rotate the mold during cure so
+gravity averages around the shell instead of accumulating on one side, and
+measure the finished wall at several points rather than trusting the process, so
+the thickness going into the simulation is the thickness that actually exists.
