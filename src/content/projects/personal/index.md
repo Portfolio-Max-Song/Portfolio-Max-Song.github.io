@@ -55,7 +55,7 @@ Song Leather started at the end of 2020. Quarantine had just begun and I was
 looking for a project that would teach me design. I started with branches that
 came down in a storm in our backyard, turning them into spoons, butter knives,
 and forks. As I got into better tools, I noticed a gap in the market for simple,
-sustainable, largely universal tool covers â€” and from there moved into
+sustainable, largely universal tool covers — and from there moved into
 leatherworking, making wallets and belts.
 
 My sister made a video of the work that went viral, and the orders arrived faster
@@ -69,8 +69,8 @@ running an actual business rather than reading about one.
 
 ![Early wallet sketches](./images/song-leather-sketches.jpg)
 
-Research told me I needed a visible element of uniqueness â€” something that read
-as handmade â€” so I moved away from the traditional bifold. I designed around four
+Research told me I needed a visible element of uniqueness — something that read
+as handmade — so I moved away from the traditional bifold. I designed around four
 constraints: manufacturing efficiency, structural integrity, card accessibility,
 and ergonomics.
 
@@ -84,14 +84,14 @@ surfaced, before putting it on the site.
 ### What I'd Do Differently
 
 Think about scalability and manufacturability *before* setting brand values. That
-gap showed up immediately in the first wave of orders â€” I couldn't keep up, so I
+gap showed up immediately in the first wave of orders — I couldn't keep up, so I
 limited availability, which cost me sales I'd already earned.
 
 I'd also choose a less contentious material. Misconceptions about leather, mostly
 rooted in the illegal poaching of exotic animals, color how people see leather
 goods generally, even when the sourcing is sustainable.
 
-**Where it landed:** I hit what I set out to do â€” real experience in product
+**Where it landed:** I hit what I set out to do — real experience in product
 design and marketing, and a platform to talk about sustainability.
 
 ## Macropad
@@ -101,8 +101,8 @@ macropad. I was already planning to build one for personal use and had sketches
 ready, which sped up the design process and pushed me to make something I would
 actually want on my own desk.
 
-**Problem statement:** Build a macropad capable of passing two typing tests â€” one
-predetermined string, one surprise string â€” and win a competition for the most
+**Problem statement:** Build a macropad capable of passing two typing tests — one
+predetermined string, one surprise string — and win a competition for the most
 attractive design.
 
 **Timeline:** One month, with a progress check at the halfway point. My personal
@@ -118,7 +118,7 @@ dimensional accuracy the key-to-switch connections need. The main body is PLA to
 accommodate the heat-set inserts that secure the plate.
 
 **What I'd change:** I want to shrink the main body further and add more
-features. For the competition, I underestimated how much people valued novelty â€”
+features. For the competition, I underestimated how much people valued novelty —
 I built something more practical and lost to designs that were more unusual.
 That tradeoff was worth learning early.
 
@@ -130,7 +130,7 @@ was clearly helping, so I set out to make her favorite songs easier to reach.
 
 Research turned up two ideas I liked: a record player, and a speaker that used
 RFID to trigger songs. I combined them, and built the result out of parts I
-already had â€” a battery from a dead power bank, drivers from a water-damaged
+already had — a battery from a dead power bank, drivers from a water-damaged
 speaker, and an old Raspberry Pi.
 
 **The problem:** design a device that plays any of my sister's favorite songs
@@ -150,7 +150,7 @@ the materials.
 **Electronics and software.** I bought an RFID reader and repurposed an old
 Raspberry Pi 2, a speaker, and a battery. I used the Spotify API to reach my
 sister's library. The Pi 2 would have been fine for local playback, but needing
-Wi-Fi pushed me to a Pi 4. This was the hardest phase and my favorite â€” it's
+Wi-Fi pushed me to a Pi 4. This was the hardest phase and my favorite — it's
 where I got interested in Python.
 
 ![Internal layout](./images/record-player-cad-3.jpg)
@@ -170,7 +170,7 @@ and Raspberry Pi fluency that carried straight into later projects.
 project management. Without a defined timeline I disappeared down rabbit holes on
 details that didn't matter and put off the parts that looked intimidating.
 
-Technically, the components need a real mounting strategy â€” the buttons and knobs
+Technically, the components need a real mounting strategy — the buttons and knobs
 are held with superglue and roughly dimensioned slots, and I'd rather have screw
 bosses for the Pi and everything else. I'd add external speakers for sound
 quality, and get closer to a real record player with an actual motor and needle.
@@ -179,7 +179,7 @@ quality, and get closer to a real record player with an actual motor and needle.
 
 Texas Inventionworks, UT Austin's makerspace, has a woodshop stocked with a table
 saw, miter saw, routing table, jointer, planer, and belt sander, among others.
-These projects â€” the cutting board especially â€” were built to become
+These projects — the cutting board especially — were built to become
 Instructables, the same way I approach my machine shop work: give students a
 reason to walk in and use the space.
 
@@ -207,7 +207,7 @@ project.
 **Approach:** like most of my projects, this started as a sketch, then a pass
 through Etsy and Pinterest to settle the final form. I usually lean minimal, but
 here I added two shelves for my laptop hub and charging station. The CAD is fully
-parametric â€” every dimension is relative â€” so I can re-target the same model to
+parametric — every dimension is relative — so I can re-target the same model to
 someone else's desk and build one as a gift.
 
 ## Phone Case
@@ -223,7 +223,7 @@ backwards, stripping them down. I went through Pinterest and Instagram carefully
 partly to confirm nobody had already made what I was picturing and partly to
 sanity-check that it would work at all. I wanted the case to print in one piece
 and snap on for a snug fit. The design uses interconnected PLA bumpers with TPU
-inserts to absorb impact â€” PLA deliberately, so that in the worst case the case
+inserts to absorb impact — PLA deliberately, so that in the worst case the case
 cracks instead of the phone.
 
 **Outcome:** I dropped it several times and the phone never cracked. (The screen
@@ -237,7 +237,7 @@ real regret is not finishing the wallet in time to carry it on my trip.
 still had to seat on the back, and one snapped when it caught on my pocket. The
 second iteration adds double railing on the sides, which also protects the front
 of the screen. The original TPU corner bumpers never made it into the carried
-version â€” without an enclosed printer the TPU prints failed consistently. I'm
+version — without an enclosed printer the TPU prints failed consistently. I'm
 looking at SLA or SLS at Texas Inventionworks for the next one. For the wallet, I
 want spring steel sheets; the PETG I printed doesn't hold enough pressure on the
 cards to make removal clean.
@@ -251,7 +251,7 @@ being bent too far. I wanted to keep the adjustable light, add color temperature
 control, and design and build every part except the electronics myself.
 
 The real goal was broader: build a lamp whose electronics are easily replicable,
-so the same package can drop into future projects â€” a light bar for the top of my
+so the same package can drop into future projects — a light bar for the top of my
 monitor, a reading bar above my bed. That means a small form factor with easy
 adjustability.
 
@@ -263,7 +263,7 @@ I deliberately spent more time on the electronics than the shell.
 
 **Progress:** this project has taught me most of what I know about integrating
 electronics into a print. My first iteration put the batteries in series and used
-two buck converters â€” two because the LED strip wants 12 V and the microcontroller
+two buck converters — two because the LED strip wants 12 V and the microcontroller
 wants 5 V. That was an inefficient use of power and the current was too low to
 keep up. The second iteration puts the batteries in parallel and uses two voltage
 boosters, which are also far smaller than the buck converters. Right now I'm
@@ -275,7 +275,7 @@ working on making the lamp structurally sound despite printing in multiple parts
 
 **The problem:** after a few months in an apartment I had a pile of shoes outside
 my door. I wanted a rack with no screws or adhesive, modifiable dimensions, easy
-assembly and disassembly for moving, built from materials I already had â€” and
+assembly and disassembly for moving, built from materials I already had — and
 above all, cheaper than buying one.
 
 I took it up during finals week as a break from studying, aiming to finish before
@@ -284,7 +284,7 @@ I left for break.
 **Approach:** in middle and high school I did Odyssey of the Mind, which involved
 building skit props, often out of PVC. I had bulk birch dowels left over from Song
 Leather, and realized I only needed to design the connectors to hit every one of
-my goals â€” and that 3D printing them would make it cheap. For the look, I wanted
+my goals — and that 3D printing them would make it cheap. For the look, I wanted
 the hybrid of woodworking and 3D printing to be the point, so white connectors
 against light birch.
 
@@ -293,7 +293,7 @@ against light birch.
 **Outcome:** the dowels were uneven, so the tolerances had to leave room without
 needing epoxy or CA glue. I printed at 10% infill but with 3 wall loops for
 press-fit strength. The print used about 450 g of PLA at $8.99/kg bulk from
-Kingroon â€” $4.05. Checking my old order, 25 dowels cost $21, so $0.84 each; the
+Kingroon — $4.05. Checking my old order, 25 dowels cost $21, so $0.84 each; the
 4-foot rack takes 6, or $5.04.
 
 **Total: $9.09.** Comparable racks on Amazon average around $23, and those are
@@ -301,5 +301,5 @@ metal. I'll call that a success.
 
 **What I'd change:** a finishing oil on the dowels would help the tolerances,
 since the wood expands as it absorbs oil. I'd also add a hole through the
-connectors so the rack can be screwed down if I ever land somewhere permanent â€”
+connectors so the rack can be screwed down if I ever land somewhere permanent —
 and screwing into the wood would let it expand into a better fit.
