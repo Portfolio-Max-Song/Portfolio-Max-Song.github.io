@@ -401,18 +401,6 @@ body.is-preload #header .content .inner {
   margin-top: var(--sp-3);
 }
 
-/* Floated so the prose wraps around it on wide screens and stacks above the
-   text on narrow ones, where the float is dropped below. */
-.about-portrait {
-  width: 11rem;
-  height: 11rem;
-  float: right;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 0 var(--sp-3) var(--sp-4);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
 .about-body a {
   color: var(--text);
   text-decoration-color: var(--text-faint);
@@ -444,15 +432,7 @@ body.is-preload #header .content .inner {
 }
 
 @media (max-width: 736px) {
-  .about-portrait {
-    float: none;
-    display: block;
-    margin: 0 auto var(--sp-4);
-    width: 9rem;
-    height: 9rem;
-  }
-
-    .photo-grid {
+  .photo-grid {
     gap: var(--sp-1);
   }
 }
