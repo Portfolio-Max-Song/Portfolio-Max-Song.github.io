@@ -11,9 +11,9 @@ export const site = {
 
 export const nav = [
   { label: 'Home', href: '/#wrapper' },
+  { label: 'Contact', href: '/#contact' },
   { label: 'About', href: '/about.html' },
   { label: 'Projects', href: '/projects.html' },
-  { label: 'Contact', href: '/#contact' },
   { label: 'Resume', href: site.resume, external: true },
 ];
 
