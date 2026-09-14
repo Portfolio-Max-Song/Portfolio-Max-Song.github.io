@@ -1,6 +1,6 @@
 ---
 title: Personal Projects
-org: Personal
+org: Personal Projects
 date: 2020 – present
 order: 7
 blurb: >-

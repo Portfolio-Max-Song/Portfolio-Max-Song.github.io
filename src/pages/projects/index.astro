@@ -35,13 +35,17 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft)).so
         )}
         <div class="project-info">
           <div class="project-head">
-            <h3 class="project-title">{project.data.title}</h3>
+            {/* The organisation is the headline; what the work actually was
+                is carried by the blurb underneath. */}
+            <h3 class="project-title">{project.data.org ?? project.data.title}</h3>
             <span class="project-when">{project.data.date}</span>
           </div>
           <p class="project-description">{project.data.blurb}</p>
-          {/* Sits on the card's bottom edge, where the uniform height would
-              otherwise leave dead space under a short blurb. */}
-          <span class="project-org">{project.data.org}</span>
+          {project.data.role && (
+            /* Anchored to the card's bottom edge, where the uniform height
+               would otherwise leave dead space under a short blurb. */
+            <span class="project-role">{project.data.role}</span>
+          )}
         </div>
       </a>
     ))

@@ -548,8 +548,8 @@ body.is-preload #header .content .inner {
   padding: var(--sp-3) var(--sp-3) var(--sp-3) 0;
 }
 
-/* Title on the left, date on the right, divided from the description below by
-   a rule. The organisation is not here — it sits on the card's bottom edge. */
+/* Organisation on the left, date on the right, divided from the description
+   below by a rule. The job title sits on the card's bottom edge. */
 .project-head {
   display: flex;
   align-items: baseline;
@@ -574,7 +574,7 @@ body.is-preload #header .content .inner {
 /* `margin-top: auto` anchors it to the bottom whatever the blurb's length, so
    every card gets the same baseline along its lower edge. Set as a label
    rather than prose — it is a tag on the work, not part of the description. */
-.project-org {
+.project-role {
   margin-top: auto;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -613,7 +613,7 @@ body.is-preload #header .content .inner {
   }
 
   /* Stacked cards have no fixed height for `margin-top: auto` to fill. */
-  .project-org {
+  .project-role {
     margin-top: var(--sp-1);
   }
 }
