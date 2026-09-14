@@ -29,7 +29,7 @@ export default defineConfig({
     '/cnc': '/projects/texas-inventionworks.html',
     '/macropad': '/projects/personal.html',
     '/wood': '/projects/personal.html',
-    '/songleather': '/projects/personal.html',
+    '/songleather': '/projects/song-leather.html',
     '/recordplayer': '/projects/personal.html',
     '/personal': '/projects/personal.html',
     '/pl8': '/projects/pl8.html',

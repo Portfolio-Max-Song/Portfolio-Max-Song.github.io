@@ -1,12 +1,14 @@
 ---
 title: Shell Panel Design for a Student-Built Hypercar
 org: Project PL-8
-date: Dates to confirm
+role: Shell Engineer
+date: August 2024 – January 2025
 order: 5
 blurb: >-
-  Shell engineer on a student-built two-seater hypercar. I designed the
-  exterior panels and their chassis integration in Blender and Inventor, split
-  into seven panels that could actually be laid up in composite.
+  Shell engineer on Project PL-8, a student organization dedicated to creating
+  the first student-built two-seated hypercar. Utilizing Blender and Inventor,
+  I designed the exterior of the car, working with chassis and powertrain for
+  full systems integration.
 description: >-
   Shell panel design and chassis integration for PL-8's two-seater hypercar —
   automotive surfacing in Blender and Inventor, seven-panel body breakup, and

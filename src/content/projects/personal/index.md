@@ -2,15 +2,15 @@
 title: Personal Projects
 org: Personal
 date: 2020 – present
-order: 6
+order: 7
 blurb: >-
-  Everything built outside work and lab — Song Leather, a custom macropad, a
-  record player for my sister, woodworking, and smaller everyday objects.
-  Where I try things without a deadline.
+  In the past few years, I've worked on a few personal projects like a digital
+  turntable and custom macropad. I loved working on each and every one of
+  these projects and would love for you to check them out!
 description: >-
-  Personal design and fabrication work by Max Song — Song Leather, a custom
-  macropad, an RFID record player, end grain woodworking, and smaller everyday
-  builds including a shoe rack that cost $9.09 to make.
+  Personal design and fabrication work by Max Song — an RFID record player
+  built for his sister, a custom macropad, end grain woodworking, a 3D printed
+  phone case, a desk lamp, and a shoe rack that cost $9.09 to make.
 skills:
   - Product Design & Development
   - Iterative Design
@@ -18,15 +18,13 @@ skills:
   - Electronics Integration
   - Cost Analysis
   - Rapid Prototyping
-hero: ./images/overview.jpg
-heroAlt: A selection of personal projects
+hero: ./images/record-player-finished-1.jpg
+heroAlt: The finished RFID record player
 gallery:
-  - src: ./images/song-leather-ut-wallet.jpg
-    alt: Song Leather wallet
+  - src: ./images/record-player-finished-2.jpg
+    alt: The record player from the side
   - src: ./images/macropad-main-1.jpg
     alt: The finished macropad on a desk
-  - src: ./images/record-player-finished-1.jpg
-    alt: The finished record player
   - src: ./images/woodworking-cutting-board-finished.jpg
     alt: Finished end grain cutting board
   - src: ./images/phone-case.jpg
@@ -37,91 +35,14 @@ gallery:
     alt: Desk lamp CAD model
   - src: ./images/woodworking-display-shelf.jpg
     alt: Display shelf built in the woodshop
-link:
-  label: Visit the Song Leather site
-  href: https://sites.google.com/view/songleather/home
 ---
 
-These are the things I've built outside of work and lab: a leather goods
-business I ran through high school, a keyboard, a record player for my sister,
-furniture out of the Inventionworks woodshop, and a run of smaller everyday
-objects. None of them had a deadline or a customer, which is exactly why they're
+These are the things I've built outside of work and lab: a record player for my
+sister, a keyboard, furniture out of the Inventionworks woodshop, and a run of
+smaller everyday objects. None of them had a deadline or a customer, which is exactly why they're
 where I try unfamiliar materials and processes first. I model most of them in
 Fusion 360 and print on a Bambu A1 I bought with the money from my freshman
 summer internship.
-
-## Song Leather
-
-Song Leather started at the end of 2020. Quarantine had just begun and I was
-looking for a project that would teach me design. I started with branches that
-came down in a storm in our backyard, turning them into spoons, butter knives,
-and forks. As I got into better tools, I noticed a gap in the market for simple,
-sustainable, largely universal tool covers — and from there moved into
-leatherworking, making wallets and belts.
-
-My sister made a video of the work that went viral, and the orders arrived faster
-than I could fill them. Each wallet or bag took days, sometimes weeks. I scaled
-back. These days I make pieces almost exclusively as gifts for friends and family.
-
-**The goal:** create something real, and learn marketing and product design by
-running an actual business rather than reading about one.
-
-### Design Process
-
-![Early wallet sketches](./images/song-leather-sketches.jpg)
-
-Research told me I needed a visible element of uniqueness — something that read
-as handmade — so I moved away from the traditional bifold. I designed around four
-constraints: manufacturing efficiency, structural integrity, card accessibility,
-and ergonomics.
-
-Once I had a direction, I prototyped iteratively in paper, then converted each
-pattern to a digital file so it could be printed and cut consistently. Then I
-carried the wallet myself for a few months, adjusting the design as problems
-surfaced, before putting it on the site.
-
-![Wallet bodies in progress](./images/song-leather-wallet-bodies.jpg)
-
-### What I'd Do Differently
-
-Think about scalability and manufacturability *before* setting brand values. That
-gap showed up immediately in the first wave of orders — I couldn't keep up, so I
-limited availability, which cost me sales I'd already earned.
-
-I'd also choose a less contentious material. Misconceptions about leather, mostly
-rooted in the illegal poaching of exotic animals, color how people see leather
-goods generally, even when the sourcing is sustainable.
-
-**Where it landed:** I hit what I set out to do — real experience in product
-design and marketing, and a platform to talk about sustainability.
-
-## Macropad
-
-**Summary:** As a new hire at Texas Inventionworks, I was tasked with creating a
-macropad. I was already planning to build one for personal use and had sketches
-ready, which sped up the design process and pushed me to make something I would
-actually want on my own desk.
-
-**Problem statement:** Build a macropad capable of passing two typing tests — one
-predetermined string, one surprise string — and win a competition for the most
-attractive design.
-
-**Timeline:** One month, with a progress check at the halfway point. My personal
-goal was to finish the CAD and electronics early so the remaining time could go
-toward aesthetics.
-
-**Design process:** I wanted something that looked different from what was on the
-market: the smallest footprint I could manage, and an almost floating effect for
-the keys. We were given a Raspberry Pi Pico, so I left room in the CAD for a
-Micro-USB to USB-C adapter I bought for about a dollar on AliExpress. The plate
-is PETG with a tight press fit. The keys are SLA resin, which holds the
-dimensional accuracy the key-to-switch connections need. The main body is PLA to
-accommodate the heat-set inserts that secure the plate.
-
-**What I'd change:** I want to shrink the main body further and add more
-features. For the competition, I underestimated how much people valued novelty —
-I built something more practical and lost to designs that were more unusual.
-That tradeoff was worth learning early.
 
 ## Record Player
 
@@ -175,6 +96,34 @@ Technically, the components need a real mounting strategy — the buttons and kn
 are held with superglue and roughly dimensioned slots, and I'd rather have screw
 bosses for the Pi and everything else. I'd add external speakers for sound
 quality, and get closer to a real record player with an actual motor and needle.
+
+## Macropad
+
+**Summary:** As a new hire at Texas Inventionworks, I was tasked with creating a
+macropad. I was already planning to build one for personal use and had sketches
+ready, which sped up the design process and pushed me to make something I would
+actually want on my own desk.
+
+**Problem statement:** Build a macropad capable of passing two typing tests — one
+predetermined string, one surprise string — and win a competition for the most
+attractive design.
+
+**Timeline:** One month, with a progress check at the halfway point. My personal
+goal was to finish the CAD and electronics early so the remaining time could go
+toward aesthetics.
+
+**Design process:** I wanted something that looked different from what was on the
+market: the smallest footprint I could manage, and an almost floating effect for
+the keys. We were given a Raspberry Pi Pico, so I left room in the CAD for a
+Micro-USB to USB-C adapter I bought for about a dollar on AliExpress. The plate
+is PETG with a tight press fit. The keys are SLA resin, which holds the
+dimensional accuracy the key-to-switch connections need. The main body is PLA to
+accommodate the heat-set inserts that secure the plate.
+
+**What I'd change:** I want to shrink the main body further and add more
+features. For the competition, I underestimated how much people valued novelty —
+I built something more practical and lost to designs that were more unusual.
+That tradeoff was worth learning early.
 
 ## Woodworking
 
@@ -283,8 +232,8 @@ I took it up during finals week as a break from studying, aiming to finish befor
 I left for break.
 
 **Approach:** in middle and high school I did Odyssey of the Mind, which involved
-building skit props, often out of PVC. I had bulk birch dowels left over from Song
-Leather, and realized I only needed to design the connectors to hit every one of
+building skit props, often out of PVC. I had bulk birch dowels left over from [Song
+Leather](/projects/song-leather.html), and realized I only needed to design the connectors to hit every one of
 my goals — and that 3D printing them would make it cheap. For the look, I wanted
 the hybrid of woodworking and 3D printing to be the point, so white connectors
 against light birch.
