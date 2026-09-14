@@ -36,13 +36,12 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft)).so
         <div class="project-info">
           <div class="project-head">
             <h3 class="project-title">{project.data.title}</h3>
-            {/* Where and when, stacked at the right edge of the card. */}
-            <span class="project-where">
-              <span class="project-org">{project.data.org}</span>
-              <span class="project-when">{project.data.date}</span>
-            </span>
+            <span class="project-when">{project.data.date}</span>
           </div>
           <p class="project-description">{project.data.blurb}</p>
+          {/* Sits on the card's bottom edge, where the uniform height would
+              otherwise leave dead space under a short blurb. */}
+          <span class="project-org">{project.data.org}</span>
         </div>
       </a>
     ))

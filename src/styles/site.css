@@ -548,9 +548,8 @@ body.is-preload #header .content .inner {
   padding: var(--sp-3) var(--sp-3) var(--sp-3) 0;
 }
 
-/* What it was on the left, where and when on the right, divided from the
-   description below by a rule. Baseline alignment puts the org on the same
-   line as the title; the date sits under it. */
+/* Title on the left, date on the right, divided from the description below by
+   a rule. The organisation is not here — it sits on the card's bottom edge. */
 .project-head {
   display: flex;
   align-items: baseline;
@@ -565,24 +564,21 @@ body.is-preload #header .content .inner {
   font-size: 1.2rem;
 }
 
-.project-where {
+.project-when {
   flex-shrink: 0;
-  max-width: 14rem;
-  text-align: right;
-  line-height: 1.4;
-}
-
-.project-org,
-.project-when {
-  display: block;
   font-size: var(--fs-small);
+  color: var(--text-faint);
+  white-space: nowrap;
 }
 
+/* `margin-top: auto` anchors it to the bottom whatever the blurb's length, so
+   every card gets the same baseline along its lower edge. Set as a label
+   rather than prose — it is a tag on the work, not part of the description. */
 .project-org {
-  color: var(--text-muted);
-}
-
-.project-when {
+  margin-top: auto;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   color: var(--text-faint);
 }
 
@@ -616,9 +612,9 @@ body.is-preload #header .content .inner {
     padding: var(--sp-3);
   }
 
-  .project-where {
-    max-width: none;
-    text-align: left;
+  /* Stacked cards have no fixed height for `margin-top: auto` to fill. */
+  .project-org {
+    margin-top: var(--sp-1);
   }
 }
 

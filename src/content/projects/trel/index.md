@@ -1,13 +1,16 @@
 ---
 title: Manufacturing a 4-Foot Fiberglass Nosecone
 org: Texas Rocket Engineering Lab
+role: Structures Engineer
 date: September 2024 – present
 order: 2
 blurb: >-
-  On the structures and composites team for the Texas Rocket Engineering Lab's
-  (TREL) Halcyon Mark 1 rocket. Laid up composite parts for the rocket's body
-  and designed the manufacturing process behind the 4-foot fiberglass
-  nosecone.
+  Previously on the structures and composites team, now a structures engineer
+  for the Texas Rocket Engineering Lab's (TREL) Halcyon Mark 1 rocket. Laid up
+  composite parts for the rocket's body and designed the manufacturing process
+  behind the 4-foot fiberglass nosecone. On the Orbital Test Stand, modeled
+  the stand site for systems integration and designed the pressure transducer
+  bracket.
 description: >-
   Composites manufacturing and structures work at the Texas Rocket Engineering
   Lab — carbon fiber skirts and couplers validated to 9,600 lbf axial load, a
