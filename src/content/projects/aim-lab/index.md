@@ -1,6 +1,6 @@
 ---
-title: Measuring Fluid-Like Motion on an Elastomer Shell
-org: A.I.M. Lab, University of Houston
+title: A.I.M. Lab
+org: A.I.M. Lab
 role: Student Research Assistant
 date: June – September 2025
 order: 4
@@ -60,8 +60,6 @@ question and left to run at it: **could a thin elastomer shell stretched over a
 sphere be used to model fluid motion across a spherical surface** — the kind of
 behavior the Navier–Stokes equations describe?
 
-## Outcome
-
 I took the project from an inherited, unreliable casting process to a working
 measurement chain: silicone hemispheres cast to a repeatable wall within
 **0.2 mm**, a material model built from my own tensile data, an Abaqus modal
@@ -72,12 +70,10 @@ data improved the modal simulation's accuracy by about **10%**, and the measured
 modes matched the simulation closely enough to be recognizable frequency by
 frequency.
 
-## My Role
-
-All of it, for one summer, largely alone — the casting process and its jigs, the
-material characterization and the code behind it, learning Abaqus from scratch,
-building the test rig and its microcontroller sweep, and processing the footage
-into results.
+All of it was mine for that summer, largely alone — the casting process and its
+jigs, the material characterization and the code behind it, learning Abaqus from
+scratch, building the test rig and its microcontroller sweep, and processing the
+footage into results.
 
 ## Making a Shell of Uniform Thickness
 

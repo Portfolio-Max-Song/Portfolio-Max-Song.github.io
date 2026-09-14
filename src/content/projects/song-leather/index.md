@@ -1,5 +1,5 @@
 ---
-title: A Line of Minimalist Leather Wallets
+title: Song Leather
 org: Song Leather
 role: Founder
 date: 2020 – present

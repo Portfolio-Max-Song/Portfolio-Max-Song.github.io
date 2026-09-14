@@ -1,5 +1,5 @@
 ---
-title: Shell Panel Design for a Student-Built Hypercar
+title: Project PL-8
 org: Project PL-8
 role: Shell Engineer
 date: August 2024 – January 2025

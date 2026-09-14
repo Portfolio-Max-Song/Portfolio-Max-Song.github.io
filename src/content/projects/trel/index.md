@@ -1,5 +1,5 @@
 ---
-title: Manufacturing a 4-Foot Fiberglass Nosecone
+title: Texas Rocket Engineering Lab
 org: Texas Rocket Engineering Lab
 role: Structures Engineer
 date: September 2024 – present

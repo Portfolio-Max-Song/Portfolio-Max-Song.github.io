@@ -1,5 +1,5 @@
 ---
-title: An End-of-Line Test Stand for Robotic Grippers
+title: Contoro Robotics
 org: Contoro Robotics
 role: Robotics Engineering Intern
 date: January – August 2026
@@ -54,8 +54,6 @@ unload floor-loaded trailers and shipping containers. Hardware there moves in
 fast generations, which meant a lot of my time went into the tooling and
 documentation that let the robots get built and validated the same way twice.
 
-## Outcome
-
 I engineered the end-of-line test stand that every gripper assembly was
 validated on before it shipped, turning a setup each technician improvised into
 a repeatable check. I designed the cantilevered stand the gripper hangs from
@@ -67,20 +65,13 @@ floor, and commissioned **three autonomous mobile robots** at a customer
 fulfillment center while retrofitting **four more** up to the current chassis
 generation.
 
-## My Role
-
-The test stand and the assembly stand were mine end to end — requirements,
-sizing, hand calculations, CAD, sourcing, and build. On the production side I
-owned drawing and BOM releases for gripper subsystems and designed the one-off
-brackets that unblocked assembly. In the field I worked as part of the
-commissioning crew rather than leading it.
-
-## Context and Constraints
-
-An early-stage startup shipping iterative hardware generations. Everything had
-to be manufacturable in-house or from catalog parts on a short timeline, and
-tooling competed for attention with the robots themselves — so anything I built
-had to be obviously worth the time it took.
+The two stands were mine end to end — requirements, sizing, hand calculations,
+CAD, sourcing, and build. On the production side I owned drawing and BOM
+releases for gripper subsystems and designed the one-off brackets that unblocked
+assembly; in the field I worked as part of the commissioning crew rather than
+leading it. Everything had to be manufacturable in-house or from catalog parts
+on a short timeline, and tooling competed for attention with the robots
+themselves — so anything I built had to be obviously worth the time it took.
 
 ## End-of-Line Gripper Test Stand
 

@@ -1,5 +1,5 @@
 ---
-title: Running the Woodshop and Machine Shop
+title: Texas Inventionworks
 org: Texas Inventionworks
 role: Woodshop Lead
 date: August 2024 – present
