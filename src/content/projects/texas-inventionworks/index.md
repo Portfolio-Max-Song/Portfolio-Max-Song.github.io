@@ -1,6 +1,6 @@
 ---
 title: Running the Woodshop and Machine Shop
-org: Texas Inventionworks – UT Austin Makerspace
+org: Texas Inventionworks
 date: August 2024 – present
 order: 3
 blurb: >-

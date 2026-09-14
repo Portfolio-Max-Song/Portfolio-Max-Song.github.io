@@ -19,9 +19,12 @@ const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      // Where the work happened, shown above the title on the index card.
-      // Omitted for the personal-projects page, which has no single org.
+      // Where the work happened. The index card shows this and the date,
+      // nothing else — so keep it to the organisation's name.
       org: z.string().optional(),
+      // Job title, shown only on the project page. Absent for student orgs
+      // and personal work, where there is no title worth printing.
+      role: z.string().optional(),
       // Display string for the card, e.g. 'January – August 2026'. Free text
       // rather than a real date because several of these are open-ended
       // ranges; `order` below is what actually sorts the list.

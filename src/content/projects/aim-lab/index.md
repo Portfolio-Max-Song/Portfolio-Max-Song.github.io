@@ -1,6 +1,6 @@
 ---
 title: Measuring Fluid-Like Motion on an Elastomer Shell
-org: Architected Intelligent Matter Laboratory – University of Houston
+org: A.I.M. Lab, University of Houston
 date: June – September 2025
 order: 4
 blurb: >-

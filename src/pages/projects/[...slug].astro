@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, org, date, description, skills, hero, heroAlt, gallery, link } =
+const { title, org, role, date, description, skills, hero, heroAlt, gallery, link } =
   project.data;
 
 // Referencing hero.src directly would point at the untouched original, which
@@ -37,6 +37,7 @@ const og = hero
       <h1>{title}</h1>
       <p class="project-meta">
         {org && <span>{org}</span>}
+        {role && <span>{role}</span>}
         <span>{date}</span>
       </p>
       <div class="title-underline"></div>

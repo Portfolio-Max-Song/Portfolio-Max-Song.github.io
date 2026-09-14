@@ -1,6 +1,7 @@
 ---
 title: Test Fixtures and Production Drawings for Robotic Grippers
-org: Contoro Robotics – Robotics Engineering Intern
+org: Contoro Robotics
+role: Robotics Engineering Intern
 date: January – August 2026
 order: 1
 blurb: >-
