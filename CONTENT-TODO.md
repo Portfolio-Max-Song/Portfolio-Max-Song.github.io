@@ -114,26 +114,29 @@ derived clip was kept, plus 36 frames pulled out of videos before deleting them
 The engineering reasoning and your own hand calculations are on the Contoro
 page; the source documents are not.
 
-## Next session — projects section (queued from your last message)
+## Projects section — status
 
-Done already: card layout (org + date top-right, rule under the title, no "Read
-more", uniform 15rem cards, 4:5 thumbnails), home strip translucency, left-aligned
-contact icons, bolder nav, Resume flush right.
+Done: card layout (org name + date top-right, rule under the title, no "Read
+more", uniform 16rem cards, 4:5 thumbnails); org/role split; all seven card
+titles and blurbs in Max's own words; Song Leather split out as its own project;
+Personal Projects led by the record player; PL-8 dates.
 
-Still to do, in order:
+Still open:
 
-1. **Split `org` into company + role.** Frontmatter currently packs both into one
-   string ("Contoro Robotics – Robotics Engineering Intern"), which is too long
-   for the card's top-right corner and wraps to two lines. Company goes on the
-   card; company · role · date on the project page. This also answers the
-   "internship / co-op / research / organization / personal" label — the role
-   line says it without a separate tag.
-2. **Song Leather as its own project**, pulled out of Personal Projects.
-   Needs: slug `song-leather`, its 8 images moved across, `order` slot, and the
-   `/songleather` redirect retargeted.
-3. **Personal Projects reordered** so the record player leads, with
-   `record-player-finished-1.jpg` as the hero image.
-4. **Section-by-section content pass** — summarise what each project page
-   actually covers, then settle the title and blurb for each. Blurbs need to land
-   in 4 lines or fewer now that the cards are a fixed height.
-5. **PL-8 dates** still render "Dates to confirm" on the live list.
+1. **Project page bodies.** TREL, Texas Inventionworks, PL-8 and Personal
+   Projects still run the prose written before the Contoro / A.I.M. Lab
+   template. TREL has the most unused material: 9,600 lbf axial validation, the
+   ACI 318 calculator hitting 150% load capacity with fewer fasteners, and the
+   30-ft test stand CAD with 30+ components.
+2. **Contoro "What I'd Change"** — needs Max's account of what drove the Rev B
+   changes (UCP206 bearings, Misumi NSFRBF shaft, clamping-collar interface).
+3. **PL-8 page body** still describes seven composite panels; the new blurb
+   leads on full systems integration with chassis and powertrain, so the page
+   should cover that too.
+4. **Three more life photos** for the About 3x3 grid (6 of 9 present).
+5. **Job title mismatch** — the site says "Robotics Engineering Intern", the
+   resume PDF says "Mechanical Engineering Co-op".
+6. **December 2027 graduation** appears nowhere on the site.
+7. **Settings -> Pages -> Source must be "GitHub Actions"** before any push
+   deploys. Nothing has been pushed; origin/main is still 94d2e37.
+
