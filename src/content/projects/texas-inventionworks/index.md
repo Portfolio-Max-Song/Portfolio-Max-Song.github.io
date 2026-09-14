@@ -4,13 +4,15 @@ org: Texas Inventionworks
 date: August 2024 – present
 order: 3
 blurb: >-
-  Woodshop lead and machine shop instructor at UT's makerspace — maintenance
-  schedules and SOPs for a dozen machines, and over a hundred students taught on the
-  mill, lathe, CNC and printers.
+  Woodshop lead and machine shop team member at Texas Inventionworks (TIW),
+  the University of Texas at Austin's makerspace. Completed machine
+  maintenance and taught over a hundred students on FDM 3D printers, laser
+  cutters, mill, lathe, CNC and woodshop machinery.
 description: >-
-  Woodshop lead and machine shop instructor at Texas Inventionworks — preventive
-  maintenance and SOPs for 12+ machines, over 100 students trained on manual and
-  CNC equipment, and shop documentation written to lower the barrier to entry.
+  Woodshop lead and machine shop instructor at Texas Inventionworks —
+  preventive maintenance and SOPs for 12+ machines, over 100 students trained
+  on manual and CNC equipment, and shop documentation written to lower the
+  barrier to entry.
 skills:
   - Manual Mill & Lathe
   - CNC Machining

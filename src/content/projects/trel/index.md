@@ -1,17 +1,18 @@
 ---
-title: Composite Rocket Structures and a Hot-Fire Test Stand
+title: Manufacturing a 4-Foot Fiberglass Nosecone
 org: Texas Rocket Engineering Lab
 date: September 2024 – present
 order: 2
 blurb: >-
-  Structures and composites on TREL's Halcyon Mark 1 rocket — hand-laid carbon fiber
-  validated to 9,600 lbf, a 48-inch fiberglass nosecone, and the bolt analysis
-  behind a 30-foot engine test stand.
+  On the structures and composites team for the Texas Rocket Engineering Lab's
+  (TREL) Halcyon Mark 1 rocket. Laid up composite parts for the rocket's body
+  and designed the manufacturing process behind the 4-foot fiberglass
+  nosecone.
 description: >-
   Composites manufacturing and structures work at the Texas Rocket Engineering
   Lab — carbon fiber skirts and couplers validated to 9,600 lbf axial load, a
-  48-inch fiberglass nosecone mold, and an ACI 318 concrete bolt calculator for a
-  30-foot hot-fire engine test stand.
+  48-inch fiberglass nosecone mold, and an ACI 318 concrete bolt calculator
+  for a 30-foot hot-fire engine test stand.
 skills:
   - Composite Layups (Vacuum Bagging, Resin Infusion)
   - Design for Manufacturing (DFM)

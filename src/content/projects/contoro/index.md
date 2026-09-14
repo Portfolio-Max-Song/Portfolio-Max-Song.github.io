@@ -1,18 +1,21 @@
 ---
-title: Test Fixtures and Production Drawings for Robotic Grippers
+title: An End-of-Line Test Stand for Robotic Grippers
 org: Contoro Robotics
 role: Robotics Engineering Intern
 date: January – August 2026
 order: 1
 blurb: >-
-  Eight months at an Austin robotics startup — the end-of-line test stand every
-  gripper was validated on before shipping, production drawings across two hardware
-  revisions, and commissioning robots in a live warehouse.
+  Robotics engineering intern at Contoro Robotics, a shipping-container
+  unloading startup in Austin. Worked across the full manufacturing process,
+  from design to assembly drawings to testing. For my final project I created
+  an end-of-line test stand for the end effector, validating every unit before
+  it shipped.
 description: >-
   Mechanical engineering work at Contoro Robotics — an end-of-line gripper
   validation test stand, a cantilevered gripper assembly stand sized against
-  bearing load ratings with a 16x margin, production drawings and BOMs across two
-  gripper hardware revisions, and field commissioning of autonomous mobile robots.
+  bearing load ratings with a 16x margin, production drawings and BOMs across
+  two gripper hardware revisions, and field commissioning of autonomous mobile
+  robots.
 skills:
   - Test Fixture Design
   - SolidWorks (Assemblies, Drawings, BOMs)

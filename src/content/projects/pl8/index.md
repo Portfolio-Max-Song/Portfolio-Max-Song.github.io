@@ -4,11 +4,11 @@ org: Project PL-8
 date: Dates to confirm
 order: 5
 blurb: >-
-  Shell engineer on a student-built two-seater hypercar. I designed the exterior
-  panels and their chassis integration in Blender and Inventor, split into seven
-  panels that could actually be laid up in composite.
+  Shell engineer on a student-built two-seater hypercar. I designed the
+  exterior panels and their chassis integration in Blender and Inventor, split
+  into seven panels that could actually be laid up in composite.
 description: >-
-  Shell panel design and chassis integration for PL-8's two-seater hypercar -
+  Shell panel design and chassis integration for PL-8's two-seater hypercar —
   automotive surfacing in Blender and Inventor, seven-panel body breakup, and
   basalt fiber composite manufacturability.
 skills:

@@ -4,12 +4,14 @@ org: A.I.M. Lab, University of Houston
 date: June – September 2025
 order: 4
 blurb: >-
-  A summer running a research question alone: could an elastomer hemisphere model
-  fluid motion across a sphere? A rebuilt casting process, OpenCV in place of a
-  strain gauge, Abaqus, and a laser-sheet rig to measure the real thing.
+  Student research assistant at the University of Houston's A.I.M. Lab, under
+  a NASA grant. Modeled whether an elastomer shell could reproduce fluid-like
+  motion across a sphere — streamlining mold production, testing material
+  properties, running frequency simulations in Abaqus, and building a
+  real-life model to measure against them.
 description: >-
-  Summer research at the University of Houston's Architected Intelligent Matter
-  Laboratory — layered silicone casting to a uniform wall, OpenCV video
+  Summer research at the University of Houston's Architected Intelligent
+  Matter Laboratory — layered silicone casting to a uniform wall, OpenCV video
   extensometry in place of a strain gauge, Abaqus modal simulation, and a
   servo-driven laser sheet that sliced the vibrating shell to compare measured
   mode shapes against predicted ones.
