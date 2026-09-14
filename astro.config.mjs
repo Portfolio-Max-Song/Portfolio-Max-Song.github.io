@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import rehypeProjectLayout from './src/lib/rehype-project-layout.mjs';
 
 // User/org Pages site (Portfolio-Max-Song.github.io) — served from the domain
 // root, so `base` stays '/'. If this ever moves to a project repo, set
@@ -13,6 +14,10 @@ export default defineConfig({
   },
   build: {
     format: 'file',
+  },
+  markdown: {
+    // Pairs each image with the prose beside it and alternates the sides.
+    rehypePlugins: [rehypeProjectLayout],
   },
   // The old hand-written pages lived at the site root (/macropad.html). Project
   // pages now live under /projects/, and three slugs were renamed, so every
