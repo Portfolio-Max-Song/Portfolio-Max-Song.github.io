@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, role, date, description, skills, hero, heroAlt, gallery, link } =
+const { title, role, date, description, skills, hero, gallery, link } =
   project.data;
 
 // Referencing hero.src directly would point at the untouched original, which
@@ -44,18 +44,8 @@ const og = hero
     </div>
 
     <div class="project-body">
-      {
-        hero && (
-          <Image
-            src={hero}
-            alt={heroAlt ?? title}
-            class="section-image"
-            width={1200}
-            loading="eager"
-            fetchpriority="high"
-          />
-        )
-      }
+      {/* `hero` still feeds the index card thumbnail and the link-preview
+          image; it is no longer repeated at the top of the page itself. */}
       <Content />
     </div>
 

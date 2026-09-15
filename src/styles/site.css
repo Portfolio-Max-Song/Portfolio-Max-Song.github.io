@@ -710,9 +710,44 @@ body.is-preload #header .content .inner {
   margin-top: var(--sp-4);
 }
 
+/* Cropped to a common 3:2 so a row's two halves are the same height whatever
+   the source photo was shot at. Document scans and dense screenshots are kept
+   out of rows, as a run of images, so nothing informative is cropped away. */
 .section-row .row-media img {
   width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
   max-height: none;
+  margin: 0;
+}
+
+/* A single image with no prose beside it. Width-capped by the panel, height-
+   capped by the viewport, so a wide diagram fills the width while a portrait
+   shot stays a sensible size. Nothing is cropped. */
+.figure-full {
+  margin-top: var(--sp-4);
+}
+
+.figure-full img {
+  width: auto;
+  max-width: 100%;
+  max-height: 70vh;
+  margin-inline: auto;
+}
+
+/* Images with no prose between them: side by side, uncropped. */
+.image-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--sp-2);
+  align-items: start;
+  margin-top: var(--sp-4);
+}
+
+.image-row .image-cell img {
+  width: 100%;
+  max-height: 32rem;
+  object-fit: contain;
   margin: 0;
 }
 
@@ -734,6 +769,11 @@ body.is-preload #header .content .inner {
 
   .section-row.is-flipped .row-media {
     order: 0;
+  }
+
+  .image-row {
+    grid-template-columns: 1fr;
+    margin-top: var(--sp-3);
   }
 }
 
