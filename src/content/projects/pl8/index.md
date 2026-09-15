@@ -42,7 +42,7 @@ car that looked like something people would want to see, with elements of our
 school mascot worked in. The models also fed key chains and small display pieces
 for kids at events, and renders for marketing.
 
-**The problem:** design shell panels for a two-seater supercar while accounting
+The problem: design shell panels for a two-seater supercar while accounting
 for overall aerodynamics, interior airflow, and basalt-fiber composite
 manufacturability.
 
@@ -70,7 +70,7 @@ was still one of the most enjoyable and educational projects I've worked on. I'd
 never touched Blender before this, and the project gave me a reason to learn it
 properly — I've used it constantly since.
 
-**What's next:** the shell design could be meaningfully optimized with FEA and
+What's next: the shell design could be meaningfully optimized with FEA and
 CFD rather than proxy reasoning. We'd also manufacture a few panels at reduced
 scale first, to get real data on whether the design is as manufacturable as we
 think it is.

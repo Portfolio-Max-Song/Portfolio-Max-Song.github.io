@@ -56,17 +56,17 @@ I spent the summer of 2025 as a materials research intern at the
 [Architected Intelligent Matter Laboratory](https://aim.me.uh.edu/) at the
 University of Houston. The researcher leading this line of work was away at a
 PhD program hosted by Stanford for the whole summer, so I was handed the
-question and left to run at it: **could a thin elastomer shell stretched over a
-sphere be used to model fluid motion across a spherical surface** — the kind of
+question and left to run at it: could a thin elastomer shell stretched over a
+sphere be used to model fluid motion across a spherical surface — the kind of
 behavior the Navier–Stokes equations describe?
 
 I took the project from an inherited, unreliable casting process to a working
 measurement chain: silicone hemispheres cast to a repeatable wall within
-**0.2 mm**, a material model built from my own tensile data, an Abaqus modal
+0.2 mm, a material model built from my own tensile data, an Abaqus modal
 simulation predicting where the interesting motion would be, and an automated
 laser-sheet rig that sliced the vibrating shell so real mode shapes could be
 compared against predicted ones. Calibrating the material model against measured
-data improved the modal simulation's accuracy by about **10%**, and the measured
+data improved the modal simulation's accuracy by about 10%, and the measured
 modes matched the simulation closely enough to be recognizable frequency by
 frequency.
 
@@ -84,7 +84,7 @@ consistent thickness. Without that, nothing downstream means anything — the
 resonant frequencies move, and you can't separate a real result from a casting
 defect.
 
-The method was to pour **Mold Star silicone** over a **ball bearing** in
+The method was to pour Mold Star silicone over a ball bearing in
 successive layers. The bearing is the clever part of that setup and it wasn't
 mine: a bearing ball is manufactured as a near-perfect sphere, so it's a
 precision mold you can buy for a few dollars. The pouring arrangement around it
@@ -96,7 +96,7 @@ depending on whoever is holding it.
 
 I also checked whether the shell could be made some other way entirely, rather
 than assuming pour-over was right. I tried a laser-based layer-by-layer FDM
-process and a **Formlabs SLA** printer. Pour-over still won on uniformity —
+process and a Formlabs SLA printer. Pour-over still won on uniformity —
 worth establishing by test rather than by assumption.
 
 ## Characterizing the Elastomer Without a Strain Gauge
@@ -106,7 +106,7 @@ worth establishing by test rather than by assumption.
 Every candidate elastomer had to be characterized before any of it could go into
 a simulation, and a real extensometer was out of reach on both budget and lead
 time. So I built one: mark the specimen with gauge marks, film the tensile test
-on the Instron, and track the marks in **OpenCV**, converting pixels to
+on the Instron, and track the marks in OpenCV, converting pixels to
 millimetres from a known starting distance. The frame above is that tracker
 running — two points locked onto the gauge marks, 51.01 pixels calibrated to
 25.0 mm, 806 frames of a pull being turned into strain.
@@ -121,7 +121,7 @@ accuracy improvement.
 
 ![Abaqus modal result](./images/abaqus-mode-final.jpg)
 
-With real material properties in hand I learned **Abaqus** and ran modal
+With real material properties in hand I learned Abaqus and ran modal
 analyses on the shell. The simulation wasn't the deliverable — it was how I
 found the frequencies where the shell's motion would be large and distinct
 enough to actually see. A modal analysis across a wide band returns hundreds of
@@ -147,13 +147,13 @@ To see the motion I built a jig coupling the shell to the speaker and shot it
 from directly above. A top view shows the mode pattern but flattens it — you get
 the shape, not the displacement.
 
-So I moved to a **laser sheet**. A sheet of laser light grazing the shell
+So I moved to a laser sheet. A sheet of laser light grazing the shell
 illuminates exactly one cross-section, and the camera sees that slice deform in
 real time.
 
 ![Laser sheet tracing the profile of the shell](./images/laser-sheet-profile.jpg)
 
-Sweeping the sheet's height with **servos driven by a microcontroller** turns one
+Sweeping the sheet's height with servos driven by a microcontroller turns one
 slice into a stack of them. I wrote a script to step both the sheet height and
 the drive frequency automatically, so the rig could run unattended for an hour or
 two and record a full sweep. Pulling frames from that footage and combining the
@@ -167,7 +167,7 @@ second way, on top of the slicing.
 
 ## Measured Against Predicted
 
-The payoff is a direct comparison at matching frequencies. At **162 Hz** the
+The payoff is a direct comparison at matching frequencies. At 162 Hz the
 laser sheet shows a clear polygonal standing wave around the shell:
 
 ![Measured laser-sheet mode at 162 Hz](./images/mode-measured-162hz.jpg)

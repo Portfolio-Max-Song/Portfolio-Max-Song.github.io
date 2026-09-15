@@ -50,7 +50,7 @@ My sister made a video of the work that went viral, and the orders arrived faste
 than I could fill them. Each wallet or bag took days, sometimes weeks. I scaled
 back. These days I make pieces almost exclusively as gifts for friends and family.
 
-**The goal:** create something real, and learn marketing and product design by
+The goal: create something real, and learn marketing and product design by
 running an actual business rather than reading about one.
 
 ## Design Process
@@ -79,5 +79,5 @@ I'd also choose a less contentious material. Misconceptions about leather, mostl
 rooted in the illegal poaching of exotic animals, color how people see leather
 goods generally, even when the sourcing is sustainable.
 
-**Where it landed:** I hit what I set out to do — real experience in product
+Where it landed: I hit what I set out to do — real experience in product
 design and marketing, and a platform to talk about sustainability.

@@ -116,7 +116,7 @@ The harder part was what counts as passing. The stand's vacuum pump is far
 smaller than the one on a robot, so absolute numbers measured here do not
 transfer. Rather than fixed thresholds, the limits are measured off a gripper
 that is known good, and every limit is computed from those: a healthy vacuum of
-**−87.5 kPa**, a healthy leak-down of **2 s**, then separate margins for the rig
+−87.5 kPa, a healthy leak-down of 2 s, then separate margins for the rig
 itself (10%), the gripper (27%) and leak-down (20%). Taking drawdown and
 leak-down data let me separate what the rig loses from what the gripper loses,
 which is the whole reason a small pump can still give a trustworthy answer.
@@ -132,10 +132,10 @@ to make assembly easier — the gripper needs to rotate so both faces are
 reachable — and it turned out to be exactly what the test stand needed as well,
 so it does both jobs.
 
-That makes it a cantilever carrying an **18 kg** end effector on a **224 mm**
-overhang, with the centre of mass **88 mm** off the shaft axis, so rotating it
+That makes it a cantilever carrying an 18 kg end effector on a 224 mm
+overhang, with the centre of mass 88 mm off the shaft axis, so rotating it
 also applies torque. I designed it as a shaft-and-pillow-block support: a 30 mm
-S45C shaft riding two **UCP206** pillow block bearings at 100 mm spacing, with
+S45C shaft riding two UCP206 pillow block bearings at 100 mm spacing, with
 set screws locking the shaft in either of its two positions.
 
 I worked the statics by hand before committing to hardware. The load sits
@@ -149,15 +149,15 @@ real pull-out capacity rather than just a bolt through a bracket.
 
 | Check | Result | Margin |
 | --- | --- | --- |
-| Outer bearing reaction | 702 N against an 11,300 N static rating | **16×** |
-| Inner bearing pull-out | 526 N against the same rating | **21×** |
-| Shaft, von Mises at the critical section | 20.6 MPa against 490 MPa yield | **24×** |
-| Tip deflection | 0.17 mm against a 0.5 mm requirement | **within** |
+| Outer bearing reaction | 702 N against an 11,300 N static rating | 16× |
+| Inner bearing pull-out | 526 N against the same rating | 21× |
+| Shaft, von Mises at the critical section | 20.6 MPa against 490 MPa yield | 24× |
+| Tip deflection | 0.17 mm against a 0.5 mm requirement | within |
 
 ![The gripper mounted on the assembly stand](./images/gripper-stand.jpg)
 
-The margins look absurd, and that is the actual finding: **the shaft diameter is
-set by the bearing bore, not by stress.** Stress alone would allow roughly a
+The margins look absurd, and that is the actual finding: the shaft diameter is
+set by the bearing bore, not by stress. Stress alone would allow roughly a
 15 mm shaft at a safety factor of 2. Once a standard pillow block is the right
 answer for the rotating joint, its 30 mm bore dictates the shaft, and everything
 downstream is overbuilt for free. Knowing which constraint is actually binding is
@@ -165,16 +165,16 @@ what let me stop optimizing and buy catalog parts.
 
 ### The Control Hardware
 
-Everything the stand does runs through one **IFM AL1340 IO-Link master** with
+Everything the stand does runs through one IFM AL1340 IO-Link master with
 four ports, each doing one job:
 
-- **X01** — a **Festo VABX-A-P-EL** valve manifold, 16 solenoids, written at
+- X01 — a Festo VABX-A-P-EL valve manifold, 16 solenoids, written at
   Modbus register 1101. This is what actuates the gripper.
-- **X02** — an **IFM PV7604** pressure transducer on a tapped vacuum line, read
+- X02 — an IFM PV7604 pressure transducer on a tapped vacuum line, read
   at register 2002. This is the measurement the whole test rests on.
-- **X03** — an SSR-40 DA relay on the master's pin-4 digital out, register 3100,
+- X03 — an SSR-40 DA relay on the master's pin-4 digital out, register 3100,
   switching the VP125 vacuum pump. The pump runs on its own 110 V circuit.
-- **X04** — a Phoenix Y-splitter feeding two laser distance sensors, checked only
+- X04 — a Phoenix Y-splitter feeding two laser distance sensors, checked only
   for whether they power up.
 
 Power comes off a 110 V outlet through a CJ-2406 AC/DC supply to 24 V, then an
@@ -193,7 +193,7 @@ are mapped from Festo's labels (`vlv5P2`) to names that mean something
 (`suction_zone_1a_right`), and the test steps live in a config file rather than in
 code, so the sequence can be changed without a rewrite.
 
-A full run is **22 steps**. Step one drives every valve to a safe rest state and
+A full run is 22 steps. Step one drives every valve to a safe rest state and
 then holds, waiting for an operator to confirm the work area is clear — the next
 step is the first one that moves an actuator. After that the steps are written
 around how each valve actually behaves. The bistable valves get pulsed and

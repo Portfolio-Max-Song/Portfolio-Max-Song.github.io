@@ -60,7 +60,7 @@ chatters forces you to actually understand it.
 
 ![Bolt action pen components](./images/bolt-action-pen.jpg)
 
-**The problem:** get more students through the door of the machine shop and
+The problem: get more students through the door of the machine shop and
 talking to the professional and student staff.
 
 I'm writing an Instructables guide for manufacturing a custom bolt action pen,
