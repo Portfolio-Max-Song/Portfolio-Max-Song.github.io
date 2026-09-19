@@ -1,9 +1,8 @@
 /**
  * Restructures a project page's Markdown output into the layout the site uses.
  *
- *   - The opening paragraph becomes the page's standfirst. Only the first one:
- *     the whole pre-heading run is often several hundred words, which set full
- *     width would be unreadable.
+ *   - The opening paragraphs become the page's standfirst, spanning full width
+ *     above the first section heading.
  *   - A lone image is paired with the prose that follows it, and those pairs
  *     alternate sides down the page.
  *   - A run of images with no prose between them becomes a side-by-side group
@@ -34,8 +33,8 @@ function imagesIn(node) {
 }
 
 // Blocks that end a run of prose. Tables are excluded from the paired text
-// because a table in a half-width column is unreadable.
-const BREAKS = new Set(['h1', 'h2', 'h3', 'h4', 'table', 'hr']);
+// because a table in a half-width column is unreadable. h3/h4 removed so they pair.
+const BREAKS = new Set(['h1', 'h2', 'table', 'hr']);
 
 const wrap = (className, children) => ({
   type: 'element',
@@ -50,7 +49,7 @@ export default function rehypeProjectLayout() {
     const out = [];
     let i = 0;
 
-    if (i < src.length && isElement(src[i], 'p') && !imagesIn(src[i])) {
+    while (i < src.length && isElement(src[i], 'p') && !imagesIn(src[i])) {
       out.push(wrap(['project-lead'], [src[i++]]));
     }
 
@@ -77,6 +76,7 @@ export default function rehypeProjectLayout() {
 
       if (run.length > 1) {
         out.push(wrap(['image-row'], run.map((im) => wrap(['image-cell'], [im]))));
+        flipped = !flipped;
         i = next;
         continue;
       }

@@ -355,12 +355,15 @@ body.is-preload #header .content .inner {
 /* A company mark set inline, immediately before the name it belongs to. Sized
    in em so it tracks the font, and nudged off the baseline to sit optically
    centred. The SVG variant inherits the link colour via currentColor. */
-.org-mark {
+.org-mark,
+.project-body .org-mark {
   display: inline-block;
   width: 1.2em;
   height: 1.2em;
+  max-height: 1.2em;
   vertical-align: -0.26em;
-  margin-right: 0.3em;
+  margin: 0 0.3em 0 0;
+  border-radius: 0;
   /* Keeps a mark from being orphaned on the line above its name. */
   object-fit: contain;
 }
@@ -734,22 +737,38 @@ body.is-preload #header .content .inner {
   margin-inline: auto;
 }
 
-/* Images with no prose between them: side by side, uncropped. */
+/* Images with no prose between them: side by side, uncropped but consistent. */
 .image-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: var(--sp-2);
-  align-items: start;
+  gap: var(--sp-3);
+  align-items: stretch;
   margin-top: var(--sp-4);
 }
 
 .image-row .image-cell img {
   width: 100%;
-  max-height: 32rem;
-  object-fit: contain;
+  height: 100%;
+  max-height: 40rem;
+  object-fit: cover;
+  border-radius: var(--radius);
   margin: 0;
 }
 
+.caption {
+  font-size: var(--fs-small);
+  color: var(--text-faint);
+  text-align: center;
+  margin-top: var(--sp-2);
+  margin-bottom: var(--sp-4);
+}
+
+.full-bleed {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  border-radius: 0;
+}
 .section-row .row-text > * + * {
   margin-top: var(--sp-3);
 }
