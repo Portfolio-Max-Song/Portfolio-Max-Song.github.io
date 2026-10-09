@@ -25,18 +25,20 @@ export default defineConfig({
   // meta-refresh pages.
   // Keys omit the .html extension: with `format: 'file'`, Astro appends it when
   // emitting the redirect page, so '/wood' becomes dist/wood.html.
-  // Both TREL pages merged into one, the machining page became the
-  // Inventionworks role, and the four passion projects collapsed into
-  // /projects/personal — so several of these now point somewhere new.
+  // Both TREL pages merged into one and the machining page became the
+  // Inventionworks role. The passion projects were briefly one combined
+  // /projects/personal page and are now one page each again, so links to
+  // the combined page land on the projects grid.
   redirects: {
     '/trel-manufacturing': '/projects/trel.html',
     '/trel-structures': '/projects/trel.html',
     '/cnc': '/projects/texas-inventionworks.html',
-    '/macropad': '/projects/personal.html',
-    '/wood': '/projects/personal.html',
+    '/macropad': '/projects/macropad.html',
+    '/wood': '/projects.html',
     '/songleather': '/projects/song-leather.html',
-    '/recordplayer': '/projects/personal.html',
-    '/personal': '/projects/personal.html',
+    '/recordplayer': '/projects/record-player.html',
+    '/personal': '/projects.html',
+    '/projects/personal': '/projects.html',
     '/pl8': '/projects/pl8.html',
   },
 });

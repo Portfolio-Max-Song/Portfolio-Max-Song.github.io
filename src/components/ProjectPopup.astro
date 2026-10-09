@@ -1,0 +1,297 @@
+---
+// The frosted panel a project opens in, over whatever page it was opened
+// from. Every project link on the page opens here instead of navigating: the
+// project's own page is fetched and its panel content lifted into this one.
+// The URL follows along, so a popup can be shared, reloaded (which lands on
+// the project's page, the grid with that popup already open), or closed with
+// the browser's back button.
+interface Props {
+  /** Rendered open with the slot as its content, for a project's own page. */
+  open?: boolean;
+  /** Where closing a popup that was open on load leaves the visitor. */
+  closeTo?: { url: string; title: string };
+}
+
+const { open = false, closeTo } = Astro.props;
+---
+
+<div
+  class:list={['popup', { 'is-open': open }]}
+  data-popup
+  data-close-url={closeTo?.url}
+  data-close-title={closeTo?.title}
+  hidden={!open}
+>
+  <div
+    class="popup-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="popup-title"
+    tabindex="-1"
+    data-popup-panel
+  >
+    <div data-popup-content><slot /></div>
+  </div>
+</div>
+
+{
+  open && (
+    <script is:inline>
+      // Plays the open animation on a page that starts with the popup up. Runs
+      // before first paint, so the panel never flashes at full size first.
+      // Animation frames don't run in a hidden tab, so the timer makes sure
+      // the popup still ends up open there instead of invisible.
+      (function () {
+        var popup = document.querySelector('[data-popup]');
+        var show = function () {
+          popup.classList.add('is-open');
+        };
+        popup.classList.remove('is-open');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(show);
+        });
+        setTimeout(show, 150);
+      })();
+    </script>
+  )
+}
+
+<script>
+  type Page = { html: string; title: string };
+  type Under = { url: string; title: string };
+
+  const popup = document.querySelector<HTMLElement>('[data-popup]');
+  if (popup) initPopup(popup);
+
+  function initPopup(popup: HTMLElement) {
+    const panel = popup.querySelector<HTMLElement>('[data-popup-panel]')!;
+    const content = popup.querySelector<HTMLElement>('[data-popup-content]')!;
+    // The panel's scale transition, the longest part of the animation. A
+    // closed popup is taken out of the page once it has finished.
+    const CLOSE_MS = 350;
+    const projectPath = /^\/projects\/[^/]+\.html$/;
+    const pages = new Map<string, Promise<Page>>();
+    const carousels = new Set<() => void>();
+
+    let isOpen = !popup.hidden;
+    // History entries pushed since the popup opened. Closing steps back over
+    // all of them, so the visitor lands where they were before the first.
+    let depth = 0;
+    let closingAll = false;
+    let closeTimer = 0;
+    let openToken = 0;
+    let returnFocus: HTMLElement | null = null;
+    // The page under the popup, which the URL and title go back to on close.
+    let under: Under = isOpen
+      ? { url: popup.dataset.closeUrl ?? '/projects.html', title: popup.dataset.closeTitle ?? document.title }
+      : { url: currentUrl(), title: document.title };
+
+    function currentUrl() {
+      return location.pathname + location.search + location.hash;
+    }
+
+    function projectUrl(link: HTMLAnchorElement) {
+      if (link.target && link.target !== '_self') return null;
+      const url = new URL(link.href, location.href);
+      return url.origin === location.origin && projectPath.test(url.pathname) ? url.pathname : null;
+    }
+
+    function linkFrom(event: Event) {
+      const target = event.target;
+      const link = target instanceof Element ? target.closest('a[href]') : null;
+      return link instanceof HTMLAnchorElement ? link : null;
+    }
+
+    function load(url: string) {
+      let page = pages.get(url);
+      if (!page) {
+        page = fetch(url)
+          .then((res) => {
+            if (!res.ok) throw new Error(`${url}: ${res.status}`);
+            return res.text();
+          })
+          .then((text) => {
+            const doc = new DOMParser().parseFromString(text, 'text/html');
+            const body = doc.querySelector('[data-popup-content]');
+            if (!body) throw new Error(`${url}: no project content`);
+            return { html: body.innerHTML, title: doc.title };
+          });
+        page.catch(() => pages.delete(url));
+        pages.set(url, page);
+      }
+      return page;
+    }
+
+    // Locks the page under the popup: no scrolling it (the scrollbar's width
+    // is padded back so nothing shifts) and nothing in it reachable by Tab.
+    function setPageInert(on: boolean) {
+      for (const el of document.body.children) {
+        if (el !== popup && el instanceof HTMLElement && el.tagName !== 'SCRIPT') el.inert = on;
+      }
+      const root = document.documentElement;
+      const gap = window.innerWidth - root.clientWidth;
+      root.style.overflow = on ? 'hidden' : '';
+      document.body.style.paddingRight = on && gap > 0 ? `${gap}px` : '';
+    }
+
+    async function open(url: string, from: Element | null, push: boolean) {
+      const token = ++openToken;
+      let page: Page;
+      try {
+        page = await load(url);
+      } catch {
+        location.assign(url);
+        return;
+      }
+      if (token !== openToken) return;
+
+      if (!isOpen && push) under = { url: currentUrl(), title: document.title };
+      clearTimeout(closeTimer);
+      content.innerHTML = page.html;
+      setUpCarousels(content);
+      document.title = page.title;
+      if (push) {
+        depth += 1;
+        history.pushState({ popupDepth: depth, under }, '', url);
+      }
+
+      // Already up: one project's link to another just swaps the content.
+      if (isOpen) {
+        panel.scrollTop = 0;
+        return;
+      }
+
+      isOpen = true;
+      returnFocus = from instanceof HTMLElement ? from : null;
+      popup.hidden = false;
+      popup.classList.remove('is-open');
+      // Grow out of whatever was clicked. transform-origin is measured from
+      // the panel's own corner, and the overlay it sits in fills the viewport.
+      if (from) {
+        const box = from.getBoundingClientRect();
+        const x = box.left + box.width / 2 - panel.offsetLeft;
+        const y = box.top + box.height / 2 - panel.offsetTop;
+        panel.style.transformOrigin = `${x}px ${y}px`;
+      } else {
+        panel.style.transformOrigin = '';
+      }
+      panel.scrollTop = 0;
+      setPageInert(true);
+      // Commit the closed state, so the open state transitions from it.
+      void panel.offsetWidth;
+      popup.classList.add('is-open');
+      panel.focus({ preventScroll: true });
+    }
+
+    function close() {
+      if (!isOpen) return;
+      if (depth > 0) {
+        closingAll = true;
+        history.go(-depth);
+        return;
+      }
+      // Open since the page loaded: there is no entry to go back to.
+      history.replaceState(null, '', under.url);
+      finishClose();
+    }
+
+    function finishClose() {
+      if (!isOpen) return;
+      isOpen = false;
+      depth = 0;
+      openToken += 1;
+      document.title = under.title;
+      popup.classList.remove('is-open');
+      setPageInert(false);
+      returnFocus?.focus({ preventScroll: true });
+      returnFocus = null;
+      closeTimer = window.setTimeout(() => {
+        popup.hidden = true;
+        content.replaceChildren();
+        carousels.clear();
+      }, CLOSE_MS);
+    }
+
+    // Steps each page carousel by one page per click, clamped so the last
+    // page lands at the right edge rather than leaving empty space.
+    function setUpCarousels(root: ParentNode) {
+      carousels.clear();
+      for (const carousel of root.querySelectorAll<HTMLElement>('.page-carousel')) {
+        const track = carousel.querySelector<HTMLElement>('.page-carousel-track');
+        const prev = carousel.querySelector<HTMLButtonElement>('.page-carousel-button.is-prev');
+        const next = carousel.querySelector<HTMLButtonElement>('.page-carousel-button.is-next');
+        if (!track || !prev || !next) continue;
+        const items = [...track.children] as HTMLElement[];
+        let index = 0;
+
+        const update = () => {
+          const perView = Number(getComputedStyle(carousel).getPropertyValue('--per-view')) || 1;
+          const last = Math.max(0, items.length - perView);
+          index = Math.min(Math.max(index, 0), last);
+          const offset = items[index] ? items[index].offsetLeft - items[0].offsetLeft : 0;
+          track.style.transform = `translateX(${-offset}px)`;
+          prev.disabled = index === 0;
+          next.disabled = index === last;
+        };
+
+        prev.addEventListener('click', () => { index -= 1; update(); });
+        next.addEventListener('click', () => { index += 1; update(); });
+        carousels.add(update);
+        update();
+      }
+    }
+
+    document.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = linkFrom(event);
+      const url = link && projectUrl(link);
+      if (!url) return;
+      event.preventDefault();
+      if (isOpen && url === location.pathname) return;
+      open(url, link, true);
+    });
+
+    // Fetch a project as soon as its link is pointed at, so it is usually
+    // ready by the time it's clicked.
+    const prefetch = (event: Event) => {
+      const link = linkFrom(event);
+      const url = link && projectUrl(link);
+      if (url) load(url).catch(() => {});
+    };
+    document.addEventListener('pointerover', prefetch);
+    document.addEventListener('focusin', prefetch);
+
+    popup.addEventListener('click', (event) => {
+      if (event.target === popup) close();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && isOpen) close();
+    });
+
+    window.addEventListener('popstate', (event) => {
+      if (closingAll) {
+        closingAll = false;
+        // Back at the entry the page loaded on, which was the project itself.
+        if (projectPath.test(location.pathname)) history.replaceState(null, '', under.url);
+        finishClose();
+        return;
+      }
+      depth = event.state?.popupDepth ?? 0;
+      if (event.state?.under) under = event.state.under;
+      if (projectPath.test(location.pathname)) open(location.pathname, null, false);
+      else finishClose();
+    });
+
+    window.addEventListener('resize', () => {
+      for (const update of carousels) update();
+    });
+
+    if (isOpen) {
+      setUpCarousels(content);
+      setPageInert(true);
+      panel.focus({ preventScroll: true });
+    }
+  }
+</script>

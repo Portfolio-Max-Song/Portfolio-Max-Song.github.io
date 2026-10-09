@@ -5,10 +5,7 @@ role: Woodshop Lead
 date: August 2024 – present
 order: 3
 blurb: >-
-  Woodshop lead and machine shop team member at Texas Inventionworks (TIW),
-  the University of Texas at Austin's makerspace. Completed machine
-  maintenance and taught over a hundred students on FDM 3D printers, laser
-  cutters, mill, lathe, CNC and woodshop machinery.
+  Woodshop lead and machine shop team member at the UT makerspace.
 description: >-
   Woodshop lead and machine shop instructor at Texas Inventionworks —
   preventive maintenance and SOPs for 12+ machines, over 100 students trained
@@ -31,7 +28,7 @@ hero: ./images/machined-part.jpg
 heroAlt: Machined aluminum part on the mill
 ---
 
-Since August 2024, I've been a student technician at <a href="https://inventionworks.engr.utexas.edu/" target="_blank" rel="noopener"><img src="/images/tiw-calihorn.png" alt="" class="org-mark" width="48" height="48" />Texas Inventionworks (TIW)</a>, UT Austin's makerspace. Our role is to maintain the space as we work shifts in the different areas of TIW, such as the Digital Fabrication Space, the Laser Cutting Space, and the main desk in the Garage. Our spaces extend even further, with a full electronics space where we can solder and a machining area for manual machines and CNC machines. In addition to the everyday shifts, we each join a team. I started on the Machine Shop Team, teaching students how to use the manual mill, manual lathe, and CNC. I then moved to the Woodshop where I soon became lead and taught students how to use the table, miter, and band saws, in addition to planers, routers, and even a panel saw. This year, I'm on the Design Team, where I work on workshops and projects to better the space.
+Since August 2024, I've been a student technician at <a href="https://inventionworks.engr.utexas.edu/" target="_blank" rel="noopener"><span class="org-mark is-tiw" aria-hidden="true"></span>Texas Inventionworks (TIW)</a>, UT Austin's makerspace. Our role is to maintain the space as we work shifts in the different areas of TIW, such as the Digital Fabrication Space, the Laser Cutting Space, and the main desk in the Garage. Our spaces extend even further, with a full electronics space where we can solder and a machining area for manual machines and CNC machines. In addition to the everyday shifts, we each join a team. I started on the Machine Shop Team, teaching students how to use the manual mill, manual lathe, and CNC. I then moved to the Woodshop where I soon became lead and taught students how to use the table, miter, and band saws, in addition to planers, routers, and even a panel saw. This year, I'm on the Design Team, where I work on workshops and projects to better the space.
 
 <h2 class="text-centered">Trainings</h2>
 
@@ -52,11 +49,11 @@ Teaching the same operations every week ended up changing how I machine myself. 
 
 <h3 class="text-centered">Woodshop Trainings</h3>
 
+<p class="text-full">As the woodshop lead, I oversaw the woodshop trainings. We decided to divide the trainings into three separate sections, implementing the same hands-on logic from the machining trainings. Most students come in with a project in mind, so I make sure to teach the machines in the order they would actually use them. Teaching them as one process instead of three separate machines makes it obvious why each step matters.</p>
+
 ![The table saw](./images/machine-table-saw-gray.jpg "left")
 
 <p class="caption caption-sm">A table saw</p>
-
-As the woodshop lead, I oversaw the woodshop trainings. We decided to divide the trainings into three separate sections, implementing the same hands-on logic from the machining trainings. Most students come in with a project in mind, so I make sure to teach the machines in the order they would actually use them. Teaching them as one process instead of three separate machines makes it obvious why each step matters.
 
 We also help student organizations like TimberStrong who need their members trained on the machines before they can start building. Since they have over 50 members, fitting a whole team into our regular sessions a few people at a time would have taken most of a semester. Instead, I organized one large workshop and trained over 50 students on all of the woodshop machines in two days. This was our first time running a workshop like this, which made it much more stressful since it would set the precedent for future trainings.
 
@@ -68,7 +65,7 @@ In an effort to keep the machines running for the woodshop trainings, my job as 
 
 <h3 class="text-centered">The Bolt Action Pen</h3>
 
-![The bolt action pen in CAD, as a section view and a render](./images/bolt-action-pen-v2.jpg "left")
+![The bolt action pen in CAD, as a section view and a render](./images/bolt-action-pen-v2.jpg "right")
 
 <p class="caption caption-sm">The bolt action pen in CAD</p>
 
@@ -78,7 +75,7 @@ My answer was a custom bolt action pen and an Instructables guide covering the f
 
 <h3 class="text-centered">End Grain Cutting Board</h3>
 
-![The finished end grain cutting board](./images/woodworking-cutting-board-crop.jpg "right-85")
+![The finished end grain cutting board](./images/woodworking-cutting-board-crop.jpg "left-85")
 
 <p class="caption caption-sm">The finished cutting board</p>
 

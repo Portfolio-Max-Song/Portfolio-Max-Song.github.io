@@ -18,18 +18,18 @@ const projects = defineCollection({
   }),
   schema: ({ image }) =>
     z.object({
+      // Heads the project's tile and its popup.
       title: z.string(),
-      // Where the work happened. The index card shows this and the date,
-      // nothing else — so keep it to the organisation's name.
+      // Where the work happened. Not shown anywhere at the moment.
       org: z.string().optional(),
-      // Job title, shown only on the project page. Absent for student orgs
+      // Job title. Not shown anywhere at the moment; absent for student orgs
       // and personal work, where there is no title worth printing.
       role: z.string().optional(),
-      // Display string for the card, e.g. 'January – August 2026'. Free text
-      // rather than a real date because several of these are open-ended
-      // ranges; `order` below is what actually sorts the list.
+      // Display string for the tile and popup, e.g. 'January – August 2026'.
+      // Free text rather than a real date because several of these are
+      // open-ended ranges; `order` below is what actually sorts the grid.
       date: z.string(),
-      // Shown on the projects index card.
+      // The one-liner under the project's tile. Keep it to a sentence.
       blurb: z.string(),
       // Used for <meta name="description"> and link previews. Kept separate
       // from blurb so the card copy and the search-result copy can differ.
@@ -38,6 +38,9 @@ const projects = defineCollection({
       // Optional so a page can be written before its photos exist.
       hero: image().optional(),
       heroAlt: z.string().optional(),
+      // The tile is cropped square, so a project whose hero is a wide shot
+      // can name a squarer photo for it. Falls back to the hero.
+      thumb: image().optional(),
       gallery: z
         .array(z.object({ src: image(), alt: z.string() }))
         .default([]),

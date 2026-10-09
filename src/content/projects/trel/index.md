@@ -5,12 +5,8 @@ role: Structures Engineer
 date: September 2024 – December 2025
 order: 2
 blurb: >-
-  Previously on the structures and composites team, now a structures engineer
-  for the Texas Rocket Engineering Lab's (TREL) Halcyon Mark 1 rocket. Laid up
-  composite parts for the rocket's body and designed the manufacturing process
-  behind the 4-foot fiberglass nosecone. On the Orbital Test Stand, modeled
-  the stand site for systems integration and designed the pressure transducer
-  bracket.
+  Composite skirts tested to 9,600 lbf, a 48-inch nose cone mold, and a
+  30-foot test site model.
 description: >-
   Composites manufacturing and structures work at the Texas Rocket Engineering
   Lab — carbon fiber skirts and couplers validated to 9,600 lbf axial load, a
@@ -32,6 +28,7 @@ skills:
   - Team Collaboration
 hero: ./images/vacuum-bagging.jpg
 heroAlt: Vacuum bagging a carbon fiber rocket skirt
+thumb: ./images/vacuum-bagging-square.jpg
 ---
 
 From Fall 2024 to Fall 2025, I was a structures engineer at the <a href="https://texasrocketlab.ae.utexas.edu/" target="_blank" rel="noopener"><svg class="org-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5c2.4 2.3 3.8 5.5 3.8 8.9v3.4L12 18l-3.8-3.2v-3.4c0-3.4 1.4-6.6 3.8-8.9z"></path><circle cx="12" cy="9.4" r="1.5"></circle><path d="M8.2 12.6 5.4 15l.9 3.3M15.8 12.6l2.8 2.4-.9 3.3M12 18.4v3"></path></svg>Texas Rocket Engineering Lab (TREL)</a>. I joined the Halcyon division right as the team moved out of design and into manufacturing the Mark 1, a liquid bipropellant rocket, and spent my first year laying up composite parts for its body and designing the mold for its nose cone at the J. J. Pickle Research Campus.
@@ -60,11 +57,11 @@ I laid up parts with both prepregs and wet layups, then vacuum bagged them to cu
 
 <h3 class="text-centered">The Nose Cone Mold</h3>
 
+<p class="text-full">My second side task was designing the mold for the 4-foot fiberglass nose cone, built around the rocket's existing geometry and our layup method. I was really excited about this one since it was crucial to the final rocket and let me use everything I'd been picking up about composites, but I only had a month before production needed to start.</p>
+
 ![The nose cone mold in SolidWorks](./images/nosecone-mold.jpg "left")
 
 <p class="caption caption-sm">The 48-inch nose cone mold in SolidWorks, split into three sections</p>
-
-My second side task was designing the mold for the 4-foot fiberglass nose cone, built around the rocket's existing geometry and our layup method. I was really excited about this one since it was crucial to the final rocket and let me use everything I'd been picking up about composites, but I only had a month before production needed to start.
 
 I'd been following Easy Composites on YouTube for a while, and their sled videos convinced me to split the mold so the tip could come off on its own. Otherwise, pulling the cured part off would mean fighting a vacuum. I also decided to split the mold horizontally into three sections, joined with slots that release when the mold comes off. I decided that 3D printing would be best since we had an old large-format FDM printer at the facility. I also decided to go with ABS so I could smooth it with acetone in a vapor chamber.
 
@@ -74,7 +71,7 @@ I'd been following Easy Composites on YouTube for a while, and their sled videos
 
 The first part of the plan included reaching out to Texas Inventionworks, the university makerspace I work at. However, after weeks of coordinating with the professional staff, I found out that ITAR restrictions prevented me from using TIW's facility. This led me to resort to our plan B. Years before, TREL had also been donated an old large-format Gigabot printer. After a week of fixing firmware, calibrating the nozzle and leveling the bed, I got it printing a clean test cube, but the extruder burned out a part before we could print the cone. In addition, I found out that due to our limited budget, we had to resort to using old PLA the team had stored away, but this filament was extremely wet and brittle. Between that and the schedule, we ended up doing the layup on an old, deformed nose cone smoothed out with expanding foam.
 
-While I was extremely disappointed, I still got satisfaction from the finished nose cone, which, although imperfect, turned out much better than I could have hoped for. I learned to always have a plan B in case things don't go my way.
+<p class="text-full">While I was extremely disappointed, I still got satisfaction from the finished nose cone, which, although imperfect, turned out much better than I could have hoped for. I learned to always have a plan B in case things don't go my way.</p>
 
 <h2 class="text-centered">The Orbital Test Stand</h2>
 

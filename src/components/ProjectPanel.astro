@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import { render, type CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, date, skills, gallery, link } = project.data;
+---
+
+<article class="project">
+  <header class="project-head">
+    <h1 class="project-title" id="popup-title">{title}</h1>
+    <p class="project-date">{date}</p>
+  </header>
+
+  <div class="project-body">
+    <Content />
+  </div>
+
+  <p class="project-skills"><strong>Skills: </strong>{skills.join(', ')}</p>
+
+  {
+    gallery.length > 0 && (
+      <div class="carousel-section">
+        <div class="carousel-container">
+          {gallery.map((item) => (
+            <div class="carousel-item">
+              <Image
+                src={item.src}
+                alt={item.alt}
+                class="carousel-image"
+                width={600}
+                height={600}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    link && (
+      <a href={link.href} class="website-button" target="_blank" rel="noopener">
+        {link.label}
+      </a>
+    )
+  }
+</article>

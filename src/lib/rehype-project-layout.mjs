@@ -68,10 +68,10 @@ const BREAKS = new Set(['h1', 'h2', 'table', 'hr']);
 const isCaption = (node) => node?.type === 'raw' && /^<p class="caption[\s"]/.test(node.value);
 
 // Also stops at a heading written as inline HTML, which arrives unparsed, and
-// at a full-width paragraph, which never belongs in a half-width column.
+// at a full-width paragraph or list, which never belongs in a half-width column.
 const isBreak = (node) =>
   (node.type === 'element' && BREAKS.has(node.tagName)) ||
-  (node.type === 'raw' && /^<(h[1-6][\s>]|p class="text-full")/.test(node.value));
+  (node.type === 'raw' && /^<(h[1-6][\s>]|(p|ul) class="text-full")/.test(node.value));
 
 const wrap = (className, children) => ({
   type: 'element',

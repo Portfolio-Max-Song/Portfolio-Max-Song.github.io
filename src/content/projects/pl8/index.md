@@ -5,10 +5,7 @@ role: Shell Engineer
 date: August 2024 – January 2025
 order: 5
 blurb: >-
-  Shell engineer on Project PL-8, a student organization dedicated to creating
-  the first student-built two-seated hypercar. Utilizing Blender and Inventor,
-  I designed the exterior of the car, working with chassis and powertrain for
-  full systems integration.
+  Exterior shell design for a student-built two-seat hypercar.
 description: >-
   Shell panel design and chassis integration for PL-8's two-seater hypercar —
   automotive surfacing in Blender and Inventor, a seven-panel body breakup, and

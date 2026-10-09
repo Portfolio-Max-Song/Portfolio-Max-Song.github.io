@@ -1,0 +1,73 @@
+---
+// A small mark set before an organisation's or project's name: inline at 1em
+// in running text, or larger inside a Home row's icon chip.
+//
+// The Contoro and Inventionworks marks are PNGs used as CSS masks filled with
+// currentColor, so they print in the link colour. The A.I.M. mark is a filled
+// disc, which would mask to a plain circle, so it stays an <img> (greyed).
+// Project Markdown can't use components, so it writes the same markup by hand:
+// <span class="org-mark is-contoro" aria-hidden="true"></span>.
+interface Props {
+  name: 'contoro' | 'tiw' | 'aim' | 'trel' | 'leather' | 'record' | 'macropad';
+}
+
+const { name } = Astro.props;
+---
+
+{(name === 'contoro' || name === 'tiw') && <span class={`org-mark is-${name}`} aria-hidden="true" />}
+{name === 'aim' && <img src="/images/aim-mark.png" alt="" class="org-mark is-aim" width="48" height="48" />}
+{
+  name === 'trel' && (
+    <svg
+      class="org-mark is-trel"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 2.5c2.4 2.3 3.8 5.5 3.8 8.9v3.4L12 18l-3.8-3.2v-3.4c0-3.4 1.4-6.6 3.8-8.9z" />
+      <circle cx="12" cy="9.4" r="1.5" />
+      <path d="M8.2 12.6 5.4 15l.9 3.3M15.8 12.6l2.8 2.4-.9 3.3M12 18.4v3" />
+    </svg>
+  )
+}
+{
+  name === 'leather' && (
+    <svg
+      class="org-mark is-leather"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linejoin="miter"
+      stroke-linecap="square"
+      aria-hidden="true"
+    >
+      <path d="M3.5 5.5 20.5 18.5V5.5L3.5 18.5Z" />
+    </svg>
+  )
+}
+{
+  name === 'record' && (
+    <svg class="org-mark is-record" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <circle cx="10" cy="10" r="9" fill="currentColor" />
+      <circle class="record-groove" cx="10" cy="10" r="7" stroke-width="0.6" />
+      <circle class="record-groove" cx="10" cy="10" r="5.5" stroke-width="0.6" />
+      <circle class="record-label" cx="10" cy="10" r="3.2" />
+      <circle class="record-spindle" cx="10" cy="10" r="0.9" />
+    </svg>
+  )
+}
+{
+  name === 'macropad' && (
+    <svg class="org-mark is-macropad" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true">
+      <rect x="3" y="3" width="5" height="5" rx="1" />
+      <rect x="10" y="3" width="5" height="5" rx="1" />
+      <rect x="3" y="10" width="5" height="5" rx="1" />
+      <rect x="10" y="10" width="5" height="5" rx="1" />
+    </svg>
+  )
+}

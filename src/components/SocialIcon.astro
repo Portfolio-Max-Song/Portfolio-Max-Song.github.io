@@ -29,7 +29,8 @@ const ICONS: Record<string, { width: number; d: string }> = {
 
 interface Props {
   name: keyof typeof ICONS | string;
-  label: string;
+  /** Omit when the icon sits beside a visible label, so it is not read twice. */
+  label?: string;
 }
 
 const { name, label } = Astro.props;
@@ -40,8 +41,7 @@ if (!icon) throw new Error(`SocialIcon: unknown icon "${name}"`);
 <svg
   class="social-icon"
   viewBox="0 0 512 512"
-  role="img"
-  aria-label={label}
+  {...(label ? { role: "img", "aria-label": label } : { "aria-hidden": "true" })}
   focusable="false"
 >
   <!-- Uniform 512x512 viewBox so every icon scales identically;

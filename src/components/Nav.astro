@@ -2,19 +2,15 @@
 import { site, nav } from '../site';
 ---
 
-<nav class="floating-nav">
-  <a href="/" class="nav-logo"><b>{site.name}</b></a>
-  <div class="nav-buttons">
+<header class="site-header">
+  <a href="/" class="site-name">{site.name}</a>
+  <nav class="site-nav" aria-label="Main">
     {
       nav.map((item) => (
-        <a
-          href={item.href}
-          class="nav-button"
-          {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
-        >
-          <b>{item.label}</b>
+        <a href={item.href} {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}>
+          {item.label}
         </a>
       ))
     }
-  </div>
-</nav>
+  </nav>
+</header>
