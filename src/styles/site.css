@@ -602,6 +602,39 @@ a:hover {
   }
 }
 
+/* A clicked image, enlarged over the popup. It sits inside the popup's
+   overlay, which fills the viewport, so its fixed position is the screen's. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgba(20, 12, 8, 0.55);
+  opacity: 0;
+  cursor: zoom-out;
+  transition: opacity 0.25s ease;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+}
+
+.lightbox img {
+  position: fixed;
+  max-width: none;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  transition: transform 0.32s var(--ease);
+}
+
+.project-body img:not(.org-mark) {
+  cursor: zoom-in;
+}
+
 /* --- Project -------------------------------------------------------------- */
 
 .project-head {

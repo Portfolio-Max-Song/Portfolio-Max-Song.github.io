@@ -32,6 +32,9 @@ const { open = false, closeTo } = Astro.props;
   >
     <div data-popup-content><slot /></div>
   </div>
+  <div class="lightbox" data-lightbox hidden>
+    <img alt="" />
+  </div>
 </div>
 
 {
@@ -72,6 +75,12 @@ const { open = false, closeTo } = Astro.props;
     const projectPath = /^\/projects\/[^/]+\.html$/;
     const pages = new Map<string, Promise<Page>>();
     const carousels = new Set<() => void>();
+    const lightbox = popup.querySelector<HTMLElement>('[data-lightbox]')!;
+    const zoomed = lightbox.querySelector('img')!;
+    // The zoom's transform transition, after which a closed zoom is removed.
+    const ZOOM_MS = 320;
+    let zoomSource: HTMLImageElement | null = null;
+    let zoomTimer = 0;
 
     let isOpen = !popup.hidden;
     // History entries pushed since the popup opened. Closing steps back over
@@ -195,8 +204,66 @@ const { open = false, closeTo } = Astro.props;
       finishClose();
     }
 
+    // Where a zoomed image ends up: centred, as large as its own pixels allow,
+    // within 92% of the screen's width and 88% of its height.
+    function zoomBox(img: HTMLImageElement) {
+      const shown = img.getBoundingClientRect();
+      const ratio = img.naturalWidth && img.naturalHeight ? img.naturalWidth / img.naturalHeight : shown.width / shown.height;
+      let w = Math.min(window.innerWidth * 0.92, Math.max(img.naturalWidth, shown.width));
+      let h = w / ratio;
+      const maxH = window.innerHeight * 0.88;
+      if (h > maxH) {
+        h = maxH;
+        w = h * ratio;
+      }
+      return { x: (window.innerWidth - w) / 2, y: (window.innerHeight - h) / 2, w, h };
+    }
+
+    // The transform that shrinks the zoomed image back onto its source.
+    function fromSource(img: HTMLImageElement, box: ReturnType<typeof zoomBox>) {
+      const shown = img.getBoundingClientRect();
+      const dx = shown.left + shown.width / 2 - (box.x + box.w / 2);
+      const dy = shown.top + shown.height / 2 - (box.y + box.h / 2);
+      return `translate(${dx}px, ${dy}px) scale(${shown.width / box.w})`;
+    }
+
+    // Grows a clicked image out of its place into a larger view over the popup.
+    function zoomIn(img: HTMLImageElement) {
+      clearTimeout(zoomTimer);
+      zoomSource = img;
+      const box = zoomBox(img);
+      zoomed.src = img.currentSrc || img.src;
+      zoomed.alt = img.alt;
+      Object.assign(zoomed.style, {
+        left: `${box.x}px`,
+        top: `${box.y}px`,
+        width: `${box.w}px`,
+        height: `${box.h}px`,
+        transition: 'none',
+        transform: fromSource(img, box),
+      });
+      lightbox.hidden = false;
+      // Commit the starting point, so the zoom transitions out of it.
+      void zoomed.offsetWidth;
+      zoomed.style.transition = '';
+      zoomed.style.transform = 'none';
+      lightbox.classList.add('is-open');
+    }
+
+    function zoomOut() {
+      if (!zoomSource) return;
+      zoomed.style.transform = fromSource(zoomSource, zoomBox(zoomSource));
+      lightbox.classList.remove('is-open');
+      zoomSource = null;
+      zoomTimer = window.setTimeout(() => {
+        lightbox.hidden = true;
+        zoomed.removeAttribute('src');
+      }, ZOOM_MS);
+    }
+
     function finishClose() {
       if (!isOpen) return;
+      zoomOut();
       isOpen = false;
       depth = 0;
       openToken += 1;
@@ -266,8 +333,19 @@ const { open = false, closeTo } = Astro.props;
       if (event.target === popup) close();
     });
 
+    content.addEventListener('click', (event) => {
+      const img = event.target instanceof HTMLImageElement ? event.target : null;
+      if (!img || img.classList.contains('org-mark') || img.closest('a, button')) return;
+      zoomIn(img);
+    });
+
+    lightbox.addEventListener('click', zoomOut);
+
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && isOpen) close();
+      if (event.key !== 'Escape' || !isOpen) return;
+      // Escape backs out one step: the zoom first, then the popup.
+      if (zoomSource) zoomOut();
+      else close();
     });
 
     window.addEventListener('popstate', (event) => {
