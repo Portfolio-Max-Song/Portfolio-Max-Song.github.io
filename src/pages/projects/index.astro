@@ -1,53 +1,17 @@
 ---
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-
-// `order` is set newest-first in each project's frontmatter, so the list reads
-// as a reverse-chronological history with the personal work collected last.
-const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
-  (a, b) => a.data.order - b.data.order
-);
+import ProjectGrid from '../../components/ProjectGrid.astro';
+import ProjectPopup from '../../components/ProjectPopup.astro';
 ---
 
 <Base
   title="Projects"
   description="Engineering projects by Max Song — robotics test fixtures, composites manufacturing, machining, and product design."
 >
-  <div class="portfolio-header">
-    <div class="portfolio-header-title">Projects</div>
-  </div>
+  <main class="page">
+    <h1 class="page-title">Projects</h1>
+    <ProjectGrid />
+  </main>
 
-  {
-    projects.map((project) => (
-      <a href={`/projects/${project.id}.html`} class="project-button">
-        {project.data.hero ? (
-          <Image
-            src={project.data.hero}
-            alt={project.data.heroAlt ?? project.data.title}
-            class="project-image"
-            width={480}
-            height={600}
-            loading="lazy"
-          />
-        ) : (
-          <div class="project-image project-image-empty" aria-hidden="true" />
-        )}
-        <div class="project-info">
-          <div class="project-head">
-            {/* The organisation is the headline; what the work actually was
-                is carried by the blurb underneath. */}
-            <h3 class="project-title">{project.data.org ?? project.data.title}</h3>
-            <span class="project-when">{project.data.date}</span>
-          </div>
-          <p class="project-description">{project.data.blurb}</p>
-          {project.data.role && (
-            /* Anchored to the card's bottom edge, where the uniform height
-               would otherwise leave dead space under a short blurb. */
-            <span class="project-role">{project.data.role}</span>
-          )}
-        </div>
-      </a>
-    ))
-  }
+  <ProjectPopup />
 </Base>

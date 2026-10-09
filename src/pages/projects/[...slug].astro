@@ -1,7 +1,11 @@
 ---
-import { Image, getImage } from 'astro:assets';
-import { getCollection, render } from 'astro:content';
+import { getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import ProjectGrid from '../../components/ProjectGrid.astro';
+import ProjectPanel from '../../components/ProjectPanel.astro';
+import ProjectPopup from '../../components/ProjectPopup.astro';
+import { site } from '../../site';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects', ({ data }) => !data.draft);
@@ -12,9 +16,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { Content } = await render(project);
-const { title, date, description, skills, hero, gallery, link } =
-  project.data;
+const { title, description, hero } = project.data;
 
 // Referencing hero.src directly would point at the untouched original, which
 // forces Astro to emit the full-size file into the build. A purpose-made
@@ -32,84 +34,15 @@ const og = hero
 ---
 
 <Base title={title} description={description} ogImage={og?.src}>
-  <div id="top" class="project-banner">
-    <div class="project-title-section">
-      <h1>{title}</h1>
-      <p class="project-meta">
-        {/* Just the dates: the org is the <h1> above, and the role lives on
-            the projects index card. */}
-        <span>{date}</span>
-      </p>
-      <div class="title-underline"></div>
-    </div>
+  {/* A project's page is the projects grid with that project's popup open
+      over it, so closing the popup leaves the visitor on the grid. The popup
+      on every other page fetches this page and lifts out the panel. */}
+  <main class="page">
+    <h1 class="page-title">Projects</h1>
+    <ProjectGrid />
+  </main>
 
-    <div class="project-body">
-      {/* `hero` still feeds the index card thumbnail and the link-preview
-          image; it is no longer repeated at the top of the page itself. */}
-      <Content />
-    </div>
-
-    <p class="section-description project-skills">
-      Skills: {skills.join(', ')}
-    </p>
-
-    {
-      gallery.length > 0 && (
-        <div class="carousel-section">
-          <div class="carousel-container">
-            {gallery.map((item) => (
-              <div class="carousel-item">
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  class="carousel-image"
-                  width={600}
-                  height={600}
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )
-    }
-
-    {
-      link && (
-        <a href={link.href} class="website-button" target="_blank" rel="noopener">
-          {link.label}
-        </a>
-      )
-    }
-
-    <a href="/projects.html" class="back-link">Back to Projects</a>
-  </div>
+  <ProjectPopup open closeTo={{ url: '/projects.html', title: `Projects — ${site.name}` }}>
+    <ProjectPanel project={project} />
+  </ProjectPopup>
 </Base>
-
-<script>
-  // Steps each page carousel by one page per click, clamped so the last
-  // page lands at the right edge rather than leaving empty space.
-  for (const carousel of document.querySelectorAll<HTMLElement>('.page-carousel')) {
-    const track = carousel.querySelector<HTMLElement>('.page-carousel-track');
-    const prev = carousel.querySelector<HTMLButtonElement>('.page-carousel-button.is-prev');
-    const next = carousel.querySelector<HTMLButtonElement>('.page-carousel-button.is-next');
-    if (!track || !prev || !next) continue;
-    const items = [...track.children] as HTMLElement[];
-    let index = 0;
-
-    const update = () => {
-      const perView = Number(getComputedStyle(carousel).getPropertyValue('--per-view')) || 1;
-      const last = Math.max(0, items.length - perView);
-      index = Math.min(Math.max(index, 0), last);
-      const offset = items[index] ? items[index].offsetLeft - items[0].offsetLeft : 0;
-      track.style.transform = `translateX(${-offset}px)`;
-      prev.disabled = index === 0;
-      next.disabled = index === last;
-    };
-
-    prev.addEventListener('click', () => { index -= 1; update(); });
-    next.addEventListener('click', () => { index += 1; update(); });
-    window.addEventListener('resize', update);
-    update();
-  }
-</script>

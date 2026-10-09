@@ -9,8 +9,8 @@ import lifeDog from '../assets/images/social/dog.jpg';
 import lifeGolf from '../assets/images/social/golf.jpg';
 import lifePaintball from '../assets/images/social/paintball.jpg';
 
-// Drop more files into src/assets/images/social/ and add them here — the grid
-// is three across, so nine photos fills it out evenly.
+// Drop more files into src/assets/images/social/ and add them here. The grid
+// fits as many 260px-wide columns as the page allows, three on a desktop.
 const lifePhotos = [
   { src: lifeGolf, alt: 'Out golfing' },
   { src: lifePaintball, alt: 'Playing paintball' },
@@ -25,10 +25,8 @@ const lifePhotos = [
   title="About"
   description="About Max Song — mechanical engineering student at UT Austin, previously a robotics engineering intern at Contoro Robotics."
 >
-  <div class="page">
-    <div class="page-head">
-      <h1>About</h1>
-    </div>
+  <main class="page">
+    <h1 class="page-title">About</h1>
 
     <div class="about-body">
       <p>
@@ -57,7 +55,7 @@ const lifePhotos = [
           target="_blank"
           rel="noopener">Song Leather</a
         > started in high school as a small leather goods business and these days mostly runs
-        as gifts for friends and family. I design <a href="/projects/personal.html"
+        as gifts for friends and family. I design <a href="/projects.html"
           >small everyday objects</a
         > when something around my apartment annoys me enough — a phone case, a desk lamp, a
         shoe rack that cost $9.09 to build. And I play volleyball with UT's men's club team.
@@ -73,12 +71,11 @@ const lifePhotos = [
             src={photo.src}
             alt={photo.alt}
             class="photo-grid-item"
-            width={480}
-            height={480}
+            width={640}
             loading="lazy"
           />
         ))
       }
     </div>
-  </div>
+  </main>
 </Base>

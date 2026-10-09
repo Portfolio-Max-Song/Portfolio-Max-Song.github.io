@@ -39,25 +39,11 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap"
     />
   </head>
-  <body class="is-preload">
+  <body>
     <Nav />
     <slot />
-    <div id="bg"></div>
-
-    <script is:inline>
-      // The Dimension template shipped jQuery + 400 lines of article-modal
-      // machinery, but this site has no #main, no <article>, and no #footer —
-      // every one of those handlers ran against an empty set. The only thing
-      // that mattered was dropping .is-preload to release the entry animation.
-      window.addEventListener('load', function () {
-        setTimeout(function () {
-          document.body.classList.remove('is-preload');
-        }, 100);
-      });
-      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    </script>
   </body>
 </html>

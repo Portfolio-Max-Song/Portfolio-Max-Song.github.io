@@ -1,126 +1,126 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import OrgMark from '../components/OrgMark.astro';
+import ProjectPopup from '../components/ProjectPopup.astro';
 import SocialIcon from '../components/SocialIcon.astro';
 import { site, socials, orgs } from '../site';
 import headshot from '../assets/images/headshot.jpg';
-import contoroMark from '../assets/images/contoro-mark.png';
-import calihornMark from '../assets/images/tiw-calihorn.png';
+
+// Each row opens its project's popup. `slug` is the project's folder name.
+const lists = [
+  {
+    heading: 'Internships & Organizations',
+    rows: [
+      { slug: 'contoro', icon: 'contoro', name: 'Contoro Robotics', category: 'Test Fixtures, Controls & Manufacturing', year: '2026' },
+      { slug: 'trel', icon: 'trel', name: 'Texas Rocket Engineering Lab', category: 'Composites & Structures', year: '2025' },
+    ],
+  },
+  {
+    heading: 'Projects',
+    rows: [
+      { slug: 'song-leather', icon: 'leather', name: 'Song Leather', category: 'Product Design & Leatherworking', year: '2020' },
+      { slug: 'macropad', icon: 'macropad', name: 'The Macropad', category: 'CAD, Printing & Soldering', year: '2024' },
+      { slug: 'record-player', icon: 'record', name: 'The RFID Record Player', category: 'Electronics & 3D Printing', year: '2021' },
+    ],
+  },
+] as const;
 ---
 
 <Base title={site.name}>
-  <div id="wrapper">
-    <header id="header">
-      <div class="content">
-        <div class="inner">
-          <h1>{site.name}</h1>
-          <p>{site.tagline}</p>
+  <main class="page">
+    <div class="hero">
+      <div>
+        <h1 class="hero-title">{site.name}</h1>
+        <p class="hero-tagline">{site.tagline}</p>
+        <div class="hero-links">
+          <a href="#contact">Contact</a>
+          <a href="/about.html">About</a>
+          <a href="/projects.html">Projects</a>
+          <a href={site.resume} target="_blank" rel="noopener">Resume</a>
         </div>
       </div>
-      <nav>
-        <ul>
-          <li><a href="/#contact">Contact</a></li>
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/projects.html">Projects</a></li>
-          <li><a href={site.resume} target="_blank" rel="noopener">Resume</a></li>
-        </ul>
-      </nav>
-    </header>
-  </div>
+      <Image src={headshot} alt="Max Song" class="hero-photo" width={840} />
+    </div>
 
-  <div class="scroll-sections">
-    <section id="intro" class="intro-banner">
-      <div class="intro-content">
-        <Image src={headshot} alt="Max Song" class="intro-photo" width={420} />
+    <div class="intro">
+      <p>
+        Currently a fourth-year mechanical engineering student at the University of
+        Texas at Austin. Previously worked at <a href={orgs.contoro} target="_blank" rel="noopener"
+          ><OrgMark name="contoro" />Contoro Robotics</a
+        > as a robotics engineering intern, creating test fixtures and streamlining the manufacturing process. At university, I work at <a
+          href={orgs.inventionworks}
+          target="_blank"
+          rel="noopener"><OrgMark name="tiw" />Texas Inventionworks (TIW)</a
+        >, the campus makerspace, and was part of the <a href={orgs.trel} target="_blank" rel="noopener"
+          ><OrgMark name="trel" />Texas Rocket Engineering Lab (TREL)</a
+        >.
+      </p>
+      <p>I enjoy making simple, useful, and repeatable things that get used.</p>
+    </div>
 
-        <div class="intro-text">
-        <p>
-          Currently a fourth-year mechanical engineering student at the University of
-          Texas at Austin. Previously worked at <a
-            href={orgs.contoro}
-            target="_blank"
-            rel="noopener"
-            ><Image src={contoroMark} alt="" class="org-mark" width={48} />Contoro Robotics</a
-          > as a robotics engineering intern, creating test fixtures and streamlining the manufacturing process. At university, I work at <a
-            href={orgs.inventionworks}
-            target="_blank"
-            rel="noopener"
-            ><Image src={calihornMark} alt="" class="org-mark" width={48} />Texas Inventionworks
-            (TIW)</a
-          >, the campus makerspace, and was part of the <a
-            href={orgs.trel}
-            target="_blank"
-            rel="noopener"
-            ><svg
-              class="org-mark"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-              ><path d="M12 2.5c2.4 2.3 3.8 5.5 3.8 8.9v3.4L12 18l-3.8-3.2v-3.4c0-3.4 1.4-6.6 3.8-8.9z"
-              ></path><circle cx="12" cy="9.4" r="1.5"></circle><path
-                d="M8.2 12.6 5.4 15l.9 3.3M15.8 12.6l2.8 2.4-.9 3.3M12 18.4v3"></path></svg
-            >Texas Rocket Engineering Lab (TREL)</a
-          >.
-        </p>
-        <p>
-          I enjoy making simple, useful, and repeatable things that get used.
-        </p>
+    {
+      lists.map((list) => (
+        <section class="home-section">
+          <h2 class="section-label">
+            <a href="/projects.html">{list.heading}</a>
+          </h2>
+          <div class="home-rows" data-home-rows>
+            {list.rows.map((row) => (
+              <a href={`/projects/${row.slug}.html`} class="home-row">
+                <span class="home-row-icon">
+                  <OrgMark name={row.icon} />
+                </span>
+                <span class="home-row-name">{row.name}</span>
+                <span class="home-row-category">{row.category}</span>
+                <span class="home-row-year">{row.year}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
+    }
 
-        <ul id="contact" class="icons icons-inline">
-          {
-            socials.map((s) => (
-              <li>
-                <a
-                  href={s.href}
-                  {...(s.href.startsWith('mailto:')
-                    ? {}
-                    : { target: '_blank', rel: 'noopener' })}
-                >
-                  <SocialIcon name={s.icon} label={s.label} />
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-        </div>
-      </div>
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <ul class="contact-links">
+        {
+          socials.map((s) => (
+            <li>
+              <a
+                href={s.href}
+                {...(s.href.startsWith('mailto:') ? {} : { target: '_blank', rel: 'noopener' })}
+              >
+                <SocialIcon name={s.icon} />
+                <span>{s.href.startsWith('mailto:') ? site.email : s.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </section>
-  </div>
+  </main>
 
-  <script is:inline>
-    // Reveal the intro/contact block once the user scrolls past the hero.
-    document.addEventListener('DOMContentLoaded', function () {
-      const scrollSections = document.querySelector('.scroll-sections');
-      window.addEventListener('scroll', function () {
-        scrollSections.classList.toggle('visible', window.scrollY > 20);
-      });
-
-      const introBanner = document.querySelector('.intro-banner');
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-          });
-        },
-        { threshold: 0.1 }
-      );
-      observer.observe(introBanner);
-
-      // Smooth-scroll same-page anchors, offset by the fixed nav.
-      document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach((anchor) => {
-        anchor.addEventListener('click', function (e) {
-          const hash = this.getAttribute('href').replace(/^\//, '');
-          const target = document.querySelector(hash);
-          if (!target) return;
-          e.preventDefault();
-          const navHeight = document.querySelector('.floating-nav').offsetHeight;
-          window.scrollTo({ top: target.offsetTop - navHeight, behavior: 'smooth' });
-        });
-      });
-    });
-  </script>
+  <ProjectPopup />
 </Base>
+
+<script>
+  // Hovering a row lifts it and dims the rest of its list. Driven from the
+  // rows rather than :hover, so crossing the gap between two rows doesn't
+  // flash the whole list back to full strength.
+  for (const list of document.querySelectorAll<HTMLElement>('[data-home-rows]')) {
+    const rows = [...list.children] as HTMLElement[];
+    for (const row of rows) {
+      row.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'touch') return;
+        for (const other of rows) {
+          other.classList.toggle('is-active', other === row);
+          other.classList.toggle('is-dimmed', other !== row);
+        }
+      });
+    }
+    list.addEventListener('pointerleave', () => {
+      for (const row of rows) row.classList.remove('is-active', 'is-dimmed');
+    });
+  }
+</script>

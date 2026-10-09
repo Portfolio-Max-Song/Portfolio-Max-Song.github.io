@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+// `order` is set in each project's frontmatter: the work history first,
+// newest at the top, then the personal projects.
+const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<div class="tile-grid" data-tile-grid>
+  {
+    projects.map(({ id, data }) => {
+      const src = data.thumb ?? data.hero;
+      const alt = data.heroAlt ?? data.title;
+      return (
+        <a href={`/projects/${id}.html`} class="tile">
+          <div class="tile-media">
+            {src ? (
+              <Image
+                src={src}
+                alt={alt}
+                class="tile-image"
+                widths={[480, 960]}
+                sizes="(min-width: 749px) 227px, (min-width: 501px) 50vw, 100vw"
+                loading="lazy"
+              />
+            ) : (
+              <div class="tile-empty">{alt}</div>
+            )}
+          </div>
+          <div class="tile-text">
+            <h2 class="tile-title">{data.title}</h2>
+            <p class="tile-date">{data.date}</p>
+            <p class="tile-blurb">{data.blurb}</p>
+          </div>
+        </a>
+      );
+    })
+  }
+</div>
+
+<script>
+  // The hovered tile stays at full strength and the rest fade with their
+  // distance from it, counted in grid cells (diagonal neighbours count as 1).
+  // The column count is read on every hover so it follows the layout as it
+  // reflows.
+  for (const grid of document.querySelectorAll<HTMLElement>('[data-tile-grid]')) {
+    const tiles = [...grid.children] as HTMLElement[];
+
+    tiles.forEach((tile, i) => {
+      tile.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'touch') return;
+        const cols = getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length || 1;
+        tiles.forEach((other, j) => {
+          const distance = Math.max(
+            Math.abs(Math.floor(i / cols) - Math.floor(j / cols)),
+            Math.abs((i % cols) - (j % cols))
+          );
+          other.style.opacity = distance === 0 ? '1' : distance === 1 ? '0.88' : '0.68';
+        });
+      });
+    });
+
+    grid.addEventListener('pointerleave', () => {
+      for (const tile of tiles) tile.style.opacity = '';
+    });
+  }
+</script>

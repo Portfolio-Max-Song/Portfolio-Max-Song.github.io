@@ -1,49 +1,34 @@
 /* ==========================================================================
    Max Song — portfolio
-   Replaces the HTML5 UP "Dimension" main.css (33 kB, of which the site used a
-   few dozen selectors) and the old style.css. Same visual language, written
-   against what the site actually renders.
+   Warm terracotta palette, Geist throughout. Projects open as a frosted
+   popup over the page they were clicked from; their bodies keep the layout
+   engine's arrangement (src/lib/rehype-project-layout.mjs).
    ========================================================================== */
 
 :root {
   /* Palette */
-  /* The two fixed/full-width bars are translucent so the background image
-     reads through them. Both carry a backdrop blur to keep text legible. */
-  --nav-bg: rgba(74, 91, 105, 0.7);
-  --about-bg: rgba(74, 91, 105, 0.7);
-  --panel-bg: rgba(12, 13, 14, 0.5);
-  --panel-bg-strong: rgba(12, 13, 14, 0.45);
-  --text: #f0f1ff;
-  /* Sits between the heading white and the body grey, so the lead paragraph
-     reads as a subtitle without competing with the title. */
-  --text-lead: rgba(240, 241, 255, 0.88);
-  --text-muted: rgba(240, 241, 255, 0.75);
-  --text-faint: rgba(240, 241, 255, 0.55);
-  --rule: rgba(240, 241, 255, 0.15);
+  --bg: #5e483d;
+  --surface-1: #674f43; /* icon chips */
+  --surface-2: #6a5145; /* row hover */
+  --surface-3: #6e5548; /* image placeholder */
+  --border: #836a5c; /* dividers, chip borders, link underlines */
+  --text-muted: #b39a8b; /* dates, tagline, captions */
+  --text-soft: #dcc4b5; /* section labels, icons */
+  --text: #f2e4da;
+  --text-hover: #ffffff;
+  --overlay: rgba(27, 15, 9, 0.45);
+  --glass: rgba(94, 72, 61, 0.9);
 
-  /* Type — the old sheet set nearly everything at 0.7rem (11px), which is
-     below comfortable reading size. Body copy now sits at 1rem. */
-  --font: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Helvetica, Arial, sans-serif;
-  --fs-body: 1rem;
-  --fs-small: 0.875rem;
-  --fs-h1: clamp(1.75rem, 4vw, 2.5rem);
-  --fs-h2: clamp(1.25rem, 2.5vw, 1.5rem);
-  --lh-body: 1.7;
+  --font: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
 
-  /* Spacing scale — one ladder, used everywhere. */
-  --sp-1: 0.5rem;
-  --sp-2: 1rem;
-  --sp-3: 1.5rem;
-  --sp-4: 2rem;
-  --sp-5: 3rem;
-  --sp-6: 4rem;
+  --radius: 5.8px;
+  --radius-chip: 7.2px;
+  --radius-lg: 11.5px;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 
-  --nav-h: 2.75rem;
-  --measure: 68ch;
-  /* Prose standing alone in the wider project panel. */
-  --measure-wide: 82ch;
-  --radius: 4px;
+  --page-width: 748.8px;
+  --gutter: 17.3px;
 }
 
 /* --- Reset ---------------------------------------------------------------- */
@@ -56,16 +41,18 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: var(--font);
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.65;
+  font-weight: 400;
   color: var(--text);
-  background-color: #1a1c20;
+  background: var(--bg);
   overflow-x: hidden;
 }
 
@@ -82,8 +69,8 @@ img {
 h1,
 h2,
 h3 {
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -0.03em;
   margin: 0;
 }
 
@@ -91,625 +78,586 @@ p {
   margin: 0;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+a {
+  color: var(--text);
+  text-decoration-color: var(--border);
+  text-underline-offset: 2.2px;
 }
 
-a {
-  color: inherit;
+a:hover {
+  color: var(--text-hover);
 }
 
 :focus-visible {
   outline: 2px solid var(--text);
-  outline-offset: 3px;
-}
-
-/* Anchor targets clear the fixed nav. */
-:target {
-  scroll-margin-top: calc(var(--nav-h) + var(--sp-2));
+  outline-offset: 2.2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
 
-/* --- Background ----------------------------------------------------------- */
+/* --- Header --------------------------------------------------------------- */
 
-#bg {
-  position: fixed;
-  inset: 0;
-  height: 100vh;
-  z-index: -1;
-  background-image: url('/images/bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  transform: scale(1.125);
-}
-
-#bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: rgba(19, 21, 25, 0.5);
-}
-
-/* --- Floating nav --------------------------------------------------------- */
-
-.floating-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--nav-h);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--sp-2);
-  /* Padding on the left only. The last nav button carries its own inline
-     padding, so ending the bar here puts Resume's edge on the viewport edge
-     instead of leaving a gutter beside it. */
-  padding-left: var(--sp-2);
-  /* Translucency lives in the background colour, not in `opacity` — opacity
-     would fade the nav text along with the bar and make it hard to read.
-     The blur keeps the labels legible over whatever scrolls underneath. */
-  background-color: var(--nav-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  z-index: 100;
-}
-
-.nav-logo,
-.nav-button {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  color: var(--text);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  white-space: nowrap;
-  font-weight: 700;
-}
-
-.nav-logo {
-  font-size: 1rem;
-  letter-spacing: 0.15em;
-}
-
-.nav-buttons {
-  display: flex;
-  height: 100%;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.nav-buttons::-webkit-scrollbar {
-  display: none;
-}
-
-.nav-button {
-  padding-inline: var(--sp-2);
-  font-size: var(--fs-small);
-}
-
-.nav-button:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-}
-
-/* --- Home hero ------------------------------------------------------------ */
-
-#wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: var(--sp-4);
-  min-height: 100vh;
-  padding: var(--sp-6) var(--sp-2);
-  text-align: center;
-}
-
-#header .content {
-  border-block: 1px solid var(--text);
-  max-width: 100%;
-  width: 21rem;
-  margin-inline: auto;
-}
-
-#header .content .inner {
-  padding: var(--sp-5) var(--sp-4);
-  transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
-  transition-delay: 0.25s;
-}
-
-#header h1 {
-  font-size: var(--fs-h1);
-  letter-spacing: 0.05em;
-  margin-bottom: var(--sp-1);
-}
-
-#header .content p {
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: var(--fs-small);
-}
-
-#header nav {
-  margin-top: var(--sp-4);
-}
-
-#header nav ul {
+.site-header {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  border: 1px solid var(--text);
-  border-radius: var(--radius);
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8.6px 23px;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 20.2px var(--gutter);
 }
 
-#header nav li + li {
-  border-left: 1px solid var(--text);
-}
-
-#header nav a {
-  display: block;
-  min-width: 7.5rem;
-  padding: var(--sp-2) var(--sp-3);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: var(--fs-small);
+.site-name {
+  font-size: 13px;
+  font-weight: 600;
   text-decoration: none;
 }
 
-#header nav a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Entry animation — .is-preload is dropped on load. */
-body.is-preload #header {
-  filter: blur(0.125rem);
-}
-
-body.is-preload #header > * {
-  opacity: 0;
-}
-
-body.is-preload #header .content .inner {
-  max-height: 0;
-  padding-block: 0;
-  opacity: 0;
-}
-
-@media (max-width: 480px) {
-  #header nav ul {
-    flex-direction: column;
-    min-width: 12rem;
-  }
-
-  #header nav li + li {
-    border-left: 0;
-    border-top: 1px solid var(--text);
-  }
-}
-
-/* --- About / Contact ------------------------------------------------------ */
-
-.scroll-sections {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease;
-}
-
-.scroll-sections.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* The home-page blurb. Short enough that it needs no heading — it sits in one
-   band below the hero and hands off to /about, /projects and email. */
-.intro-banner {
-  background-color: var(--about-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: var(--sp-6) var(--sp-4);
-  transform: translateY(50px);
-  transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-.intro-banner.visible {
-  transform: translateY(0);
-}
-
-/* Portrait on the left, prose on the right. */
-.intro-content {
+.site-nav {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-5);
-  max-width: 62rem;
-  margin-inline: auto;
+  flex-wrap: wrap;
+  gap: 5.8px 20.2px;
+  font-size: 11.5px;
 }
 
-.intro-photo {
-  width: 13rem;
-  height: 13rem;
-  flex-shrink: 0;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+.site-nav a {
+  text-decoration: none;
 }
 
-.intro-text {
-  max-width: var(--measure);
-  margin-inline: auto;
+/* --- Page ----------------------------------------------------------------- */
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 34.6px var(--gutter) 69.1px;
 }
 
-/* A company mark set inline, immediately before the name it belongs to. Sized
-   in em so it tracks the font, and nudged off the baseline to sit optically
-   centred. The SVG variant inherits the link colour via currentColor. */
+.page-title {
+  font-size: clamp(34.6px, 5vw, 57.6px);
+  line-height: 1;
+  margin: 0 0 34.6px;
+}
+
+/* --- Org marks ------------------------------------------------------------ */
+
+/* A mark set inline before the name it belongs to, sized in em so it tracks
+   the text. The PNG marks are masks filled with the link colour, so they read
+   as monochrome glyphs; the A.I.M. disc can't be masked and is greyed. */
 .org-mark,
 .project-body .org-mark {
   display: inline-block;
-  width: 1.2em;
-  height: 1.2em;
-  max-height: 1.2em;
-  vertical-align: -0.26em;
+  width: 1em;
+  height: 1em;
+  max-height: none;
   margin: 0 0.3em 0 0;
+  vertical-align: -0.15em;
   border-radius: 0;
-  /* Keeps a mark from being orphaned on the line above its name. */
+  background: none;
   object-fit: contain;
 }
 
-.intro-text > * + * {
-  margin-top: var(--sp-3);
+.org-mark.is-contoro,
+.org-mark.is-tiw {
+  background: currentColor;
+  -webkit-mask: var(--mark) center / contain no-repeat;
+  mask: var(--mark) center / contain no-repeat;
 }
 
-.intro-text a {
-  color: var(--text);
-  text-decoration-color: var(--text-faint);
-  text-underline-offset: 0.2em;
+.org-mark.is-contoro {
+  --mark: url('/images/contoro-mark.png');
 }
 
-.intro-text a:hover {
-  text-decoration-color: var(--text);
+.org-mark.is-tiw {
+  --mark: url('/images/tiw-calihorn.png');
 }
 
-.icons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--sp-4);
+.org-mark.is-aim {
+  filter: grayscale(1);
 }
 
-/* Home: the icon row closes the text column rather than sitting in a band of
-   its own, flush with the left edge of the prose above it. */
-.icons-inline {
-  justify-content: flex-start;
-  gap: var(--sp-3);
-  margin-top: var(--sp-4);
+.org-mark .record-groove {
+  stroke: var(--surface-1);
 }
 
-.icons a {
-  display: block;
+.org-mark .record-label {
+  fill: var(--text-soft);
+}
+
+.org-mark .record-spindle {
+  fill: var(--surface-1);
+}
+
+/* --- Home ----------------------------------------------------------------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(201.6px, 1fr));
+  gap: 40.3px;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: clamp(40.3px, 6.5vw, 74.9px);
+  line-height: 1;
+}
+
+.hero-tagline {
+  margin-top: 8.6px;
+  font-size: 14.4px;
   color: var(--text-muted);
-  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.icons a:hover {
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5.8px 17.3px;
+  margin-top: 23px;
+  font-size: 11.5px;
+}
+
+.hero-photo {
+  width: 100%;
+  max-width: 302.4px;
+  justify-self: center;
+  border-radius: 8px;
+}
+
+.intro {
+  max-width: 489.6px;
+  margin-top: 40.3px;
+}
+
+.intro p + p {
+  margin-top: 14.4px;
+}
+
+.home-section {
+  margin-top: 69.1px;
+}
+
+/* The second list follows straight on from the first. */
+.home-section + .home-section {
+  margin-top: 23px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--text-soft);
+  margin: 0 0 17.3px;
+}
+
+/* Each list's label links to the full projects grid, underlined on hover. */
+.section-label a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-label a:hover {
+  color: var(--text-hover);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+}
+
+/* The negative margin lets each row's hover background run into the page
+   gutter while the row's content stays aligned with the text above. */
+.home-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 2.9px;
+  margin: 0 calc(-1 * var(--gutter));
+}
+
+.home-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px var(--gutter);
+  border-radius: var(--radius-lg);
   color: var(--text);
-  transform: translateY(-2px);
+  text-decoration: none;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.home-row:hover {
+  color: var(--text);
+}
+
+.home-row.is-active,
+.home-row:focus-visible {
+  background: var(--surface-2);
+}
+
+.home-row.is-dimmed {
+  opacity: 0.45;
+}
+
+.home-row-icon {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-chip);
+  background: var(--surface-1);
+  color: var(--text-soft);
+}
+
+.home-row-icon .org-mark {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+}
+
+.home-row-icon .org-mark.is-trel,
+.home-row-icon .org-mark.is-record {
+  width: 13px;
+  height: 13px;
+}
+
+.home-row-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.home-row-category {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.home-row-year {
+  flex: none;
+  width: 60px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Too narrow for one line: the category drops under the name. */
+@media (max-width: 460px) {
+  .home-row {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    grid-template-areas:
+      'icon name year'
+      'icon category year';
+    gap: 2px 11.5px;
+    padding-block: 11.5px;
+  }
+
+  .home-row-icon {
+    grid-area: icon;
+  }
+
+  .home-row-name {
+    grid-area: name;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .home-row-category {
+    grid-area: category;
+    font-size: 11.5px;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  .home-row-year {
+    grid-area: year;
+    width: auto;
+    font-size: 11.5px;
+  }
+}
+
+.contact {
+  max-width: 489.6px;
+  margin-top: 69.1px;
+  padding-top: 23px;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 14.4px;
+}
+
+.contact h2 {
+  font-size: 25.9px;
+  margin: 0 0 11.5px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 7.2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12.2px;
+}
+
+.contact-links a {
+  display: flex;
+  align-items: center;
+  gap: 8.6px;
+  width: fit-content;
 }
 
 .social-icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  flex: none;
+  width: 14.4px;
+  height: 14.4px;
   fill: currentColor;
 }
 
-@media (max-width: 860px) {
-  /* Stack the portrait above the prose. The text stays left-aligned — centred
-     paragraphs are hard to read at this length. */
-  .intro-content {
-    flex-direction: column;
-    gap: var(--sp-4);
-  }
+/* --- About ---------------------------------------------------------------- */
 
-  .intro-photo {
-    width: 10rem;
-    height: 10rem;
-  }
-}
-
-/* --- About page ----------------------------------------------------------- */
-
-.page {
-  width: min(92vw, 62rem);
-  margin: calc(var(--nav-h) + var(--sp-5)) auto var(--sp-6);
-  padding: var(--sp-5) var(--sp-4);
-  background: var(--panel-bg);
-  border-radius: var(--radius);
-}
-
-.page-head {
-  text-align: center;
-  margin-bottom: var(--sp-5);
-  padding-bottom: var(--sp-3);
-  border-bottom: 1px solid var(--rule);
-}
-
-.page-head h1 {
-  font-size: var(--fs-h1);
+/* The About title sits a little closer to its prose than Projects' does to
+   its grid. */
+.page-title + .about-body {
+  margin-top: -8px;
 }
 
 .about-body {
-  max-width: var(--measure);
-  margin-inline: auto;
-  color: var(--text-muted);
+  max-width: 489.6px;
 }
 
 .about-body > * + * {
-  margin-top: var(--sp-3);
+  margin-top: 14.4px;
 }
 
-.about-body a {
-  color: var(--text);
-  text-decoration-color: var(--text-faint);
-  text-underline-offset: 0.2em;
-}
-
-.about-body a:hover {
-  text-decoration-color: var(--text);
-}
-
-/* Three across. Square crops so the grid reads as one block regardless of
-   what the source photos were shot at. */
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-2);
-  max-width: var(--measure);
-  margin: var(--sp-6) auto 0;
+  grid-template-columns: repeat(auto-fill, minmax(187.2px, 1fr));
+  gap: 11.5px;
+  margin-top: 46.1px;
 }
 
 .photo-grid-item {
   width: 100%;
-  height: auto;
-  aspect-ratio: 1;
-  max-width: 100%;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: var(--radius);
-  display: block;
 }
 
-@media (max-width: 736px) {
-  .photo-grid {
-    gap: var(--sp-1);
+/* --- Projects grid -------------------------------------------------------- */
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(216px, 100%), 1fr));
+  gap: 34.6px var(--gutter);
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 11.5px;
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 0.35s ease;
+}
+
+.tile:hover {
+  color: var(--text);
+}
+
+.tile-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--surface-3);
+}
+
+.tile-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+@media (hover: hover) {
+  .tile:hover .tile-image {
+    transform: scale(1.05);
   }
 }
 
-/* --- Projects index ------------------------------------------------------- */
-
-.portfolio-header {
-  padding-top: calc(var(--nav-h) + var(--sp-5));
-  padding-bottom: var(--sp-3);
-  text-align: center;
-}
-
-.portfolio-header-title {
-  font-size: var(--fs-h1);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-/* Every card is the same height so the list reads as a single column of
-   equal-weight entries rather than a ragged stack sized by its photos. */
-.project-button {
+.tile-empty {
+  position: absolute;
+  inset: 0;
   display: flex;
-  align-items: stretch;
-  gap: var(--sp-4);
-  width: min(90vw, 68rem);
-  height: 16rem;
-  margin: var(--sp-3) auto;
-  background: var(--panel-bg);
-  border-radius: var(--radius);
-  text-decoration: none;
-  overflow: hidden;
-  transition: transform 0.25s ease, background-color 0.25s ease;
+  align-items: center;
+  justify-content: center;
+  padding: 17.3px;
+  text-align: center;
+  font-size: 10.1px;
+  color: var(--text-soft);
 }
 
-.project-button:hover {
-  transform: scale(1.02);
-  background: var(--panel-bg-strong);
-}
-
-/* 4:5 — slightly taller than wide. Cropped rather than letterboxed, so a
-   landscape shop photo and a portrait CAD shot present identically. */
-.project-image {
-  width: 13rem;
-  height: 100%;
-  flex-shrink: 0;
-  object-fit: cover;
-}
-
-/* Stand-in for a page written before its photos arrived. */
-.project-image-empty {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
-  border-right: 1px solid var(--rule);
-  min-height: 9rem;
-}
-
-.project-info {
-  flex: 1;
-  min-width: 0;
+.tile-text {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-2);
-  padding: var(--sp-3) var(--sp-3) var(--sp-3) 0;
+  gap: 4.3px;
 }
 
-/* Organisation on the left, date on the right, divided from the description
-   below by a rule. The job title sits on the card's bottom edge. */
-.project-head {
+.tile-title {
+  font-size: 17.3px;
+  line-height: 1.15;
+}
+
+.tile-date {
+  font-size: 10.8px;
+  color: var(--text-muted);
+}
+
+.tile-blurb {
+  margin-top: 4.3px;
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+/* --- Project popup -------------------------------------------------------- */
+
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--sp-1) var(--sp-3);
-  flex-wrap: wrap;
-  padding-bottom: var(--sp-2);
-  border-bottom: 1px solid var(--rule);
+  align-items: center;
+  justify-content: center;
+  padding: 17.3px;
+  background: var(--overlay);
+  -webkit-backdrop-filter: blur(7.2px);
+  backdrop-filter: blur(7.2px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.popup[hidden] {
+  display: none;
+}
+
+.popup.is-open {
+  opacity: 1;
+}
+
+/* Glass. No close button: the overlay, Escape, and the back button close it. */
+.popup-panel {
+  position: relative;
+  width: 100%;
+  max-width: 892.8px;
+  max-height: 90vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  padding: 40.3px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(20.2px) saturate(140%);
+  backdrop-filter: blur(20.2px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 17.3px 46.1px rgba(0, 0, 0, 0.35);
+  transform: scale(0.6);
+  opacity: 0;
+  transition: transform 0.35s var(--ease), opacity 0.25s ease;
+}
+
+.popup-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.popup-panel:focus {
+  outline: none;
+}
+
+.popup.is-open .popup-panel {
+  transform: none;
+  opacity: 1;
+}
+
+@media (max-width: 460px) {
+  .popup {
+    padding: 8.6px;
+  }
+
+  .popup-panel {
+    padding: 28.8px 14.4px;
+  }
+}
+
+/* --- Project -------------------------------------------------------------- */
+
+.project-head {
+  text-align: center;
 }
 
 .project-title {
-  font-size: 1.2rem;
+  font-size: clamp(28.8px, 4.3vw, 46.1px);
+  line-height: 1;
 }
 
-.project-when {
-  flex-shrink: 0;
-  font-size: var(--fs-small);
-  color: var(--text-faint);
-  white-space: nowrap;
-}
-
-/* `margin-top: auto` anchors it to the bottom whatever the blurb's length, so
-   every card gets the same baseline along its lower edge. Set as a label
-   rather than prose — it is a tag on the work, not part of the description. */
-.project-role {
-  margin-top: auto;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-faint);
-}
-
-/* Capped so a long blurb cannot push past the fixed card height. Blurbs are
-   written to sit inside this; the clamp is a guard, not the plan. */
-.project-description {
-  font-size: var(--fs-small);
+.project-date {
+  margin: 8.6px 0 28.8px;
+  font-size: 12.2px;
   color: var(--text-muted);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-  line-clamp: 5;
-  overflow: hidden;
 }
 
-@media (max-width: 736px) {
-  /* Stacked, so the fixed height no longer applies — the photo sits above the
-     text and each card is as tall as its own content. */
-  .project-button {
-    flex-direction: column;
-    gap: 0;
-    height: auto;
-  }
+/* The Markdown body, laid out by rehype-project-layout. Images here come from
+   ![](...) and carry no class, so they are styled by element. Nothing is
+   force-cropped to a fixed ratio unless a layout below asks for it: a
+   portrait CAD shot and a landscape shop photo both keep their proportions.
 
-  .project-image {
-    width: 100%;
-    height: 12rem;
-  }
-
-  .project-info {
-    padding: var(--sp-3);
-  }
-
-  /* Stacked cards have no fixed height for `margin-top: auto` to fill. */
-  .project-role {
-    margin-top: var(--sp-1);
-  }
-}
-
-/* --- Project page --------------------------------------------------------- */
-
-.project-banner {
-  width: min(94vw, 76rem);
-  margin: calc(var(--nav-h) + var(--sp-5)) auto var(--sp-6);
-  padding: var(--sp-5) var(--sp-4);
-  background: var(--panel-bg);
-  border-radius: var(--radius);
-}
-
-.project-title-section {
-  text-align: center;
-  margin-bottom: var(--sp-5);
-}
-
-.project-title-section h1 {
-  font-size: var(--fs-h1);
-  margin-bottom: var(--sp-1);
-}
-
-/* Org and date under the project title, separated by a thin divider. */
-.project-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--sp-1) var(--sp-2);
-  margin-bottom: var(--sp-3);
-  color: var(--text-faint);
-}
-
-.project-meta span + span::before {
-  content: '·';
-  margin-right: var(--sp-2);
-}
-
-.title-underline {
-  width: 80%;
-  height: 1px;
-  background: var(--rule);
-  margin-inline: auto;
-}
-
-/* The Markdown body. Images here come from ![](...) and carry no class, so
-   they are styled by element — this is what kept them from being constrained
-   before. Nothing is force-cropped to a fixed ratio: a portrait CAD shot and a
-   landscape shop photo both keep their own proportions. */
+   Breakpoints are container queries on the body, not the viewport, because
+   the body's width is set by the popup panel around it. */
 .project-body {
-  color: var(--text-muted);
+  container: project-body / inline-size;
 }
 
 .project-body > * + * {
-  margin-top: var(--sp-3);
+  margin-top: 14.4px;
 }
 
-/* Prose that is not paired with an image still needs a readable line length,
-   so it is capped rather than run to the full width of the panel. */
-.project-body > p,
-.project-body > ul,
-.project-body > ol,
-.project-body > blockquote {
-  max-width: var(--measure-wide);
+/* The body is a size container, so its children's outer margins no longer
+   collapse into the title above and the skills below. */
+.project-body > :first-child {
+  margin-top: 0;
 }
 
-/* The opening paragraph, set as the page's subtitle: larger than the body,
-   brighter than it, and run the full width of the panel. */
-/* Reads as a subtitle through tone alone — one text size runs the whole page,
-   so the standfirst is set apart by being brighter, not bigger. */
-.project-lead {
-  max-width: none;
-  color: var(--text-lead);
+.project-body > :last-child {
+  margin-bottom: 0;
 }
 
 .project-lead p {
   margin: 0;
 }
 
-/* One image beside its prose. Rows alternate down a section, restarting at
-   each heading, so the eye zig-zags rather than running down one edge. */
+/* One image beside its prose. Rows alternate sides down the page. */
 .section-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: var(--sp-4);
+  gap: 23px;
   align-items: center;
-  margin-top: var(--sp-4);
+}
+
+.project-body > .section-row {
+  margin-block: 23px;
 }
 
 /* Cropped to a common 3:2 so a row's two halves are the same height whatever
@@ -726,8 +674,8 @@ body.is-preload #header .content .inner {
 /* A single image with no prose beside it. Width-capped by the panel, height-
    capped by the viewport, so a wide diagram fills the width while a portrait
    shot stays a sensible size. Nothing is cropped. */
-.figure-full {
-  margin-top: var(--sp-4);
+.project-body > .figure-full {
+  margin-top: 23px;
 }
 
 .figure-full img {
@@ -747,17 +695,17 @@ body.is-preload #header .content .inner {
    proportions. */
 .figure-full.is-pair {
   display: flex;
-  gap: var(--sp-1);
+  gap: 5.8px;
 }
 
 /* Three or more across get slightly more room than a pair. */
 .figure-full.is-pair:has(> .figure-cell:nth-child(3)) {
-  gap: 0.75rem;
+  gap: 8.6px;
 }
 
 /* A long run of pages (five or more) sits tight, so it reads as one strip. */
 .figure-full.is-pair:has(> .figure-cell:nth-child(5)) {
-  gap: 0.25rem;
+  gap: 2.9px;
 }
 
 .figure-full.is-pair > .figure-cell {
@@ -772,31 +720,33 @@ body.is-preload #header .content .inner {
 
 /* A long run of pages (five or more) wraps three to a line on phones, where
    a single row would shrink each one to a thumbnail too small to read. */
-@media (max-width: 560px) {
+@container project-body (max-width: 360px) {
   .figure-full.is-pair:has(> .figure-cell:nth-child(5)) {
     flex-wrap: wrap;
   }
 
   .figure-full.is-pair:has(> .figure-cell:nth-child(5)) > .figure-cell {
-    flex: 0 0 calc((100% - 2 * 0.25rem) / 3);
+    flex: 0 0 calc((100% - 2 * 2.9px) / 3);
   }
 }
 
 .figure-full.is-pair .caption {
-  margin: var(--sp-1) 0 0;
+  margin: 5.8px 0 0;
 }
 
-/* A grid of square tiles for the photos that don't belong to any one section. */
 /* Document pages shown a few at a time ("carousel"), stepped with the
-   buttons on either side instead of scrolled. Three across on wide screens,
-   two on tablets, one on phones; the script reads --per-view. */
+   buttons on either side instead of scrolled. Three across on a wide body,
+   two narrower, one on phones; the popup's script reads --per-view. */
 .page-carousel {
   --per-view: 3;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: var(--sp-1);
-  margin-top: var(--sp-4);
+  gap: 5.8px;
+}
+
+.project-body > .page-carousel {
+  margin-top: 23px;
 }
 
 .page-carousel-viewport {
@@ -805,12 +755,12 @@ body.is-preload #header .content .inner {
 
 .page-carousel-track {
   display: flex;
-  gap: var(--sp-2);
+  gap: 11.5px;
   transition: transform 0.35s ease;
 }
 
 .page-carousel-item {
-  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--sp-2)) / var(--per-view));
+  flex: 0 0 calc((100% - (var(--per-view) - 1) * 11.5px) / var(--per-view));
 }
 
 .page-carousel-item img {
@@ -819,18 +769,17 @@ body.is-preload #header .content .inner {
   height: auto;
   max-height: none;
   margin: 0;
-  border-radius: var(--radius);
 }
 
 .page-carousel-button {
-  width: 2.25rem;
-  height: 2.25rem;
-  border: 1px solid var(--rule);
+  width: 25.9px;
+  height: 25.9px;
+  border: 1px solid var(--border);
   border-radius: 50%;
-  background: var(--panel-bg);
+  background: var(--surface-1);
   color: var(--text);
   font: inherit;
-  font-size: 1.5rem;
+  font-size: 17.3px;
   line-height: 1;
   cursor: pointer;
 }
@@ -844,23 +793,28 @@ body.is-preload #header .content .inner {
   cursor: default;
 }
 
-@media (max-width: 860px) {
+@container project-body (max-width: 519px) {
   .page-carousel {
     --per-view: 2;
   }
 }
 
-@media (max-width: 560px) {
+@container project-body (max-width: 360px) {
   .page-carousel {
     --per-view: 1;
   }
 }
 
+/* A grid of square tiles ("grid") for the photos that don't belong to any
+   one section. */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--sp-1);
-  margin-top: var(--sp-4);
+  gap: 5.8px;
+}
+
+.project-body > .image-grid {
+  margin-top: 23px;
 }
 
 .image-grid .image-grid-cell img {
@@ -870,24 +824,25 @@ body.is-preload #header .content .inner {
   object-fit: cover;
   max-height: none;
   margin: 0;
-  border-radius: var(--radius);
 }
 
 /* Images with no prose between them: side by side, uncropped but consistent. */
 .image-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: var(--sp-3);
+  grid-template-columns: repeat(auto-fit, minmax(172.8px, 1fr));
+  gap: 17.3px;
   align-items: stretch;
-  margin-top: var(--sp-4);
+}
+
+.project-body > .image-row {
+  margin-top: 23px;
 }
 
 .image-row .image-cell img {
   width: 100%;
   height: 100%;
-  max-height: 40rem;
+  max-height: 460.8px;
   object-fit: cover;
-  border-radius: var(--radius);
   margin: 0;
 }
 
@@ -896,31 +851,20 @@ body.is-preload #header .content .inner {
   font-size: 0.9em;
 }
 
-/* Prose allowed to run the full width of the panel. */
-.project-body > p.text-full {
-  max-width: none;
-}
-
 .project-body > .text-centered {
   text-align: center;
 }
 
 .caption {
-  font-size: var(--fs-small);
-  color: var(--text-faint);
+  font-size: 9.4px;
+  line-height: 1.5;
+  color: var(--text-muted);
   text-align: center;
-  margin-top: var(--sp-2);
-  margin-bottom: var(--sp-4);
+  margin-top: 5.8px;
 }
 
-.full-bleed {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  border-radius: 0;
-}
 .section-row .row-text > * + * {
-  margin-top: var(--sp-3);
+  margin-top: 14.4px;
 }
 
 /* Text gets the wider column so the paired document scans stay small. */
@@ -953,9 +897,9 @@ body.is-preload #header .content .inner {
 /* The caption hangs below the image instead of counting toward the column's
    height, so the text beside it centres on the image itself. The row keeps
    room underneath for it. */
-.section-row.has-pair,
-.section-row.has-caption {
-  margin-bottom: var(--sp-4);
+.project-body > .section-row.has-pair,
+.project-body > .section-row.has-caption {
+  margin-bottom: 28.8px;
 }
 
 .section-row.has-pair .row-media,
@@ -969,7 +913,7 @@ body.is-preload #header .content .inner {
   top: 100%;
   left: 0;
   right: 0;
-  margin: var(--sp-1) 0 0;
+  margin: 5.8px 0 0;
 }
 
 /* A scaled image is centred in its column, so its caption is too. */
@@ -994,15 +938,10 @@ body.is-preload #header .content .inner {
   margin-inline: auto;
 }
 
-/* A step below the regular caption, for notes under small images. */
-.caption.caption-sm {
-  font-size: 0.75rem;
-}
-
-/* Two images sharing one side of a row, uncropped. */
+/* Two images sharing one side of a row ("beside"), uncropped. */
 .section-row .row-media-pair {
   display: flex;
-  gap: var(--sp-1);
+  gap: 5.8px;
 }
 
 .section-row .row-media-pair img {
@@ -1012,7 +951,6 @@ body.is-preload #header .content .inner {
   height: auto;
   aspect-ratio: auto;
   object-fit: contain;
-  border-radius: var(--radius);
 }
 
 /* Two images side by side on one side of a row ("left-pair"), each over its
@@ -1028,7 +966,7 @@ body.is-preload #header .content .inner {
 .section-row .row-media.row-media-side-pair {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--sp-2);
+  gap: 11.5px;
   align-items: start;
 }
 
@@ -1042,7 +980,7 @@ body.is-preload #header .content .inner {
 }
 
 .section-row .row-media-side-pair .caption {
-  margin: var(--sp-1) 0 0;
+  margin: 5.8px 0 0;
 }
 
 /* A two-by-two grid of images on one side of a row, each over its caption.
@@ -1050,7 +988,7 @@ body.is-preload #header .content .inner {
 .section-row .row-media.row-media-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--sp-1);
+  gap: 5.8px;
 }
 
 .section-row .row-media.row-media-grid img {
@@ -1063,20 +1001,20 @@ body.is-preload #header .content .inner {
 }
 
 .section-row .row-media-grid .caption {
-  margin: var(--sp-1) 0 0;
+  margin: 5.8px 0 0;
 }
 
 /* Side by side, the grid takes its height from the prose rather than setting
    it: the media column contributes no height of its own, then stretches a
    little past the text, and each tile shrinks to fit its half of that. */
-@media (min-width: 861px) {
+@container project-body (min-width: 520px) {
   .section-row.has-grid {
     align-items: stretch;
   }
 
   .section-row .row-media.row-media-grid {
     contain: size;
-    margin-block: calc(-1 * var(--sp-3));
+    margin-block: -24px;
     grid-template-columns: repeat(2, auto);
     grid-template-rows: repeat(2, minmax(0, 1fr));
     justify-content: center;
@@ -1102,12 +1040,15 @@ body.is-preload #header .content .inner {
   order: 2;
 }
 
-@media (max-width: 860px) {
+@container project-body (max-width: 519px) {
   /* One column: the image goes above its prose, alternation and all. */
   .section-row {
     grid-template-columns: 1fr;
-    gap: var(--sp-3);
-    margin-top: var(--sp-3);
+    gap: 17.3px;
+  }
+
+  .project-body > .section-row {
+    margin-block: 17.3px;
   }
 
   .section-row.is-flipped .row-media {
@@ -1130,9 +1071,13 @@ body.is-preload #header .content .inner {
     position: static;
   }
 
+  .project-body > .section-row.has-pair,
+  .project-body > .section-row.has-caption {
+    margin-bottom: 17.3px;
+  }
+
   .image-row {
     grid-template-columns: 1fr;
-    margin-top: var(--sp-3);
   }
 }
 
@@ -1146,26 +1091,22 @@ body.is-preload #header .content .inner {
 /* Width-capped by the column, height-capped by the viewport, and centred when
    the height cap is what binds. A portrait shot scales down to fit instead of
    filling a whole screen; nothing is cropped either way. */
-.project-body img,
-.project-body .section-image {
+.project-body img {
   width: auto;
   max-width: 100%;
   max-height: 60vh;
   height: auto;
-  margin: var(--sp-4) auto;
+  margin: 23px auto;
   border-radius: var(--radius);
 }
 
-.project-body .section-image {
-  margin-top: 0;
-}
-
 .project-body h2 {
-  font-size: var(--fs-h2);
-  color: var(--text);
-  margin-top: var(--sp-5);
-  padding-top: var(--sp-3);
-  border-top: 1px solid var(--rule);
+  font-size: clamp(21.6px, 3.6vw, 28.8px);
+  line-height: 1.1;
+  margin: 46.1px 0 17.3px;
+  padding-top: 17.3px;
+  border-top: 1px solid var(--border);
+  text-align: center;
 }
 
 .project-body h2:first-child {
@@ -1176,9 +1117,24 @@ body.is-preload #header .content .inner {
 
 /* Every subsection heading at one size, whether written as ### or as HTML. */
 .project-body h3 {
-  color: var(--text);
-  font-size: 1.17rem;
-  margin-top: var(--sp-4);
+  font-size: clamp(16.6px, 2.6vw, 20.2px);
+  line-height: 1.2;
+  margin: 31.7px 0 11.5px;
+  text-align: center;
+}
+
+.project-body h3:first-child {
+  margin-top: 0;
+}
+
+/* No bullets: the lists here carry their own markers ("01 —"). */
+.project-body ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5.8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Markdown tables — used for analysis results, so the figures are the point.
@@ -1187,20 +1143,19 @@ body.is-preload #header .content .inner {
 .project-body table {
   border-collapse: collapse;
   width: 100%;
-  margin: var(--sp-4) 0;
+  margin: 23px 0;
 }
 
 .project-body th {
   text-align: left;
   font-weight: 600;
-  color: var(--text);
-  border-bottom: 1px solid var(--text-faint);
-  padding: var(--sp-1) var(--sp-2);
+  border-bottom: 1px solid var(--text-muted);
+  padding: 5.8px 11.5px;
 }
 
 .project-body td {
-  border-bottom: 1px solid var(--rule);
-  padding: var(--sp-1) var(--sp-2);
+  border-bottom: 1px solid var(--border);
+  padding: 5.8px 11.5px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1209,55 +1164,35 @@ body.is-preload #header .content .inner {
   white-space: nowrap;
 }
 
-.project-body a {
-  color: var(--text);
-  text-decoration-color: var(--text-faint);
-  text-underline-offset: 0.2em;
-}
-
 .project-skills {
-  margin: var(--sp-5) 0 0;
-  padding-top: var(--sp-3);
-  border-top: 1px solid var(--rule);
-  color: var(--text-faint);
+  margin-top: 46.1px;
+  padding-top: 17.3px;
+  border-top: 1px solid var(--border);
+  font-size: 10.8px;
 }
 
-/* A borderless bar across the whole bottom of the panel: the negative margins
-   cancel the panel's side and bottom padding, and the bottom corners follow
-   the panel's. The whole bar lightens on hover. */
-.back-link {
-  display: block;
-  margin: var(--sp-5) calc(-1 * var(--sp-4)) calc(-1 * var(--sp-5));
-  padding: var(--sp-2);
-  text-align: center;
-  color: var(--text-faint);
-  text-decoration: none;
-  border-radius: 0 0 var(--radius) var(--radius);
-  transition: background-color 0.25s ease, color 0.25s ease;
-}
-.back-link:hover {
-  color: var(--text);
-  background-color: rgba(255, 255, 255, 0.1);
+.project-skills strong {
+  font-weight: 600;
 }
 
-/* --- Carousel ------------------------------------------------------------- */
+/* --- Gallery carousel (frontmatter `gallery`) ------------------------------ */
 
 .carousel-section {
-  margin-top: var(--sp-5);
+  margin-top: 34.6px;
 }
 
 .carousel-container {
   display: flex;
-  gap: var(--sp-2);
+  gap: 11.5px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding-bottom: var(--sp-1);
+  padding-bottom: 5.8px;
   scrollbar-width: thin;
 }
 
 .carousel-item {
   flex: 0 0 auto;
-  width: clamp(9rem, 22vw, 14rem);
+  width: clamp(6.5rem, 15.8vw, 10.1rem);
   scroll-snap-align: start;
 }
 
@@ -1268,19 +1203,19 @@ body.is-preload #header .content .inner {
   border-radius: var(--radius);
 }
 
-/* --- Outbound link button ------------------------------------------------- */
+/* --- Outbound link button (frontmatter `link`) ----------------------------- */
 
 .website-button {
   display: block;
-  margin-top: var(--sp-5);
-  padding: var(--sp-2);
+  margin-top: 34.6px;
+  padding: 11.5px;
   text-align: center;
   text-decoration: none;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: background-color 0.25s ease;
 }
 
 .website-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--surface-2);
 }

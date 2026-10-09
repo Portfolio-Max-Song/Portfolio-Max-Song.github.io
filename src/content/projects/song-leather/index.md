@@ -5,10 +5,7 @@ role: Founder
 date: 2020 – present
 order: 6
 blurb: >-
-  Founder of Song Leather, a leather and wood goods small business started in
-  2020. Inspired by simple, sustainable design, I created a line of minimalistic
-  leather wallets. This was also a chance for me to work on my other hobbies
-  including spoon carving.
+  Minimal leather and wood goods, since 2020.
 description: >-
   Song Leather — a leather and wood goods business Max Song founded in 2020,
   designing a line of minimalist wallets around manufacturing efficiency,

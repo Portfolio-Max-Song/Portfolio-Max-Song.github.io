@@ -5,11 +5,7 @@ role: Student Research Assistant
 date: June – September 2025
 order: 4
 blurb: >-
-  Student research assistant at the University of Houston's A.I.M. Lab, under
-  a NASA grant. Modeled whether an elastomer shell could reproduce fluid-like
-  motion across a sphere — streamlining mold production, testing material
-  properties, running frequency simulations in Abaqus, and building a
-  real-life model to measure against them.
+  NASA-funded research on fluid-like motion in an elastomer shell.
 description: >-
   Summer research at the University of Houston's Architected Intelligent
   Matter Laboratory — layered silicone casting to a uniform wall, OpenCV video
@@ -34,7 +30,7 @@ hero: ./images/mode-measured-162hz.jpg
 heroAlt: Laser-sheet image of the elastomer shell vibrating at 162 Hz, showing a polygonal standing wave
 ---
 
-I spent the summer of 2025 as a materials research intern at the <a href="https://aim.me.uh.edu/" target="_blank" rel="noopener"><img src="/images/aim-mark.png" alt="" class="org-mark" width="48" height="48" />Architected Intelligent Matter Laboratory</a> at the University of Houston. The researcher leading this project was away at a PhD program hosted by Stanford for the summer, so this project was handed over to me. The main question we were trying to answer was whether we could accurately model how a fluid behaves over a spherical surface, much like the behavior the Navier–Stokes equations describe over a flat surface. To do this, the plan was to recreate a fluid's motion with a speaker playing a frequency below it, then compare that motion to a simulation.
+I spent the summer of 2025 as a materials research intern at the <a href="https://aim.me.uh.edu/" target="_blank" rel="noopener"><img src="/images/aim-mark.png" alt="" class="org-mark is-aim" width="48" height="48" />Architected Intelligent Matter Laboratory</a> at the University of Houston. The researcher leading this project was away at a PhD program hosted by Stanford for the summer, so this project was handed over to me. The main question we were trying to answer was whether we could accurately model how a fluid behaves over a spherical surface, much like the behavior the Navier–Stokes equations describe over a flat surface. To do this, the plan was to recreate a fluid's motion with a speaker playing a frequency below it, then compare that motion to a simulation.
 
 When I inherited the project, I decided to first improve upon what was already done, then complete the research. First, I improved the silicone hemisphere casting process to have a repeatable wall within 0.01 mm, then built a material model from my own tensile data, an Abaqus modal simulation predicting where the interesting motion would be, and an automated laser-sheet rig that sliced the vibrating shell so the real mode shapes could be compared against the predicted ones. Although I was very passionate about this project, the hardest part was working on it alone.
 

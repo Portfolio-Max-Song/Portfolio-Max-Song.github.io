@@ -5,11 +5,8 @@ role: Robotics Engineering Intern
 date: January – August 2026
 order: 1
 blurb: >-
-  Robotics engineering intern at Contoro Robotics, a shipping-container
-  unloading startup in Austin. Worked across the full manufacturing process,
-  from design to assembly drawings to testing. For my final project I created
-  an end-of-line test stand for the end effector, validating every unit before
-  it shipped.
+  End-of-line gripper test stand: IO-Link hardware, a 22-step test app, and a
+  report for every unit.
 description: >-
   Robotics engineering internship at Contoro Robotics — an end-of-line gripper
   test stand built from the ground up: a cantilevered assembly stand sized with
@@ -32,10 +29,11 @@ skills:
   - Technical Documentation
 hero: ./images/test-stand.jpg
 heroAlt: The end-of-line gripper test stand, built as a rolling cart
+thumb: ./images/test-stand-banner.jpg
 ---
 
 From January to August 2026, I was a robotics engineering intern at 
-<a href="https://contoro.com/" target="_blank" rel="noopener"><img src="/images/contoro-mark.png" alt="" class="org-mark" width="48" height="48" />Contoro Robotics</a>, an Austin startup building robots that
+<a href="https://contoro.com/" target="_blank" rel="noopener"><span class="org-mark is-contoro" aria-hidden="true"></span>Contoro Robotics</a>, an Austin startup building robots that
 unload floor-loaded trailers and shipping containers. During my time there, we were a late Series A startup, which meant we were ramping up production to prove our capabilities. 
 
 Under the systems team, my job was to help with documentation, engineer retrofits for the field, and make them in-house with our machinery such as a plasma cutter, sheet metal bender, FDM printers, and mills. Wanting to get my hands dirty with the actual robot, I started helping in the manufacturing space to build final assemblies that were sent out to the field such as camera and sensor wiring, electrical boxes, and, my favorite, the end effector grippers. After spending a few weeks building grippers, I set out to improve the existing assembly stand to expedite the manufacturing process, which eventually evolved into a fully automated end-of-line test stand.
@@ -78,11 +76,11 @@ After this problem, I scoured our issue ticket system on Jira, determining what 
 
 <h3 class="text-centered">Defining What to Test</h3>
 
+<ul class="text-full">This test stand was only a functionality check to validate the manufacturing side of the process. There were two main functions: actuation and vacuum. The gripper could fold and extend, which was all controlled by a Festo manifold. In addition, it had a pressure transducer to measure vacuum throughout the gripper and a laser distance sensor which would detect the distance of the boxes in the shipping containers.</ul>
+
 ![The 22-step test console](./images/app-test-console.png "left")
 
 <p class="caption caption-sm">The testing logic in the software</p>
-
-This test stand was only a functionality check to validate the manufacturing side of the process. There were two main functions: actuation and vacuum. The gripper could fold and extend, which was all controlled by a Festo manifold. In addition, it had a pressure transducer to measure vacuum throughout the gripper and a laser distance sensor which would detect the distance of the boxes in the shipping containers. 
 
 There was one main issue with the vacuum. The test stand's vacuum pump was far smaller than the one on a robot due to weight and size constraints, and didn't produce nearly as much vacuum as the one on the robot. To combat this, I gave the vacuum drawdown time to build pressure and took data from three grippers that were known to be good to use as reference. Since the robot held a near-perfect vacuum and variations in my hardware caused a decrease in vacuum over time despite being sealed, I took the slope, averaged it across all my tests on each gripper, and drew a margin of error based on the other good grippers as a baseline for a gripper with a good seal.
 
@@ -94,12 +92,14 @@ There was one main issue with the vacuum. The test stand's vacuum pump was far s
 
 Determining and hooking up the hardware was honestly one of the hardest parts of this project for me since I wasn't familiar with these components. However, everyone at Contoro was super nice in helping me understand how everything worked which pushed me to keep working. I started by stripping down the existing robot and determining the few hardware components I really needed which consisted of an IFM AL1340 IO-Link master that could allow my computer to communicate with the gripper, a small vacuum pump, and a compressor. The four ports on the AL1340 were connected as follows:
 
-- 01 — the Festo VABX-A-P-EL valve manifold which controls actuation and which zones receive vacuum.
-- 02 — an IFM PV7604 pressure transducer.
-- 03 — an SSR-40 DA relay to turn on the VP125 vacuum pump.
-- 04 — a Phoenix Y-splitter feeding two laser distance sensors. Due to the lack of ports, I could only check whether the sensors could turn on and off.
+<ul class="text-full">
+<li>01 — the Festo VABX-A-P-EL valve manifold which controls actuation and which zones receive vacuum.</li>
+<li>02 — an IFM PV7604 pressure transducer.</li>
+<li>03 — an SSR-40 DA relay to turn on the VP125 vacuum pump.</li>
+<li>04 — a Phoenix Y-splitter feeding two laser distance sensors. Due to the lack of ports, I could only check whether the sensors could turn on and off.</li>
+</ul>
 
-The system was powered off a 110 V outlet through a CJ-2406 AC/DC supply to 24 V, then an M12 splitter feeding both the AL1340 and the Festo solenoids.
+<p class="text-full">The system was powered off a 110 V outlet through a CJ-2406 AC/DC supply to 24 V, then an M12 splitter feeding both the AL1340 and the Festo solenoids.</p>
 
 <h3 class="text-centered">The Test App</h3>
 
@@ -108,8 +108,6 @@ The system was powered off a 110 V outlet through a CJ-2406 AC/DC supply to 24 V
 <p class="caption caption-sm">The generated test report</p>
 
 To accompany the test stand, I created an app that drives the test logic and delivers a report for each gripper. My goal was to make this app easy for a non-tech-savvy technician to be able to directly install on their computer, not change any network ports, and be able to immediately interact with the gripper. This app easily became one of the most enjoyable parts of the build mostly because I had little to no knowledge of building an app before this. I really enjoyed working on the UI which took me much more time than I'd like to admit.
-
-A full run is 22 steps, and the steps are written around how each valve actually behaves. The linear shuttle is not self-holding, so its coil stays powered through the confirmation, its brake is released first and re-engaged at rest. Writing those explicit steps is what caught a discrepancy between the provided valve table and the hardware: two of the shuttle's roles were reversed.
 
 <h3 class="text-centered">Conclusion and Future Improvements</h3>
 
