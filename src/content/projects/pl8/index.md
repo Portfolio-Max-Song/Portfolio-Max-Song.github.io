@@ -11,66 +11,56 @@ blurb: >-
   full systems integration.
 description: >-
   Shell panel design and chassis integration for PL-8's two-seater hypercar —
-  automotive surfacing in Blender and Inventor, seven-panel body breakup, and
+  automotive surfacing in Blender and Inventor, a seven-panel body breakup, and
   basalt fiber composite manufacturability.
 skills:
-  - Automotive Surfacing
-  - Composites Design
-  - Blender & Autodesk Inventor
-  - Design for Manufacturing (DFM)
-  - Design for Assembly (DFA)
+  - Blender (Automotive Surfacing, Freeform Modeling)
+  - Autodesk Inventor
+  - Concept Sketching & Inspiration Boards
+  - Industrial Design & Styling
+  - Composites Design for Manufacturing (Basalt Fiber, Resin Infusion)
+  - Body Panel Breakup
+  - Systems Integration (Chassis & Powertrain)
+  - Rendering
   - Team Collaboration
 hero: ./images/shell-cad.jpg
 heroAlt: CAD model of the PL-8 hypercar shell
-gallery:
-  - src: ./images/render.jpg
-    alt: Rendered view of the finished shell design
-  - src: ./images/panel-drawing.jpg
-    alt: Engineering drawing of a shell panel
-  - src: ./images/shell-cad.jpg
-    alt: Shell CAD with panel breakup
-  - src: ./images/brainstorm.jpg
-    alt: Early concept sketches and inspiration collage
-  - src: ./images/scale-model.jpg
-    alt: Scale model produced from the CAD
 ---
 
-As a shell engineer for PL-8, I led the design of the outer shell panels and
-their integration with the chassis structure. Our team of two was chasing two
-goals at once: a shell that could actually be manufactured as a composite, and a
-car that looked like something people would want to see, with elements of our
-school mascot worked in. The models also fed key chains and small display pieces
-for kids at events, and renders for marketing.
+From August 2024 to January 2025, I was a shell engineer for Project PL-8, a student organization working to build the first student-built two-seater hypercar. On a shell team of just two, I led the design of the car's outer shell panels and how they integrated with the chassis, working closely with the chassis and powertrain teams.
 
-The problem: design shell panels for a two-seater supercar while accounting
-for overall aerodynamics, interior airflow, and basalt-fiber composite
-manufacturability.
+We were chasing two goals at once: a shell that could actually be manufactured as a basalt fiber composite, and a car that people would want to look at, with elements of our school mascot worked in. Our models also ended up being used for key chains and small models we gave to kids at events, and were rendered for marketing.
 
-## Design Process
+<h2 class="text-centered">Designing the Shell</h2>
 
-![Inspiration collage and early sketches](./images/brainstorm.jpg)
+![Early concept sketches and an inspiration collage](./images/brainstorm.jpg "right")
 
-We started by sketching multiple versions of the car. I built inspiration
-collages to design against. My sketches drew heavily on the sleekness of the
-Porsche 911, with elements of the Koenigsegg Jesko for the hypercar read, while
-the body panel engineering leaned on the Pagani Utopia. With no way to run
-airflow tests, I used the silhouette of an F1 car as a proxy for reasoning about
-it.
+<p class="caption caption-sm">Early sketches alongside the inspiration collages</p>
 
-My teammate and I then modeled our cars separately and merged the strongest parts
-of each. We split the body into seven panels and modeled them individually,
-continuously removing geometry too complex for a composite layup — we were
-planning resin infusion with basalt fiber. The overall shape kept shifting to
-accommodate the metal chassis and the powertrain team's engine.
+The problem we were solving was designing shell panels for a two-seater supercar while considering overall aerodynamics, interior airflow, and how manufacturable the panels would be as a basalt fiber composite.
 
-## Outcome
+We started by sketching multiple versions of the car. To help myself design, I also made a few collages for inspiration that I could design against. As a fun side project, I created a Pinterest collage creator that takes a link to a public Pinterest board, downloads all the images, and turns them into a collage of overlapping images. This made collecting inspiration and visualizing the car much easier.
 
-We didn't hit all of our goals, and we were badly understaffed for the scope. It
-was still one of the most enjoyable and educational projects I've worked on. I'd
-never touched Blender before this, and the project gave me a reason to learn it
-properly — I've used it constantly since.
+My sketches were heavily inspired by the sleekness of the Porsche 911, with elements from the Koenigsegg Jesko that added to the hypercar look. The overall engineering and body panel design took after the Pagani Utopia, which showed up all over my sketches. Since the design was preliminary, the airflow considerations were done intuitively.
 
-What's next: the shell design could be meaningfully optimized with FEA and
-CFD rather than proxy reasoning. We'd also manufacture a few panels at reduced
-scale first, to get real data on whether the design is as manufacturable as we
-think it is.
+<h3 class="text-centered">From Sketch to CAD</h3>
+
+![Line drawings of the car from the side, top, front, and rear](./images/panel-drawing.jpg "left")
+
+<p class="caption caption-sm">Line drawings of the car from the side, top, front, and rear</p>
+
+From there, my teammate and I modeled our cars separately, then combined the aspects we thought were the best from each design into one car. I had no experience with Blender before this project, but automotive surfacing needs a lot more freeform modeling than parametric CAD can handle, so I learned it as I went. I was extremely motivated to learn it since I knew I would want it for my own projects later on, and I've used it constantly since.
+
+![An early version of the body in Blender](./images/shell-cad.jpg "right")
+
+<p class="caption caption-sm">An early version of the body in Blender</p>
+
+Once we had a combined design, we split the body into seven panels and modeled each one individually. Throughout the process, we made sure to eliminate any geometry that was too complex for a composite layup, since we were planning to use resin infusion with basalt fiber for the outer shell. We also constantly tweaked the overall shape to make room for the metal chassis and the powertrain team's engine, which was honestly the hardest part of the job.
+
+<h3 class="text-centered">Conclusion and Future Improvements</h3>
+
+<p class="text-full">While we didn't achieve all of our goals, and we were extremely understaffed for the scope of building a hypercar, this was still one of the most fun and educational projects I've worked on. It also showed me how much manufacturing ends up shaping a design that starts out being all about looks.</p>
+
+<p class="text-full">If I had spent more time at PL-8, I would have optimized the shell with FEA and CFD instead of relying on intuition, although this would have taken much longer. I would also have practiced manufacturing a few panels at a smaller scale first, to get real data on whether our design was as manufacturable as we thought it was.</p>
+
+<p class="text-full">Although I didn't achieve as much in PL-8 as I was hoping, it sparked my love for design, since this project allowed for a lot of creativity. Thank you to the PL-8 team for letting me be a part of such an ambitious project!</p>

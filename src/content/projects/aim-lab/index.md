@@ -17,178 +17,101 @@ description: >-
   servo-driven laser sheet that sliced the vibrating shell to compare measured
   mode shapes against predicted ones.
 skills:
-  - Abaqus FEA (Modal)
+  - Abaqus FEA (Modal Analysis)
   - Python (OpenCV, NumPy, Pandas)
+  - Video Extensometry (Optical Strain Measurement)
   - Mechanical Testing (Instron, ASTM D412)
-  - Elastomer Casting
-  - Fixture & Jig Design
-  - Microcontrollers & Servos
+  - Elastomer Characterization
+  - Silicone Casting (Mold Star)
+  - Fixture & Jig Design (Laser-Cut Acrylic)
+  - SLA & FDM Printing (Formlabs)
+  - Microcontrollers & Servo Control
+  - Test Automation (Frequency & Height Sweeps)
+  - Laser-Sheet Imaging
+  - Experimental Design & Validation
+  - Data Analysis
 hero: ./images/mode-measured-162hz.jpg
 heroAlt: Laser-sheet image of the elastomer shell vibrating at 162 Hz, showing a polygonal standing wave
-gallery:
-  - src: ./images/strain-tracking.jpg
-    alt: OpenCV tracking gauge marks on an elastomer specimen in the Instron
-  - src: ./images/casting-jig-cad.jpg
-    alt: CAD of the pour jig holding the ball bearing mold
-  - src: ./images/casting-jig-top.jpg
-    alt: Top view of the pour jig
-  - src: ./images/half-sphere-cad.jpg
-    alt: CAD of the cast hemisphere shell
-  - src: ./images/test-rig-cad.jpg
-    alt: CAD of the laser sheet tower and test enclosure
-  - src: ./images/mode-simulated-162hz.jpg
-    alt: Abaqus modal result at 162 Hz
-  - src: ./images/mode-measured-121hz.jpg
-    alt: Measured laser-sheet mode at 121 Hz
-  - src: ./images/mode-simulated-121hz.jpg
-    alt: Abaqus modal result at 121 Hz
-  - src: ./images/speaker-validation.jpg
-    alt: Speaker output frequency validation
-  - src: ./images/laser-sheet-profile.jpg
-    alt: Laser sheet tracing the profile of the shell
-  - src: ./images/mode-slice-layer1.jpg
-    alt: One height slice of the vibrating shell
-  - src: ./images/specimen-mounted.jpg
-    alt: The shell mounted in its flange under laser illumination
 ---
 
-I spent the summer of 2025 as a materials research intern at the
-[Architected Intelligent Matter Laboratory](https://aim.me.uh.edu/) at the
-University of Houston. The researcher leading this line of work was away at a
-PhD program hosted by Stanford for the whole summer, so I was handed the
-question and left to run at it: could a thin elastomer shell stretched over a
-sphere be used to model fluid motion across a spherical surface — the kind of
-behavior the Navier–Stokes equations describe?
+I spent the summer of 2025 as a materials research intern at the <a href="https://aim.me.uh.edu/" target="_blank" rel="noopener"><img src="/images/aim-mark.png" alt="" class="org-mark" width="48" height="48" />Architected Intelligent Matter Laboratory</a> at the University of Houston. The researcher leading this project was away at a PhD program hosted by Stanford for the summer, so this project was handed over to me. The main question we were trying to answer was whether we could accurately model how a fluid behaves over a spherical surface, much like the behavior the Navier–Stokes equations describe over a flat surface. To do this, the plan was to recreate a fluid's motion with a speaker playing a frequency below it, then compare that motion to a simulation.
 
-I took the project from an inherited, unreliable casting process to a working
-measurement chain: silicone hemispheres cast to a repeatable wall within
-0.2 mm, a material model built from my own tensile data, an Abaqus modal
-simulation predicting where the interesting motion would be, and an automated
-laser-sheet rig that sliced the vibrating shell so real mode shapes could be
-compared against predicted ones. Calibrating the material model against measured
-data improved the modal simulation's accuracy by about 10%, and the measured
-modes matched the simulation closely enough to be recognizable frequency by
-frequency.
+When I inherited the project, I decided to first improve upon what was already done, then complete the research. First, I improved the silicone hemisphere casting process to have a repeatable wall within 0.01 mm, then built a material model from my own tensile data, an Abaqus modal simulation predicting where the interesting motion would be, and an automated laser-sheet rig that sliced the vibrating shell so the real mode shapes could be compared against the predicted ones. Although I was very passionate about this project, the hardest part was working on it alone.
 
-All of it was mine for that summer, largely alone — the casting process and its
-jigs, the material characterization and the code behind it, learning Abaqus from
-scratch, building the test rig and its microcontroller sweep, and processing the
-footage into results.
+<h3 class="text-centered">Making a Shell of Uniform Thickness</h3>
 
-## Making a Shell of Uniform Thickness
+![CAD of the pour jig holding the ball bearing mold](./images/casting-jig-cad.jpg "right")
 
-![CAD of the pour jig holding the ball bearing mold](./images/casting-jig-cad.jpg)
+<p class="caption caption-sm">The pour jig holding the ball bearing mold</p>
 
-The work I inherited was aimed at a narrower problem: making the elastomer a
-consistent thickness. Without that, nothing downstream means anything — the
-resonant frequencies move, and you can't separate a real result from a casting
-defect.
+The work I inherited was aimed at a narrower problem: making the elastomer a consistent thickness. Without that, nothing downstream means anything, since the resonant frequencies move and you can't tell a real result apart from a casting defect.
 
-The method was to pour Mold Star silicone over a ball bearing in
-successive layers. The bearing is the clever part of that setup and it wasn't
-mine: a bearing ball is manufactured as a near-perfect sphere, so it's a
-precision mold you can buy for a few dollars. The pouring arrangement around it
-was the weak point, so my first few weeks went into rebuilding it — a jig that
-holds the ball and locates it identically every pour, so consistency stops
-depending on whoever is holding it.
+The method was to pour Mold Star silicone over a ball bearing in layers. Each layer worked out to be about 0.2 mm thick, and I hoped to achieve a total thickness of 1 mm. The setup I was given was a bearing ball held up by a makeshift stand, with the cast silicone trimmed down to a half sphere. This half sphere was then placed above a speaker with more silicone poured over it and the behavior was modeled. The pouring setup around it was the weak point, so my first few weeks went into rebuilding it with a laser-cut acrylic jig that holds the ball and locates it the same way every pour.
 
-![CAD of the cast hemisphere shell](./images/half-sphere-cad.jpg)
+![CAD of the cast hemisphere shell](./images/half-sphere-cad.jpg "left")
 
-I also checked whether the shell could be made some other way entirely, rather
-than assuming pour-over was right. I tried a laser-based layer-by-layer FDM
-process and a Formlabs SLA printer. Pour-over still won on uniformity —
-worth establishing by test rather than by assumption.
+<p class="caption caption-sm">The cast hemisphere shell in CAD</p>
 
-## Characterizing the Elastomer Without a Strain Gauge
+To make sure all my bases were covered, I also checked whether the shell could be made some other way entirely instead of assuming pouring was the right call. I tried a laser-based layer-by-layer FDM process with a Stratasys printer and SLA via a Formlabs printer. The Stratasys and Formlabs materials couldn't match the silicone's elasticity, which made the behavior over the speaker less apparent.
 
-![OpenCV tracking gauge marks on an elastomer specimen in the Instron](./images/strain-tracking.jpg)
+Once the material was chosen, I decided to run some tests on the sphere. After pouring over 15 molds, I cut each one up and measured the thickness to determine whether there was enough consistency to proceed. The results were surprisingly positive, with an error of less than 0.01 mm across the elastomer when poured with the right technique, allowing me to move on to the next step.
 
-Every candidate elastomer had to be characterized before any of it could go into
-a simulation, and a real extensometer was out of reach on both budget and lead
-time. So I built one: mark the specimen with gauge marks, film the tensile test
-on the Instron, and track the marks in OpenCV, converting pixels to
-millimetres from a known starting distance. The frame above is that tracker
-running — two points locked onto the gauge marks, 51.01 pixels calibrated to
-25.0 mm, 806 frames of a pull being turned into strain.
+<h3 class="text-centered">Characterizing the Elastomer</h3>
 
-It started as a workaround but it's the better measurement anyway: optical
-strain avoids the error you get from grip displacement on a soft material, where
-the crosshead travels considerably further than the gauge section actually
-stretches. Feeding those properties back into the model is what produced the 10%
-accuracy improvement.
+![OpenCV tracking gauge marks on an elastomer specimen in the Instron](./images/strain-tracking.jpg "right")
 
-## Simulating, to Know Where to Look
+<p class="caption caption-sm">My OpenCV tracker following the gauge marks during a tensile test</p>
 
-![Abaqus modal result](./images/abaqus-mode-final.jpg)
+Every candidate elastomer had to be characterized before it could go into a simulation. We wanted to perform our own testing since the listed properties could differ slightly from what our casting actually produced, which would invalidate our findings. However, we didn't have an extensometer for the Instron UTM, which made measuring strain much harder, so I built one in software. I marked each specimen with a sharpie, filmed the ASTM D412 tensile test on the Instron, and tracked the marks in OpenCV, converting pixels to millimeters from a known starting distance.
 
-With real material properties in hand I learned Abaqus and ran modal
-analyses on the shell. The simulation wasn't the deliverable — it was how I
-found the frequencies where the shell's motion would be large and distinct
-enough to actually see. A modal analysis across a wide band returns hundreds of
-modes; only a handful are worth pointing a camera at, and guessing would have
-wasted the summer.
+It started as a workaround, but it ended up being the better measurement. On a soft material, the crosshead travels a lot further than the gauge section actually stretches, and tracking the marks optically avoids that error. I automated the whole characterization workflow in Python, which cut the analysis time by 60%, allowing me to process the entire set of data in just one night.
 
-## Checking the Speaker Before Trusting It
+<h3 class="text-centered">Simulating</h3>
 
-![Speaker output frequency validation](./images/speaker-validation.jpg)
+![An Abaqus modal result for the shell](./images/abaqus-mode-final.jpg "left")
 
-The shell is driven acoustically, so every measurement rests on the speaker
-actually producing the frequency it was told to. Before building results on that
-assumption I tested it, recording the output and reading the frequency back to
-confirm commanded and actual agreed. They did — it was an expensive speaker. The
-check cost an afternoon, and skipping it would have left an unverified
-assumption underneath every number that followed.
+<p class="caption caption-sm">One of the shell's modes in Abaqus</p>
 
-## The Laser Sheet
+With real material properties in hand, I learned Abaqus and ran modal analyses on the shell. The simulation wasn't the deliverable. It was how I found the frequencies where the shell's motion would be large and distinct enough to actually see. A modal analysis across a wide band returns hundreds of modes, and only a handful are worth pointing a camera at. To determine these frequencies, I went through the data and picked out the best-looking modes. From there, I took isometric and top views to compare with real life. The top view was the most important, since I decided the best way to see the mode shape was to buy a laser sheet, shine it at different heights along the half sphere, film each height from a bird's-eye view, and combine the frames.
 
-![CAD of the laser sheet tower and test enclosure](./images/test-rig-cad.jpg)
+<h3 class="text-centered">The Laser Sheet</h3>
 
-To see the motion I built a jig coupling the shell to the speaker and shot it
-from directly above. A top view shows the mode pattern but flattens it — you get
-the shape, not the displacement.
+![CAD of the laser sheet tower and test enclosure](./images/test-rig-cad.jpg "right")
 
-So I moved to a laser sheet. A sheet of laser light grazing the shell
-illuminates exactly one cross-section, and the camera sees that slice deform in
-real time.
+<p class="caption caption-sm">The laser sheet tower and test enclosure in CAD</p>
 
-![Laser sheet tracing the profile of the shell](./images/laser-sheet-profile.jpg)
+However, before I could grab that data, I had to address the speaker. Every measurement relies on the speaker actually producing the frequency it was told to. Before building any results on that, I tested it by recording the output and reading the frequency back to make sure the commanded and actual frequencies agreed. I wrote a script that played through the list of frequencies I would need and recorded the output to see if they matched. I also tried continuously increasing the frequency and graphing the actual output, hoping the two would match. Luckily, the speaker checked out, and I could continue.
 
-Sweeping the sheet's height with servos driven by a microcontroller turns one
-slice into a stack of them. I wrote a script to step both the sheet height and
-the drive frequency automatically, so the rig could run unattended for an hour or
-two and record a full sweep. Pulling frames from that footage and combining the
-slices reconstructs the shell's complete motion instead of a single plane
-through it.
+To see the motion, I built a jig coupling the shell to the speaker and filmed it from directly above. A top view shows the mode pattern, but it flattens it, so you get the shape without the displacement. A sheet of laser light grazing the shell lights up exactly one cross-section. To get the behavior at different heights, I built a small jig that used a servo that worked in combination with my computer to slowly move the laser sheet up after each frequency cycle. This allowed me to run the test for hours unattended, which made eating lunch much more fun!
 
-![One height slice of the vibrating shell](./images/mode-slice-layer1.jpg)
+![One height slice of the vibrating shell](./images/mode-slice-layer1.jpg "left")
 
-Pouring wet silicone over the vibrating shell made the surface motion visible a
-second way, on top of the slicing.
+<p class="caption caption-sm">The laser sheet lighting up one cross-section of the shell</p>
 
-## Measured Against Predicted
+The script changed both the sheet height and the drive frequency automatically, so the rig could run on its own for an hour or two and record a full sweep. Pulling frames from that footage and combining the slices rebuilds the shell's complete motion instead of a single plane through it. I also picked certain frames from the video based on the frequency, hoping to catch the elastomer at its peak of movement, and combined them to capture the full extent of the elastomer's movement.
 
-The payoff is a direct comparison at matching frequencies. At 162 Hz the
-laser sheet shows a clear polygonal standing wave around the shell:
+<h3 class="text-centered">Measured Against Predicted</h3>
 
-![Measured laser-sheet mode at 162 Hz](./images/mode-measured-162hz.jpg)
+<p class="text-full">The payoff is a direct comparison at matching frequencies. At 162 Hz, the laser sheet shows a clear polygonal standing wave around the shell; however, when counting the peaks, the real-life measurements show stark differences from the simulation. Unfortunately, I didn't get enough time that summer to tackle this new issue that arose. I believe it comes from a buildup of small imperfections in the setup, such as the way the elastomer was mounted to the face of the speaker, where the speaker's own vibration could have impeded its movement.</p>
 
-And the Abaqus modal result at that same 162 Hz predicts the matching petal
-pattern:
+![Measured laser-sheet mode at 162 Hz](./images/mode-measured-162hz.jpg "full")
+![Abaqus modal result at 162 Hz](./images/mode-simulated-162hz-wide.jpg)
 
-![Abaqus modal result at 162 Hz](./images/mode-simulated-162hz.jpg)
+<p class="caption caption-sm">Measured at 162 Hz</p>
 
-Counting lobes in the photograph and in the simulation gives the same answer.
-That agreement is what justifies everything behind it — the casting process, the
-optically measured material model, and the simulation all have to be right for
-those two images to look alike.
+<p class="caption caption-sm">Simulated at 162 Hz</p>
 
-## What I'd Change
+![Measured laser-sheet mode at 121 Hz](./images/mode-measured-121hz.jpg "full")
+![Abaqus modal result at 121 Hz](./images/mode-simulated-121hz-wide.jpg)
 
-Wall thickness drift is still the weak link. Even with the jig, thickness varies
-around the hemisphere as the silicone flows under gravity before it cures, and
-that variation moves the resonant frequencies — so some of the disagreement
-between measured and predicted modes is likely my casting rather than the model.
-Picking it up again, I'd attack that first: rotate the mold during cure so
-gravity averages around the shell instead of accumulating on one side, and
-measure the finished wall at several points rather than trusting the process, so
-the thickness going into the simulation is the thickness that actually exists.
+<p class="caption caption-sm">Measured at 121 Hz</p>
+
+<p class="caption caption-sm">Simulated at 121 Hz</p>
+
+<h3 class="text-centered">Conclusion and Future Improvements</h3>
+
+<p class="text-full">This was the first time I had a research question entirely to myself, and the biggest thing I took away was to check every assumption before building on it. The measured and simulated modes didn't match the way I hoped, but because I had already validated the casting, the material properties, and the speaker, I could narrow the mismatch down to the test setup itself. If I had another summer in the lab, I would start there, with a better way to mount the elastomer to the speaker. I would also build a better enclosure for the pouring process, since the current setup allowed dust to settle, and try different Formlabs resins, since they could greatly improve the accuracy of the half sphere. Shipping times made that infeasible this summer. This summer was extremely fun, and I met some really cool people along the way. Thank you, Dr. Chen, for this amazing opportunity!</p>
+
+![Top view of the pour jig](./images/casting-jig-top.jpg "grid")
+![The shell mounted in its flange under laser illumination](./images/specimen-mounted.jpg)
+![Another of the shell's modes in Abaqus](./images/speaker-validation.jpg)

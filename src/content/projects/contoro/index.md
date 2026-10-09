@@ -11,186 +11,124 @@ blurb: >-
   an end-of-line test stand for the end effector, validating every unit before
   it shipped.
 description: >-
-  Mechanical engineering work at Contoro Robotics — an end-of-line gripper
-  validation test stand with its own IO-Link control hardware and FastAPI test
-  app, a cantilevered gripper assembly stand sized against bearing load ratings
-  with a 16x margin, production drawings and BOMs across two gripper hardware
-  revisions, and field support at customer warehouses.
+  Robotics engineering internship at Contoro Robotics — an end-of-line gripper
+  test stand built from the ground up: a cantilevered assembly stand sized with
+  hand calcs and off-the-shelf parts, IO-Link and Festo pneumatic control
+  hardware, and a test app that runs a 22-step functional check and writes a
+  report for every gripper.
 skills:
-  - Test Fixture Design
-  - SolidWorks (Assemblies, Drawings, BOMs)
-  - Hand Calculations & Structural Analysis
-  - Pneumatics (Festo, IO-Link, Modbus TCP)
-  - Python (FastAPI, Test Automation)
-  - Design for Manufacturing & Assembly
+  - SolidWorks (Assemblies, Test Fixture Design)
+  - Hand Calculations (Shaft Deflection, Bearing Loads, Safety Factors)
+  - Python (Sizing Scripts, Test Automation, App & UI Development)
+  - IO-Link Controls (IFM AL1340 Master)
+  - Pneumatics & Vacuum Systems (Festo Valve Manifolds, Pressure Transducers)
+  - Electrical Wiring & Power Distribution (24 V DC, Relays, M12)
+  - Vacuum Leak-Down Testing & Data Analysis
+  - Test Procedure Development
+  - Design for Manufacturing & Cost Reduction (Off-the-Shelf Sourcing)
+  - Field Failure Analysis (Jira)
+  - Fabrication (Plasma Cutting, Sheet Metal Bending, FDM Printing, Milling)
+  - Electromechanical Assembly (Grippers, Electrical Boxes, Sensor Wiring)
+  - Technical Documentation
 hero: ./images/test-stand.jpg
 heroAlt: The end-of-line gripper test stand, built as a rolling cart
-gallery:
-  - src: ./images/test-stand-cad.png
-    alt: CAD assembly of the mobile test stand
-  - src: ./images/test-stand-cad-detail.png
-    alt: Detail view of the test stand CAD
-  - src: ./images/assembly-stand-cad.png
-    alt: CAD of the cantilevered gripper assembly stand
-  - src: ./images/assembly-stand-cad-2.png
-    alt: Second view of the assembly stand CAD
-  - src: ./images/gripper-stand.jpg
-    alt: The gripper mounted on the assembly stand
-  - src: ./images/gripper-manufacturing-1.jpg
-    alt: Gripper end-effector assembly on the bench
-  - src: ./images/gripper-manufacturing-2.jpg
-    alt: Wired gripper assembly during manufacturing
-  - src: ./images/stabilization-bracket.jpg
-    alt: Custom stabilization bracket installed on hardware
-  - src: ./images/bracket-feet.jpg
-    alt: Machined bracket feet
-  - src: ./images/enable-switch-holder.jpg
-    alt: Enable switch holder designed to solve a fit issue on the floor
 ---
 
 From January to August 2026, I was a robotics engineering intern at 
 <a href="https://contoro.com/" target="_blank" rel="noopener"><img src="/images/contoro-mark.png" alt="" class="org-mark" width="48" height="48" />Contoro Robotics</a>, an Austin startup building robots that
-unload floor-loaded trailers and shipping containers. During my time there, we were in a late Series A startup, which meant we were ramping up production to prove our capabilities. One of my favorite experiences was traveling to customer sites, such as Amazon's warehouse in Stockton California, to help operate the robot to unload shipping containers and troubleshoot any hardware issues.
+unload floor-loaded trailers and shipping containers. During my time there, we were a late Series A startup, which meant we were ramping up production to prove our capabilities. 
 
-My job was primarily helping with documentation, building final assemblies, and creating retrofits for the field using Solidworks. I worked with electrical boxes, power and data conduits, motor-drivers assemblies, camera towers, etc. While I enjoyed getting my hands dirty with building small fixes and existing assemblies, I wanted to create my own project that would better aid the testing and manufacturing process. I proposed and then built an ssembly stand which eventually evolved to an end-of-line test stand for the end-effector, a vacuum gripper used to pick up boxes. 
+Under the systems team, my job was to help with documentation, engineer retrofits for the field, and make them in-house with our machinery such as a plasma cutter, sheet metal bender, FDM printers, and mills. Wanting to get my hands dirty with the actual robot, I started helping in the manufacturing space to build final assemblies that were sent out to the field such as camera and sensor wiring, electrical boxes, and, my favorite, the end effector grippers. After spending a few weeks building grippers, I set out to improve the existing assembly stand to expedite the manufacturing process, which eventually evolved into a fully automated end-of-line test stand.
 
-## The Gripper Test Stand
+<h2 class="text-centered">The Gripper Test Stand</h2>
 
-Every gripper assembly needed to be checked against a known-good reference
-before it went onto a robot: suction across the full cup array, pneumatic
-actuation, and electrical integration. Without a standard way to do that, each
-technician improvised a bench setup, which made results hard to compare and easy
-to get wrong. The rest of this page is that stand — what it had to prove, how the
-gripper is held, the hardware that drives it, the app that runs the sequence, and
-the cart it all lives on.
+<p class="text-full">The gripper test stand was meant to be a lightweight and mobile setup that we could use to first assemble then test the gripper which we needed to mass-produce as we moved closer to Series B funding. My final design was a mobile cart that holds a finished end effector and runs it through a comprehensive functional test for each valve, suction zone, and sensor. Each aspect of this stand was built from the ground up including the cantilevered assembly stand, the IO-Link control hardware and wiring, and the app that runs the tests and writes the report.</p>
 
-### Defining What to Test
+![CAD of the test stand with a gripper mounted](./images/test-stand-cad-mirrored.png "full")
+![The end-of-line gripper test stand, built as a rolling cart](./images/test-stand-banner.jpg)
 
-The first job was deciding what the test was for. This is a functionality check,
-not a performance characterisation: every valve travels in both directions and
-holds where it should, every suction zone pulls and keeps vacuum, and every
-sensor powers up. It also had to run fast, because a check that takes an
-afternoon does not get run.
+<p class="caption caption-sm">The test stand in SolidWorks</p>
 
-The harder part was what counts as passing. The stand's vacuum pump is far
-smaller than the one on a robot, so absolute numbers measured here do not
-transfer. Rather than fixed thresholds, the limits are measured off a gripper
-that is known good, and every limit is computed from those: a healthy vacuum of
-**−87.5 kPa**, a healthy leak-down of **2 s**, then separate margins for the rig
-itself (10%), the gripper (27%) and leak-down (20%). Taking drawdown and
-leak-down data let me separate what the rig loses from what the gripper loses,
-which is the whole reason a small pump can still give a trustworthy answer.
-Per-zone results are reported but never fail a gripper — the combined test is
-more sensitive than any single zone.
+<p class="caption caption-sm">The test stand in real life</p>
 
-### Holding the Gripper — The Assembly Stand
+<h3 class="text-centered">How It Started</h3>
 
-![CAD of the cantilevered gripper assembly stand](./images/assembly-stand-cad.png)
+When I first started working at Contoro, a single gripper took up to three days to fully assemble. While the design was rigid, I had freedom to adjust the manufacturing process so I first set out to improve the existing assembly stand. The existing stand utilized old robotic elbow components from a past humanoid Contoro had manufactured and an overengineered shaft. Since we were planning on quadrupling production before the end of the year, I needed to make the assembly stand cheaper, with off-the-shelf parts. I created a short script via Python that iterated through a few different diameters and lengths for the shaft that were available on Misumi, and implemented a 2x safety factor. After replacing the elbow joints with pillow block bearings and the locking mechanism with a shaft collar, I validated my findings with hand calcs to ensure the stand could hold the 18 kg gripper. 
 
-Before any of that, the gripper has to be held. I designed this stand originally
-to make assembly easier — the gripper needs to rotate so both faces are
-reachable — and it turned out to be exactly what the test stand needed as well,
-so it does both jobs.
-
-That makes it a cantilever carrying an **18 kg** end effector on a **224 mm**
-overhang, with the centre of mass **88 mm** off the shaft axis, so rotating it
-also applies torque. I designed it as a shaft-and-pillow-block support: a 30 mm
-S45C shaft riding two **UCP206** pillow block bearings at 100 mm spacing, with
-set screws locking the shaft in either of its two positions.
-
-I worked the statics by hand before committing to hardware. The load sits
-outboard of both bearings, so the stand behaves as an overhanging beam — the
-outer bearing takes an upward reaction while the inner one is pulled *down*,
-which is the part that catches people out and the reason the inner bearing needs
-real pull-out capacity rather than just a bolt through a bracket.
-
-![Hand calculations for the gripper stand](./images/hand-calc-1.png)
+![Hand calculations for the gripper stand](./images/hand-calc-1.png "beside")
 ![Second page of hand calculations](./images/hand-calc-2.png)
 
-| Check | Result | Margin |
-| --- | --- | --- |
-| Outer bearing reaction | 702 N against an 11,300 N static rating | **16×** |
-| Inner bearing pull-out | 526 N against the same rating | **21×** |
-| Shaft, von Mises at the critical section | 20.6 MPa against 490 MPa yield | **24×** |
-| Tip deflection | 0.17 mm against a 0.5 mm requirement | **within** |
+<p class="caption caption-sm">Hand calcs for shaft deflection and bearing loads at two bearing spacings</p>
 
-![The gripper mounted on the assembly stand](./images/gripper-stand.jpg)
+![CAD side view of the gripper assembly stand](./images/assembly-stand-cad.png "left")
 
-The margins look absurd, and that is the actual finding: **the shaft diameter is
-set by the bearing bore, not by stress.** Stress alone would allow roughly a
-15 mm shaft at a safety factor of 2. Once a standard pillow block is the right
-answer for the rotating joint, its 30 mm bore dictates the shaft, and everything
-downstream is overbuilt for free. Knowing which constraint is actually binding is
-what let me stop optimizing and buy catalog parts.
+<p class="caption caption-sm">The assembly stand in SolidWorks</p>
 
-### The Control Hardware
+Once the stand was in use and I started building grippers on it, a bigger problem emerged. Assembly got faster, but nothing told us whether a finished gripper actually worked until it was bolted onto a robot. In addition, the current Factory Acceptance Test (FAT) tested the gripper only when it was bolted onto the robot making it hard to isolate and fix issues. However, there was one bright side. The gripper assembly stand already held the gripper; now we just needed a way to connect to and communicate with the vacuum and pneumatic ports. 
 
-Everything the stand does runs through one **IFM AL1340 IO-Link master** with
-four ports, each doing one job:
+<h3 class="text-centered">Why We Need This</h3>
 
-- **X01** — a **Festo VABX-A-P-EL** valve manifold, 16 solenoids, written at
-  Modbus register 1101. This is what actuates the gripper.
-- **X02** — an **IFM PV7604** pressure transducer on a tapped vacuum line, read
-  at register 2002. This is the measurement the whole test rests on.
-- **X03** — an SSR-40 DA relay on the master's pin-4 digital out, register 3100,
-  switching the VP125 vacuum pump. The pump runs on its own 110 V circuit.
-- **X04** — a Phoenix Y-splitter feeding two laser distance sensors, checked only
-  for whether they power up.
+![A misaligned gasket left the cover plate proud of its seam](./images/manufacturing-fault.jpg "right-small")
 
-Power comes off a 110 V outlet through a CJ-2406 AC/DC supply to 24 V, then an
-M12 splitter feeding both the master's logic power and the Festo solenoids on a
-dedicated line — the master's Class A ports cannot supply solenoid current, which
-is the kind of thing you find out once and never forget. A laptop talks Modbus
-TCP to the master over a USB-C to RJ45 adapter.
+<p class="caption caption-sm">A small misalignment in the gasket sealing the air in a suction zone</p>
 
-![Hardware map and register reference from the test app](./images/app-hardware-map.png)
+On my first gripper build, the gasket became slightly misaligned when I attached both sides of the vacuum zone. The gap was so small that I missed it in the initial inspection, since it was only visible looking straight down the seam. Without a proper way to test the gripper, this problem was only found during the FAT which led to a delay of a few hours in the deployment of this gripper. While I learned to be more meticulous, I also realized there had to be a better way. 
 
-### The Test App
+After this problem, I scoured our issue ticket system on Jira, determining what problems the gripper usually ran into when out on the field. The majority of issues lay outside manufacturing's realm such as installation issues and software problems, but I did find a handful of manufacturing issues that stemmed from incorrect pneumatic orientation which led to the manifold incorrectly communicating with the hardware or small vacuum leaks. These defined my testing variables.
 
-I wrote the app that drives the sequence: a FastAPI service on the laptop talking
-Modbus TCP to the master, with a browser console in front of it. The 16 solenoids
-are mapped from Festo's labels (`vlv5P2`) to names that mean something
-(`suction_zone_1a_right`), and the test steps live in a config file rather than in
-code, so the sequence can be changed without a rewrite.
+<h3 class="text-centered">Defining What to Test</h3>
 
-A full run is **22 steps**. Step one drives every valve to a safe rest state and
-then holds, waiting for an operator to confirm the work area is clear — the next
-step is the first one that moves an actuator. After that the steps are written
-around how each valve actually behaves. The bistable valves get pulsed and
-released, then confirmed to still hold position with no coil energised. The
-linear shuttle is not self-holding, so its coil stays powered through the
-confirmation, its brake is released first and re-engaged at rest, and its retract
-coil is deliberately never driven — it returns under gravity. Writing those steps
-is also what caught a discrepancy between the valve table I had been given and
-the hardware: two of the shuttle's roles were reversed.
+![The 22-step test console](./images/app-test-console.png "left")
 
-![The 22-step test console](./images/app-test-console.png)
-![Test summary with the leak-down curve](./images/app-summary.png)
+<p class="caption caption-sm">The testing logic in the software</p>
 
-The summary is the part a technician actually reads: pass or fail, the leak-down
-curve against its gates, and a measured result per step — extend travel at
-340 ms, retract at 320 ms, the shuttle confirmed to return by gravity with the
-brake re-engaged.
+This test stand was only a functionality check to validate the manufacturing side of the process. There were two main functions: actuation and vacuum. The gripper could fold and extend, which was all controlled by a Festo manifold. In addition, it had a pressure transducer to measure vacuum throughout the gripper and a laser distance sensor which would detect the distance of the boxes in the shipping containers. 
 
-### The Stand Itself
+There was one main issue with the vacuum. The test stand's vacuum pump was far smaller than the one on a robot due to weight and size constraints, and didn't produce nearly as much vacuum as the one on the robot. To combat this, I gave the vacuum drawdown time to build pressure and took data from three grippers that were known to be good to use as reference. Since the robot held a near-perfect vacuum and variations in my hardware caused a decrease in vacuum over time despite being sealed, I took the slope, averaged it across all my tests on each gripper, and drew a margin of error based on the other good grippers as a baseline for a gripper with a good seal.
 
-![The end-of-line gripper test stand](./images/test-stand.jpg)
+<h3 class="text-centered">The Control Hardware</h3>
 
-The stand is a rolling cart carrying all of it — master, power supply, vacuum
-pump, manifolds, transducer and the gripper fixturing — so a complete gripper can
-be powered up and cycled on demand. The cart is mobile on purpose: the stand goes
-to the work rather than the work going to the stand.
+![Hardware map and register reference from the test app](./images/app-hardware-map.png "right")
 
-![CAD assembly of the test stand](./images/test-stand-cad.png)
+<p class="caption caption-sm">The AL1340's ports and the components on each</p>
 
-### Why It Mattered
+Determining and hooking up the hardware was honestly one of the hardest parts of this project for me since I wasn't familiar with these components. However, everyone at Contoro was super nice in helping me understand how everything worked which pushed me to keep working. I started by stripping down the existing robot and determining the few hardware components I really needed which consisted of an IFM AL1340 IO-Link master that could allow my computer to communicate with the gripper, a small vacuum pump, and a compressor. The four ports on the AL1340 were connected as follows:
 
-![A misaligned gasket left the cover plate proud of its seam](./images/manufacturing-fault.jpg)
+- 01 — the Festo VABX-A-P-EL valve manifold which controls actuation and which zones receive vacuum.
+- 02 — an IFM PV7604 pressure transducer.
+- 03 — an SSR-40 DA relay to turn on the VP125 vacuum pump.
+- 04 — a Phoenix Y-splitter feeding two laser distance sensors. Due to the lack of ports, I could only check whether the sensors could turn on and off.
 
-Gripper validation became a short, repeatable sequence with a pass/fail that
-means the same thing every time, run by whoever is on the bench. That makes
-manufacturing faster, but the more valuable half is what it catches. The photo
-above is a cover plate that never pulled down flush because the gasket under it
-was misaligned — a fraction of a millimetre of gap, invisible unless you are
-looking straight down the seam, and enough to show up as a leak the moment the
-stand draws vacuum. Faults like that used to reach a robot before anyone noticed.
+The system was powered off a 110 V outlet through a CJ-2406 AC/DC supply to 24 V, then an M12 splitter feeding both the AL1340 and the Festo solenoids.
+
+<h3 class="text-centered">The Test App</h3>
+
+![Test summary with the leak-down curve](./images/app-summary.png "left")
+
+<p class="caption caption-sm">The generated test report</p>
+
+To accompany the test stand, I created an app that drives the test logic and delivers a report for each gripper. My goal was to make this app easy for a non-tech-savvy technician to be able to directly install on their computer, not change any network ports, and be able to immediately interact with the gripper. This app easily became one of the most enjoyable parts of the build mostly because I had little to no knowledge of building an app before this. I really enjoyed working on the UI which took me much more time than I'd like to admit.
+
+A full run is 22 steps, and the steps are written around how each valve actually behaves. The linear shuttle is not self-holding, so its coil stays powered through the confirmation, its brake is released first and re-engaged at rest. Writing those explicit steps is what caught a discrepancy between the provided valve table and the hardware: two of the shuttle's roles were reversed.
+
+<h3 class="text-centered">Conclusion and Future Improvements</h3>
+
+<p class="text-full">The biggest thing I took away was how much a good test is worth. During the internship I got to visit the Amazon warehouse in Stockton, California, and saw first-hand how frustrating a failure in the field is: fixing anything on a customer's floor is a hassle, and the robot is out of service until it's done. I would much rather catch it at home, which is the whole point of the stand.</p>
+
+<p class="text-full">I also learned how much of good design happens before any CAD. I was surrounded by strong engineers, and the habit they pushed hardest was defining the parameters properly first: what the part has to hold, what it has to survive, and what counts as done. Deciding what to test before building the test was that lesson in practice.</p>
+
+<p class="text-full">If I built the assembly stand again, I would change how the gripper attaches to it. Right now a flanged bolt holds the face together through friction alone, which was a constraint of the old gripper. The new gripper design removes that constraint, so I would simplify the attachment to a shaft with two bolt holes and a single front plate. I would also have the shaft custom made, so we could add knurling to the end of it. This will allow for the locking mechanism, which consists of a shaft collar, to be secured by hand with a thumb screw instead of with an Allen wrench.</p>
+
+<h2 class="text-centered">Thank You Contoro!</h2>
+
+<p class="text-full">From the Friday lunches that helped me see parts of Austin I had never gone to, to the late-night pickleball sessions, Contoro became a phase of my life I'm never going to forget. Almost everything I learned here came from the people around me: the systems team, who trusted an intern with a project that ended up on the production floor, and everyone who stopped what they were doing to satisfy my curiosity. I'm more than grateful I got to be part of the team while it was growing. Special shoutout to my manager, Isaac, who taught me so much about the industry. Also, shoutout to the Operations team who welcomed me and helped me with the testing parameters. I can't wait to see where Contoro is in five years.</p>
+
+![Inside a trailer at Argon](./images/argon.jpg "grid")
+![Paintball with the Contoro team](./images/paintball.jpg)
+![Lunch at a carnitas spot with the Contoro team](./images/carnitas.jpg)
+![Gripper end-effector assembly on the bench](./images/gripper-manufacturing-1.jpg)
+![Wired gripper assembly during manufacturing](./images/gripper-manufacturing-2.jpg)
+![CAD of the sheet metal stabilization bracket](./images/stabilization-bracket-cad.png)
+![Custom stabilization bracket installed on hardware](./images/stabilization-bracket.jpg)
+![Machined bracket feet](./images/bracket-feet.jpg)
+![Enable switch holder designed to solve a fit issue on the floor](./images/enable-switch-holder.jpg)

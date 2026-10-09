@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, role, date, description, skills, hero, gallery, link } =
+const { title, date, description, skills, hero, gallery, link } =
   project.data;
 
 // Referencing hero.src directly would point at the untouched original, which
@@ -36,8 +36,8 @@ const og = hero
     <div class="project-title-section">
       <h1>{title}</h1>
       <p class="project-meta">
-        {/* The org is the <h1> above; repeating it here would say it twice. */}
-        {role && <span>{role}</span>}
+        {/* Just the dates: the org is the <h1> above, and the role lives on
+            the projects index card. */}
         <span>{date}</span>
       </p>
       <div class="title-underline"></div>
@@ -82,6 +82,34 @@ const og = hero
       )
     }
 
-    <a href="/projects.html" class="back-link">&larr; All projects</a>
+    <a href="/projects.html" class="back-link">Back to Projects</a>
   </div>
 </Base>
+
+<script>
+  // Steps each page carousel by one page per click, clamped so the last
+  // page lands at the right edge rather than leaving empty space.
+  for (const carousel of document.querySelectorAll<HTMLElement>('.page-carousel')) {
+    const track = carousel.querySelector<HTMLElement>('.page-carousel-track');
+    const prev = carousel.querySelector<HTMLButtonElement>('.page-carousel-button.is-prev');
+    const next = carousel.querySelector<HTMLButtonElement>('.page-carousel-button.is-next');
+    if (!track || !prev || !next) continue;
+    const items = [...track.children] as HTMLElement[];
+    let index = 0;
+
+    const update = () => {
+      const perView = Number(getComputedStyle(carousel).getPropertyValue('--per-view')) || 1;
+      const last = Math.max(0, items.length - perView);
+      index = Math.min(Math.max(index, 0), last);
+      const offset = items[index] ? items[index].offsetLeft - items[0].offsetLeft : 0;
+      track.style.transform = `translateX(${-offset}px)`;
+      prev.disabled = index === 0;
+      next.disabled = index === last;
+    };
+
+    prev.addEventListener('click', () => { index -= 1; update(); });
+    next.addEventListener('click', () => { index += 1; update(); });
+    window.addEventListener('resize', update);
+    update();
+  }
+</script>
