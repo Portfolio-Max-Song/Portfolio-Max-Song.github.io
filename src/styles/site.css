@@ -665,6 +665,12 @@ a:hover {
   line-height: 1;
 }
 
+/* A project with an outbound `link` links its title. No underline; it only
+   brightens on hover, like every other link. */
+.project-title a {
+  text-decoration: none;
+}
+
 .project-date {
   margin: 8.6px 0 28.8px;
   font-size: 12.2px;
@@ -1225,34 +1231,6 @@ a:hover {
 
 .project-skills strong {
   font-weight: 600;
-}
-
-/* --- Gallery carousel (frontmatter `gallery`) ------------------------------ */
-
-.carousel-section {
-  margin-top: 34.6px;
-}
-
-.carousel-container {
-  display: flex;
-  gap: 11.5px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 5.8px;
-  scrollbar-width: thin;
-}
-
-.carousel-item {
-  flex: 0 0 auto;
-  width: clamp(6.5rem, 15.8vw, 10.1rem);
-  scroll-snap-align: start;
-}
-
-.carousel-image {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: var(--radius);
 }
 
 /* --- Outbound link button (frontmatter `link`) ----------------------------- */

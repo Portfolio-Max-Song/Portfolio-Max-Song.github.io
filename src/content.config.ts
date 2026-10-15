@@ -41,12 +41,10 @@ const projects = defineCollection({
       // The tile is cropped square, so a project whose hero is a wide shot
       // can name a squarer photo for it. Falls back to the hero.
       thumb: image().optional(),
-      gallery: z
-        .array(z.object({ src: image(), alt: z.string() }))
-        .default([]),
       // Controls ordering on the projects index (lower = higher up).
       order: z.number(),
-      // Optional outbound link, e.g. Song Leather's storefront.
+      // Optional outbound link, e.g. Song Leather's site. Links the popup's
+      // title and adds a button with `label` at the bottom of the popup.
       link: z.object({ label: z.string(), href: z.string().url() }).optional(),
       draft: z.boolean().default(false),
     }),
