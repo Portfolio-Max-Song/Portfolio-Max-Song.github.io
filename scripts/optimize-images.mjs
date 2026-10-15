@@ -9,8 +9,9 @@
  * stored in a lossless format built for line art). Screenshots, CAD drawings,
  * and renders keep their PNG encoding but still get resized.
  *
- * The untouched originals live in images/ at the repo root. This script never
- * reads or writes that directory, so re-running it is always safe.
+ * Files already within MAX_EDGE are left alone (except PNG photos due for
+ * JPEG conversion), so re-running it never re-encodes a JPEG it has already
+ * processed. The untouched originals are kept locally in pics/ (gitignored).
  *
  * Usage: node scripts/optimize-images.mjs [--dry]
  */
@@ -31,13 +32,25 @@ const KEEP_AS_PNG = new Set([
   // art — JPEG rings badly on the strokes, and they are already small as PNG.
   'test-stand-cad.png',
   'test-stand-cad-detail.png',
+  'test-stand-cad-mirrored.png',
   'assembly-stand-cad.png',
   'assembly-stand-cad-2.png',
   'assembly-stand-cad-3.png',
   'stabilization-bracket-cad.png',
   'hand-calc-1.png',
   'hand-calc-2.png',
+  // Contoro: app screenshots. PNG keeps the text crisp.
+  'app-hardware-map.png',
+  'app-summary.png',
+  'app-test-console.png',
 ]);
+
+/** PNGs with soft gradients or blur, which a 256-colour palette dithers. */
+const FULL_COLOR_PNG = new Set(['app-hardware-map.png', 'app-summary.png', 'app-test-console.png']);
+
+// Whole folders of renders that stay PNG. The Fusion gallery's glob in
+// components/FusionGallery.astro only matches .png.
+const KEEP_AS_PNG_DIRS = ['src/assets/images/fusion-gallery'];
 
 async function* walk(dir) {
   let entries;
@@ -69,7 +82,13 @@ for (const root of ROOTS) {
 
     const name = basename(file);
     const ext = extname(file).toLowerCase();
-    const toJpeg = ext === '.png' && !KEEP_AS_PNG.has(name);
+    const keepPng = KEEP_AS_PNG.has(name) || KEEP_AS_PNG_DIRS.some((d) => file.startsWith(join(d)));
+    const toJpeg = ext === '.png' && !keepPng;
+    const { width = 0, height = 0 } = await sharp(file).metadata();
+    if (!toJpeg && Math.max(width, height) <= MAX_EDGE) {
+      afterTotal += before;
+      continue;
+    }
     const outPath = toJpeg ? join(dirname(file), basename(file, ext) + '.jpg') : file;
     const tmp = outPath + '.tmp';
 
@@ -83,7 +102,7 @@ for (const root of ROOTS) {
     if (toJpeg || ext === '.jpg' || ext === '.jpeg') {
       pipeline.jpeg({ quality: JPEG_QUALITY, mozjpeg: true });
     } else {
-      pipeline.png({ compressionLevel: 9, palette: true });
+      pipeline.png({ compressionLevel: 9, palette: !FULL_COLOR_PNG.has(name) });
     }
 
     if (DRY) {

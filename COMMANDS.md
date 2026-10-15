@@ -55,7 +55,7 @@ taskkill /PID <PID> /F
 | Command | Description |
 | :--- | :--- |
 | `npm run dev` | Starts local Astro dev server with hot reload |
-| `npm run build` | Builds production site to `dist/` |
+| `npm run build` | Builds production site to `dist/` and prunes unused assets |
 | `npm run preview` | Previews the production build locally |
-| `npm run check` | Runs Astro diagnostic type/syntax check |
-| `npm run optimize-images` | Runs the project image optimization script |
+| `npm run check` | Type-checks `.astro` and `.ts` files (`astro check`) |
+| `npm run optimize-images` | Shrinks oversized source images in `src/` (add `-- --dry` to preview) |

@@ -4,6 +4,9 @@ org: Song Leather
 role: Founder
 date: 2020 – present
 order: 6
+link:
+  label: Visit my site!
+  href: https://sites.google.com/view/songleather/home
 blurb: >-
   Minimal leather and wood goods, since 2020.
 description: >-

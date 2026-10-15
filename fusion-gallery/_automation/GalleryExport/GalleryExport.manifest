@@ -1,9 +1,0 @@
-{
-  "autodeskProduct": "Fusion360",
-  "type": "script",
-  "author": "Codex",
-  "description": {"": "Export authentic CAD gallery images and inventory selected Fusion folders."},
-  "version": "1.0.0",
-  "supportedOS": "windows",
-  "runOnStartup": false
-}
