@@ -32,9 +32,18 @@ const { open = false, closeTo } = Astro.props;
   >
     <div data-popup-content><slot /></div>
   </div>
-  <div class="lightbox" data-lightbox hidden>
-    <img alt="" />
-  </div>
+</div>
+
+<div
+  class="lightbox"
+  data-lightbox
+  role="dialog"
+  aria-modal="true"
+  aria-label="Enlarged image"
+  tabindex="-1"
+  hidden
+>
+  <img alt="" />
 </div>
 
 {
@@ -75,7 +84,7 @@ const { open = false, closeTo } = Astro.props;
     const projectPath = /^\/projects\/[^/]+\.html$/;
     const pages = new Map<string, Promise<Page>>();
     const carousels = new Set<() => void>();
-    const lightbox = popup.querySelector<HTMLElement>('[data-lightbox]')!;
+    const lightbox = document.querySelector<HTMLElement>('[data-lightbox]')!;
     const zoomed = lightbox.querySelector('img')!;
     // The zoom's transform transition, after which a closed zoom is removed.
     const ZOOM_MS = 320;
@@ -135,7 +144,7 @@ const { open = false, closeTo } = Astro.props;
     // is padded back so nothing shifts) and nothing in it reachable by Tab.
     function setPageInert(on: boolean) {
       for (const el of document.body.children) {
-        if (el !== popup && el instanceof HTMLElement && el.tagName !== 'SCRIPT') el.inert = on;
+        if (el !== popup && el !== lightbox && el instanceof HTMLElement && el.tagName !== 'SCRIPT') el.inert = on;
       }
       const root = document.documentElement;
       const gap = window.innerWidth - root.clientWidth;
@@ -208,8 +217,12 @@ const { open = false, closeTo } = Astro.props;
     // within 92% of the screen's width and 88% of its height.
     function zoomBox(img: HTMLImageElement) {
       const shown = img.getBoundingClientRect();
-      const ratio = img.naturalWidth && img.naturalHeight ? img.naturalWidth / img.naturalHeight : shown.width / shown.height;
-      let w = Math.min(window.innerWidth * 0.92, Math.max(img.naturalWidth, shown.width));
+      // Responsive thumbnails report a density-adjusted natural size. Their
+      // width/height attributes retain the full image's dimensions.
+      const sourceWidth = Number(img.dataset.zoomWidth) || Number(img.getAttribute('width')) || img.naturalWidth || shown.width;
+      const sourceHeight = Number(img.dataset.zoomHeight) || Number(img.getAttribute('height')) || img.naturalHeight || shown.height;
+      const ratio = sourceWidth / sourceHeight;
+      let w = Math.min(window.innerWidth * 0.92, Math.max(sourceWidth, shown.width));
       let h = w / ratio;
       const maxH = window.innerHeight * 0.88;
       if (h > maxH) {
@@ -227,12 +240,12 @@ const { open = false, closeTo } = Astro.props;
       return `translate(${dx}px, ${dy}px) scale(${shown.width / box.w})`;
     }
 
-    // Grows a clicked image out of its place into a larger view over the popup.
+    // Grows a clicked image out of its place over the page or project popup.
     function zoomIn(img: HTMLImageElement) {
       clearTimeout(zoomTimer);
       zoomSource = img;
       const box = zoomBox(img);
-      zoomed.src = img.currentSrc || img.src;
+      zoomed.src = img.dataset.zoomSrc || img.src;
       zoomed.alt = img.alt;
       Object.assign(zoomed.style, {
         left: `${box.x}px`,
@@ -248,13 +261,20 @@ const { open = false, closeTo } = Astro.props;
       zoomed.style.transition = '';
       zoomed.style.transform = 'none';
       lightbox.classList.add('is-open');
+      if (!isOpen) setPageInert(true);
+      panel.inert = isOpen;
+      lightbox.focus({ preventScroll: true });
     }
 
     function zoomOut() {
       if (!zoomSource) return;
+      const source = zoomSource;
       zoomed.style.transform = fromSource(zoomSource, zoomBox(zoomSource));
       lightbox.classList.remove('is-open');
       zoomSource = null;
+      if (!isOpen) setPageInert(false);
+      panel.inert = false;
+      (source.closest<HTMLElement>('.gallery-media') ?? panel).focus({ preventScroll: true });
       zoomTimer = window.setTimeout(() => {
         lightbox.hidden = true;
         zoomed.removeAttribute('src');
@@ -311,6 +331,12 @@ const { open = false, closeTo } = Astro.props;
     document.addEventListener('click', (event) => {
       if (event.defaultPrevented || event.button !== 0) return;
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const gallery = event.target instanceof Element ? event.target.closest('.gallery-media') : null;
+      const galleryImage = gallery?.querySelector('img');
+      if (galleryImage) {
+        zoomIn(galleryImage);
+        return;
+      }
       const link = linkFrom(event);
       const url = link && projectUrl(link);
       if (!url) return;
@@ -342,10 +368,10 @@ const { open = false, closeTo } = Astro.props;
     lightbox.addEventListener('click', zoomOut);
 
     document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape' || !isOpen) return;
+      if (event.key !== 'Escape') return;
       // Escape backs out one step: the zoom first, then the popup.
       if (zoomSource) zoomOut();
-      else close();
+      else if (isOpen) close();
     });
 
     window.addEventListener('popstate', (event) => {

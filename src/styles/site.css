@@ -397,7 +397,8 @@ a:hover {
   scroll-margin-top: 14.4px;
 }
 
-.contact h2 {
+.contact h2,
+.projects-gallery h2 {
   font-size: 25.9px;
   margin: 0 0 11.5px;
 }
@@ -445,7 +446,7 @@ a:hover {
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(187.2px, 1fr));
-  gap: 11.5px;
+  gap: 34.6px var(--gutter);
   margin-top: 46.1px;
 }
 
@@ -453,6 +454,7 @@ a:hover {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  border-radius: var(--radius);
 }
 
 /* --- Projects grid -------------------------------------------------------- */
@@ -494,9 +496,27 @@ a:hover {
 }
 
 @media (hover: hover) {
-  .tile:hover .tile-image {
+  .tile:hover .tile-image,
+  .gallery-media:hover .tile-image {
     transform: scale(1.05);
   }
+}
+
+.projects-gallery {
+  margin-top: 69.1px;
+  padding-top: 23px;
+  border-top: 1px solid var(--border);
+}
+
+.gallery-media {
+  background: #fff;
+  border: 0;
+  padding: 0;
+  cursor: zoom-in;
+}
+
+.gallery-media .tile-image {
+  object-fit: contain;
 }
 
 .tile-empty {
@@ -602,12 +622,11 @@ a:hover {
   }
 }
 
-/* A clicked image, enlarged over the popup. It sits inside the popup's
-   overlay, which fills the viewport, so its fixed position is the screen's. */
+/* A clicked image, enlarged above the page or project popup. */
 .lightbox {
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 60;
   background: rgba(20, 12, 8, 0.55);
   opacity: 0;
   cursor: zoom-out;

@@ -1,0 +1,31 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 4321
+    },
+    {
+      "name": "dist",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/msong/AppData/Local/Temp/claude/C--Users-msong-Desktop-Apply-Portfolio-Official/e28b1f75-45f0-4904-a07e-94523df02b40/scratchpad/serve.mjs",
+        "C:/Users/msong/Desktop/Apply/Portfolio_Official/dist",
+        "4402"
+      ],
+      "port": 4402
+    },
+    {
+      "name": "main-reference",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/msong/AppData/Local/Temp/claude/C--Users-msong-Desktop-Apply-Portfolio-Official/e28b1f75-45f0-4904-a07e-94523df02b40/scratchpad/serve.mjs",
+        "C:/Users/msong/AppData/Local/Temp/claude/C--Users-msong-Desktop-Apply-Portfolio-Official/e28b1f75-45f0-4904-a07e-94523df02b40/scratchpad/main-dist",
+        "4400"
+      ],
+      "port": 4400
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "status": "complete",
+  "mode": "organize",
+  "actions": [
+    {
+      "file": "WTC_Mk0_Stand",
+      "action": "move",
+      "id": "urn:adsk.wipprod:dm.lineage:3g_kRoMITkGtsDL-Eq2byQ",
+      "success": true
+    },
+    {
+      "file": "WTC_Mk0",
+      "action": "move",
+      "id": "urn:adsk.wipprod:dm.lineage:hJxYAAqESnyamnPVe9Rytg",
+      "success": true
+    },
+    {
+      "file": "WTC_Mk1",
+      "action": "move",
+      "id": "urn:adsk.wipprod:dm.lineage:bB5ycjj2QDWE-GtuQLUUVw",
+      "success": true
+    },
+    {
+      "file": "WTC_Mk2",
+      "action": "move",
+      "id": "urn:adsk.wipprod:dm.lineage:idxOGvr0SRm6SXfCSeEOtw",
+      "success": true
+    },
+    {
+      "file": "Model_CoffeeFilter",
+      "action": "copy reference",
+      "success": true,
+      "id": "urn:adsk.wipprod:dm.lineage:qyqLnjTVSpS3DWAkJC4l-Q"
+    }
+  ],
+  "destination": {
+    "name": "WTC",
+    "id": "urn:adsk.wipprod:fs.folder:co.2-1V2-E8SHKhFYWrD0P2ow"
+  },
+  "verified_destination": {
+    "name": "WTC",
+    "id": "urn:adsk.wipprod:fs.folder:co.2-1V2-E8SHKhFYWrD0P2ow",
+    "path": "Personal/WTC",
+    "files": [
+      {
+        "name": "WTC_Mk0_Stand",
+        "id": "urn:adsk.wipprod:dm.lineage:3g_kRoMITkGtsDL-Eq2byQ",
+        "extension": "f3d",
+        "version": 6,
+        "has_children": true,
+        "has_parents": false
+      },
+      {
+        "name": "WTC_Mk0",
+        "id": "urn:adsk.wipprod:dm.lineage:hJxYAAqESnyamnPVe9Rytg",
+        "extension": "f3d",
+        "version": 9,
+        "has_children": true,
+        "has_parents": true
+      },
+      {
+        "name": "WTC_Mk1",
+        "id": "urn:adsk.wipprod:dm.lineage:bB5ycjj2QDWE-GtuQLUUVw",
+        "extension": "f3d",
+        "version": 1,
+        "has_children": false,
+        "has_parents": false
+      },
+      {
+        "name": "WTC_Mk2",
+        "id": "urn:adsk.wipprod:dm.lineage:idxOGvr0SRm6SXfCSeEOtw",
+        "extension": "f3d",
+        "version": 1,
+        "has_children": false,
+        "has_parents": false
+      },
+      {
+        "name": "Model_CoffeeFilter",
+        "id": "urn:adsk.wipprod:dm.lineage:qyqLnjTVSpS3DWAkJC4l-Q",
+        "extension": "f3d",
+        "version": 1,
+        "has_children": false,
+        "has_parents": false
+      }
+    ],
+    "folders": []
+  },
+  "verified_source": {
+    "name": "Desk",
+    "id": "urn:adsk.wipprod:fs.folder:co.aNa10LuPSZ-AAhgDLJ_NbA",
+    "path": "Fun/Desk",
+    "files": [
+      {
+        "name": "Model_AcupunctureNeedle",
+        "id": "urn:adsk.wipprod:dm.lineage:IUii9F9OTfKGqFsjqTqBVA",
+        "extension": "f3d",
+        "version": 2,
+        "has_children": false,
+        "has_parents": true
+      },
+      {
+        "name": "Model_CoffeeFilter",
+        "id": "urn:adsk.wipprod:dm.lineage:mMLvGw9GSB-1tLVBkvz5lw",
+        "extension": "f3d",
+        "version": 2,
+        "has_children": false,
+        "has_parents": false
+      },
+      {
+        "name": "MyPencilHolder",
+        "id": "urn:adsk.wipprod:dm.lineage:pBLdmQsQTz-o8U9T3f8Opg",
+        "extension": "f3d",
+        "version": 5,
+        "has_children": false,
+        "has_parents": false
+      },
+      {
+        "name": "Shelf Support",
+        "id": "urn:adsk.wipprod:dm.lineage:xLn1inKdS_uPCf55J2lYGg",
+        "extension": "f3d",
+        "version": 4,
+        "has_children": false,
+        "has_parents": false
+      }
+    ],
+    "folders": []
+  }
+}

@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const images = import.meta.glob<ImageMetadata>(
+  [
+    '../assets/images/fusion-gallery/*.png',
+    // Keep the previously omitted top view hidden when files are renumbered.
+    '!../assets/images/fusion-gallery/* - WTC Coffee Filter - Top.png',
+  ],
+  { import: 'default' }
+);
+// The filename numbers control the gallery's order, from left to right by row.
+const photos = Object.entries(images).sort(([a], [b]) =>
+  a.localeCompare(b, undefined, { numeric: true })
+);
+const galleryPhotos = (await Promise.all(photos.map(async ([path, loadImage]) => {
+  let src: ImageMetadata;
+  try {
+    src = await loadImage();
+  } catch (error) {
+    // Vite can retain an old glob entry after a photo is deleted in Explorer.
+    // Let local editing continue; production builds still report image errors.
+    if (!import.meta.env.DEV) throw error;
+    return null;
+  }
+  return { path, src };
+}))).filter((photo): photo is NonNullable<typeof photo> => photo !== null);
+---
+
+<section class="projects-gallery" aria-labelledby="gallery-title">
+  <h2 id="gallery-title">Gallery</h2>
+  <div class="tile-grid">
+    {
+      galleryPhotos.map(({ path, src }) => (
+        <button type="button" class="tile-media gallery-media" aria-haspopup="dialog">
+          <Image
+            src={src}
+            alt={`${path.split('/').pop()?.replace(/\.png$/, '').replace(/^\d+ - /, '').replace(/ - /g, ' ')} CAD view`}
+            class="tile-image"
+            data-zoom-src={src.src}
+            data-zoom-width={src.width}
+            data-zoom-height={src.height}
+            widths={[480, 960]}
+            sizes="(min-width: 749px) 227px, (min-width: 501px) 50vw, 100vw"
+            loading="lazy"
+          />
+        </button>
+      ))
+    }
+  </div>
+</section>

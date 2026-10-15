@@ -1,0 +1,217 @@
+{
+  "mode": "wall_sample",
+  "renames": [
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:3g_kRoMITkGtsDL-Eq2byQ",
+      "old": "WTC_Mk0_Stand",
+      "new": "PRN-WTC-0001-P01-R01-Mk0-Stand"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:hJxYAAqESnyamnPVe9Rytg",
+      "old": "WTC_Mk0",
+      "new": "PRN-WTC-0001-P00-R01-Mk0"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:bB5ycjj2QDWE-GtuQLUUVw",
+      "old": "WTC_Mk1",
+      "new": "PRN-WTC-0002-P00-R01-Mk1"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:idxOGvr0SRm6SXfCSeEOtw",
+      "old": "WTC_Mk2",
+      "new": "PRN-WTC-0003-P00-R01-Mk2"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:qyqLnjTVSpS3DWAkJC4l-Q",
+      "old": "Model_CoffeeFilter",
+      "new": "PRN-WTC-REF-CoffeeFilter"
+    }
+  ],
+  "targets": [
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:3g_kRoMITkGtsDL-Eq2byQ",
+      "name": "PRN-WTC-0001-P01-R01-Mk0-Stand",
+      "path": "Personal/WTC",
+      "force": true
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:hJxYAAqESnyamnPVe9Rytg",
+      "name": "PRN-WTC-0001-P00-R01-Mk0",
+      "path": "Personal/WTC",
+      "force": true
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:bB5ycjj2QDWE-GtuQLUUVw",
+      "name": "PRN-WTC-0002-P00-R01-Mk1",
+      "path": "Personal/WTC",
+      "force": true
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:idxOGvr0SRm6SXfCSeEOtw",
+      "name": "PRN-WTC-0003-P00-R01-Mk2",
+      "path": "Personal/WTC",
+      "force": true
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:qyqLnjTVSpS3DWAkJC4l-Q",
+      "name": "PRN-WTC-REF-CoffeeFilter",
+      "path": "Personal/WTC",
+      "force": true
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:pBxdsUCNR1y9awXNUprVgw",
+      "name": "Backpack Hook",
+      "path": "Personal"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:4p6xDVD2RMeQJGwpu9b8JA",
+      "name": "Desk_TeaTray",
+      "path": "Personal"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:2fPoi7P4TgqvtOuhjp4lIQ",
+      "name": "Phone_Charger",
+      "path": "Personal"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:ozpC8M_oS8GJ5PKGCLojLw",
+      "name": "Picture Frame",
+      "path": "Personal"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:20vaQ2rbQjmOgPzCXjfVNw",
+      "name": "PRN-BP-0001-P00-R04",
+      "path": "Personal/Bolt Action Pen"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:PCyNxfw7RaeFdRk1UnngyQ",
+      "name": "Frame",
+      "path": "Personal/Drone"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:pjqbRpG3SPGX0p-GL--7XA",
+      "name": "Frame 2.0",
+      "path": "Personal/Drone"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:4k1CLqdxRFOIgVHaSUl37A",
+      "name": "Frame 3.0",
+      "path": "Personal/Drone"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:K_QS7cQaRyur5HscojL_fA",
+      "name": "Frame 4.0",
+      "path": "Personal/Drone"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:cCLLrXMuQk-iZLZ3rSy2ng",
+      "name": "Main Body",
+      "path": "Personal/Drone"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:UogSOZfhRNGJ45nrYEeltQ",
+      "name": "TestStand",
+      "path": "Personal/Drone"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:iONzPJqvRVOV2TCaUGyUIw",
+      "name": "Dripper",
+      "path": "Personal/Drop Coffee Stand"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:YfbRejA8Qd6PV23PSkL9rA",
+      "name": "Lamp No.1",
+      "path": "Personal/Lamp"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:LuW6O8t7SeGxYrkepFvsdg",
+      "name": "PRN-MP-0001-P00-R01-Macropad-Prototype",
+      "path": "Personal/MacroPad"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:YuuEb7cLQu6Cc-fj9nWkqg",
+      "name": "PRN-MP-0001-P01-R02-USBC-Adapter-Enclosure",
+      "path": "Personal/MacroPad"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:NRSWXD1JQpeIcShVl4QURw",
+      "name": "PRN-MP-0001-P02-R01-Switch-Plate",
+      "path": "Personal/MacroPad"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:C56uSuvgSUaNUDYOTTUuwA",
+      "name": "PRN-MP-0003-P02-R01-Switch-Plate",
+      "path": "Personal/MacroPad/V3"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:GhOK6awuRGyB2MjoJ_DWjQ",
+      "name": "PRN-MP-0003-P01-R01-Enclosure",
+      "path": "Personal/MacroPad/V3"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:x3ndI3QlQb2qE4aa04xrEg",
+      "name": "PRN-MP-0003-P00-R01-Macropad-V3",
+      "path": "Personal/MacroPad/V3"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:zI1r3UxJRIuu3xgWt5TCfQ",
+      "name": "PRN-MP-0002-P02-R01-Switch-Plate",
+      "path": "Personal/MacroPad/V2"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:AUullnXQSzyrugiholnlZw",
+      "name": "PRN-MP-0002-P00-R01-Macropad-V2",
+      "path": "Personal/MacroPad/V2"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:Njhac-mfSdqpqOn7N82K-w",
+      "name": "PRN-MP-0002-P01-R01-Enclosure",
+      "path": "Personal/MacroPad/V2"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:iVe4EyyMSZyc20UgoYxQEw",
+      "name": "PRN-PH-P03-R01",
+      "path": "Personal/Pencil Holder"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:8rxsPoCFRa2WXjoeEMkYIA",
+      "name": "PRN-PH-P05-R22",
+      "path": "Personal/Pencil Holder"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:qDdFwNfRTJKPZOSgA3vuSw",
+      "name": "PRN-PH-P05-R23",
+      "path": "Personal/Pencil Holder"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:d98hkt_USHOP6Mw0cU4CMQ",
+      "name": "PRN-PC-0002-P00-R05-Velocity Viewer",
+      "path": "Personal/Phone Case"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:sAHZvmqPTh6ir5IFG60SvQ",
+      "name": "PRN-PC-0002-P01-R05-Velocity",
+      "path": "Personal/Phone Case"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:8Uk5sqU8T1a3juCSbOgwuw",
+      "name": "PRN-PC-0003-P00-R01-Wallet",
+      "path": "Personal/Phone Case"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:74VFM0R8SMCspQxt9vK0JQ",
+      "name": "RecordPlayer",
+      "path": "Personal/Record Player"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:ObbS1Xj8RoytlCgRHpfn0Q",
+      "name": "Turntable",
+      "path": "Personal/Record Player"
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:ITx5IeX6RT6G1kpq8kQxZA",
+      "name": "VolumeSpeaker",
+      "path": "Personal/Record Player"
+    }
+  ]
+}

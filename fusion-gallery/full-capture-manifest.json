@@ -1,0 +1,1069 @@
+{
+  "status": "complete",
+  "mode": "capture",
+  "renames": [
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:3g_kRoMITkGtsDL-Eq2byQ",
+      "old": "WTC_Mk0_Stand",
+      "new": "PRN-WTC-0001-P01-R01-Mk0-Stand",
+      "verified": true
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:hJxYAAqESnyamnPVe9Rytg",
+      "old": "WTC_Mk0",
+      "new": "PRN-WTC-0001-P00-R01-Mk0",
+      "verified": true
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:bB5ycjj2QDWE-GtuQLUUVw",
+      "old": "WTC_Mk1",
+      "new": "PRN-WTC-0002-P00-R01-Mk1",
+      "verified": true
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:idxOGvr0SRm6SXfCSeEOtw",
+      "old": "WTC_Mk2",
+      "new": "PRN-WTC-0003-P00-R01-Mk2",
+      "verified": true
+    },
+    {
+      "id": "urn:adsk.wipprod:dm.lineage:qyqLnjTVSpS3DWAkJC4l-Q",
+      "old": "Model_CoffeeFilter",
+      "new": "PRN-WTC-REF-CoffeeFilter",
+      "verified": true
+    }
+  ],
+  "captured": [
+    {
+      "name": "PRN-WTC-0001-P01-R01-Mk0-Stand",
+      "id": "urn:adsk.wipprod:dm.lineage:3g_kRoMITkGtsDL-Eq2byQ",
+      "source_path": "Personal/WTC",
+      "version": 6,
+      "dimensions_mm": [
+        35.11329250107062,
+        133.17772437871878,
+        35.019999999999996
+      ],
+      "body_count": 9,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/WTC/PRN-WTC-0001-P01-R01-Mk0-Stand/PRN-WTC-0001-P01-R01-Mk0-Stand_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/WTC/PRN-WTC-0001-P01-R01-Mk0-Stand/PRN-WTC-0001-P01-R01-Mk0-Stand_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/WTC/PRN-WTC-0001-P01-R01-Mk0-Stand/PRN-WTC-0001-P01-R01-Mk0-Stand_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/WTC/PRN-WTC-0001-P01-R01-Mk0-Stand/PRN-WTC-0001-P01-R01-Mk0-Stand_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-WTC-0001-P00-R01-Mk0",
+      "id": "urn:adsk.wipprod:dm.lineage:hJxYAAqESnyamnPVe9Rytg",
+      "source_path": "Personal/WTC",
+      "version": 9,
+      "dimensions_mm": [
+        34.81281924775516,
+        126.17772437871878,
+        34.81281924775516
+      ],
+      "body_count": 8,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/WTC/PRN-WTC-0001-P00-R01-Mk0/PRN-WTC-0001-P00-R01-Mk0_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/WTC/PRN-WTC-0001-P00-R01-Mk0/PRN-WTC-0001-P00-R01-Mk0_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/WTC/PRN-WTC-0001-P00-R01-Mk0/PRN-WTC-0001-P00-R01-Mk0_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/WTC/PRN-WTC-0001-P00-R01-Mk0/PRN-WTC-0001-P00-R01-Mk0_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-WTC-0002-P00-R01-Mk1",
+      "id": "urn:adsk.wipprod:dm.lineage:bB5ycjj2QDWE-GtuQLUUVw",
+      "source_path": "Personal/WTC",
+      "version": 1,
+      "dimensions_mm": [
+        19.171401846578288,
+        106.36635740258343,
+        51.39324294665656
+      ],
+      "body_count": 2,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/WTC/PRN-WTC-0002-P00-R01-Mk1/PRN-WTC-0002-P00-R01-Mk1_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/WTC/PRN-WTC-0002-P00-R01-Mk1/PRN-WTC-0002-P00-R01-Mk1_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/WTC/PRN-WTC-0002-P00-R01-Mk1/PRN-WTC-0002-P00-R01-Mk1_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/WTC/PRN-WTC-0002-P00-R01-Mk1/PRN-WTC-0002-P00-R01-Mk1_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-WTC-REF-CoffeeFilter",
+      "id": "urn:adsk.wipprod:dm.lineage:qyqLnjTVSpS3DWAkJC4l-Q",
+      "source_path": "Personal/WTC",
+      "version": 1,
+      "dimensions_mm": [
+        61.52,
+        61.82000000000001,
+        82.02000000000001
+      ],
+      "body_count": 1,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/WTC/PRN-WTC-REF-CoffeeFilter/PRN-WTC-REF-CoffeeFilter_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/WTC/PRN-WTC-REF-CoffeeFilter/PRN-WTC-REF-CoffeeFilter_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/WTC/PRN-WTC-REF-CoffeeFilter/PRN-WTC-REF-CoffeeFilter_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/WTC/PRN-WTC-REF-CoffeeFilter/PRN-WTC-REF-CoffeeFilter_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "Backpack Hook",
+      "id": "urn:adsk.wipprod:dm.lineage:pBxdsUCNR1y9awXNUprVgw",
+      "source_path": "Personal",
+      "version": 1,
+      "dimensions_mm": [
+        30.035041100990092,
+        41.92079711002685,
+        116.81070252805242
+      ],
+      "body_count": 1,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Backpack Hook/Backpack Hook_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Backpack Hook/Backpack Hook_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Backpack Hook/Backpack Hook_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Backpack Hook/Backpack Hook_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "Desk_TeaTray",
+      "id": "urn:adsk.wipprod:dm.lineage:4p6xDVD2RMeQJGwpu9b8JA",
+      "source_path": "Personal",
+      "version": 2,
+      "dimensions_mm": [
+        203.76999999999998,
+        4.055983530211089,
+        129.80499999999998
+      ],
+      "body_count": 5,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Desk_TeaTray/Desk_TeaTray_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Desk_TeaTray/Desk_TeaTray_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Desk_TeaTray/Desk_TeaTray_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Desk_TeaTray/Desk_TeaTray_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "Phone_Charger",
+      "id": "urn:adsk.wipprod:dm.lineage:2fPoi7P4TgqvtOuhjp4lIQ",
+      "source_path": "Personal",
+      "version": 5,
+      "dimensions_mm": [
+        70.03999999999999,
+        95.49491218566897,
+        70.52990555095086
+      ],
+      "body_count": 1,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Phone_Charger/Phone_Charger_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Phone_Charger/Phone_Charger_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Phone_Charger/Phone_Charger_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Phone_Charger/Phone_Charger_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "Picture Frame",
+      "id": "urn:adsk.wipprod:dm.lineage:ozpC8M_oS8GJ5PKGCLojLw",
+      "source_path": "Personal",
+      "version": 2,
+      "dimensions_mm": [
+        230.03999999999996,
+        12.040000000000003,
+        140.04000000000005
+      ],
+      "body_count": 4,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Picture Frame/Picture Frame_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Picture Frame/Picture Frame_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Picture Frame/Picture Frame_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Picture Frame/Picture Frame_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-BP-0001-P00-R04",
+      "id": "urn:adsk.wipprod:dm.lineage:20vaQ2rbQjmOgPzCXjfVNw",
+      "source_path": "Personal/Bolt Action Pen",
+      "version": 2,
+      "dimensions_mm": [
+        135.5124695676565,
+        10.740000000000002,
+        16.24
+      ],
+      "body_count": 9,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Bolt Action Pen/PRN-BP-0001-P00-R04/PRN-BP-0001-P00-R04_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Bolt Action Pen/PRN-BP-0001-P00-R04/PRN-BP-0001-P00-R04_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Bolt Action Pen/PRN-BP-0001-P00-R04/PRN-BP-0001-P00-R04_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Bolt Action Pen/PRN-BP-0001-P00-R04/PRN-BP-0001-P00-R04_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "Frame",
+      "id": "urn:adsk.wipprod:dm.lineage:PCyNxfw7RaeFdRk1UnngyQ",
+      "source_path": "Personal/Drone",
+      "version": 6,
+      "dimensions_mm": [
+        313.02000000000004,
+        279.02,
+        15.8984679488
+      ],
+      "body_count": 33,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Drone/Frame/Frame_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Drone/Frame/Frame_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Drone/Frame/Frame_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Drone/Frame/Frame_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "Frame 2.0",
+      "id": "urn:adsk.wipprod:dm.lineage:pjqbRpG3SPGX0p-GL--7XA",
+      "source_path": "Personal/Drone",
+      "version": 22,
+      "dimensions_mm": [
+        101.42785713294757,
+        164.02,
+        7.019999999999998
+      ],
+      "body_count": 29,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Drone/Frame 2.0/Frame 2.0_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Drone/Frame 2.0/Frame 2.0_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Drone/Frame 2.0/Frame 2.0_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Drone/Frame 2.0/Frame 2.0_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "Frame 3.0",
+      "id": "urn:adsk.wipprod:dm.lineage:4k1CLqdxRFOIgVHaSUl37A",
+      "source_path": "Personal/Drone",
+      "version": 35,
+      "dimensions_mm": [
+        28.22,
+        41.519999999999996,
+        31.02
+      ],
+      "body_count": 39,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Drone/Frame 3.0/Frame 3.0_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Drone/Frame 3.0/Frame 3.0_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Drone/Frame 3.0/Frame 3.0_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Drone/Frame 3.0/Frame 3.0_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "Frame 4.0",
+      "id": "urn:adsk.wipprod:dm.lineage:K_QS7cQaRyur5HscojL_fA",
+      "source_path": "Personal/Drone",
+      "version": 7,
+      "dimensions_mm": [
+        55.81114507102871,
+        191.3888357162476,
+        50.49673748922813
+      ],
+      "body_count": 111,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Drone/Frame 4.0/Frame 4.0_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Drone/Frame 4.0/Frame 4.0_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Drone/Frame 4.0/Frame 4.0_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Drone/Frame 4.0/Frame 4.0_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "Main Body",
+      "id": "urn:adsk.wipprod:dm.lineage:cCLLrXMuQk-iZLZ3rSy2ng",
+      "source_path": "Personal/Drone",
+      "version": 3,
+      "dimensions_mm": [
+        52.03394117320008,
+        233.789207715948,
+        62.02000000000002
+      ],
+      "body_count": 1,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Drone/Main Body/Main Body_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Drone/Main Body/Main Body_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Drone/Main Body/Main Body_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Drone/Main Body/Main Body_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "TestStand",
+      "id": "urn:adsk.wipprod:dm.lineage:UogSOZfhRNGJ45nrYEeltQ",
+      "source_path": "Personal/Drone",
+      "version": 1,
+      "dimensions_mm": [
+        81.23320343559644,
+        50.020000000000024,
+        81.23320343559644
+      ],
+      "body_count": 1,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Drone/TestStand/TestStand_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Drone/TestStand/TestStand_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Drone/TestStand/TestStand_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Drone/TestStand/TestStand_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "Lamp No.1",
+      "id": "urn:adsk.wipprod:dm.lineage:YfbRejA8Qd6PV23PSkL9rA",
+      "source_path": "Personal/Lamp",
+      "version": 5,
+      "dimensions_mm": [
+        301.0878008886663,
+        380.27723615905614,
+        50.03443190671249
+      ],
+      "body_count": 3,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Lamp/Lamp No.1/Lamp No.1_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Lamp/Lamp No.1/Lamp No.1_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Lamp/Lamp No.1/Lamp No.1_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Lamp/Lamp No.1/Lamp No.1_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-MP-0001-P00-R01-Macropad-Prototype",
+      "id": "urn:adsk.wipprod:dm.lineage:LuW6O8t7SeGxYrkepFvsdg",
+      "source_path": "Personal/MacroPad",
+      "version": 1,
+      "dimensions_mm": [
+        165.04000000000002,
+        22.13974763417946,
+        193.33487179450003
+      ],
+      "body_count": 14,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/MacroPad/PRN-MP-0001-P00-R01-Macropad-Prototype/PRN-MP-0001-P00-R01-Macropad-Prototype_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/MacroPad/PRN-MP-0001-P00-R01-Macropad-Prototype/PRN-MP-0001-P00-R01-Macropad-Prototype_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/MacroPad/PRN-MP-0001-P00-R01-Macropad-Prototype/PRN-MP-0001-P00-R01-Macropad-Prototype_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/MacroPad/PRN-MP-0001-P00-R01-Macropad-Prototype/PRN-MP-0001-P00-R01-Macropad-Prototype_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-MP-0001-P01-R02-USBC-Adapter-Enclosure",
+      "id": "urn:adsk.wipprod:dm.lineage:YuuEb7cLQu6Cc-fj9nWkqg",
+      "source_path": "Personal/MacroPad",
+      "version": 6,
+      "dimensions_mm": [
+        76.52000000000002,
+        20.11076469953923,
+        94.463
+      ],
+      "body_count": 7,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/MacroPad/PRN-MP-0001-P01-R02-USBC-Adapter-Enclosure/PRN-MP-0001-P01-R02-USBC-Adapter-Enclosure_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/MacroPad/PRN-MP-0001-P01-R02-USBC-Adapter-Enclosure/PRN-MP-0001-P01-R02-USBC-Adapter-Enclosure_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/MacroPad/PRN-MP-0001-P01-R02-USBC-Adapter-Enclosure/PRN-MP-0001-P01-R02-USBC-Adapter-Enclosure_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/MacroPad/PRN-MP-0001-P01-R02-USBC-Adapter-Enclosure/PRN-MP-0001-P01-R02-USBC-Adapter-Enclosure_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-MP-0001-P02-R01-Switch-Plate",
+      "id": "urn:adsk.wipprod:dm.lineage:NRSWXD1JQpeIcShVl4QURw",
+      "source_path": "Personal/MacroPad",
+      "version": 10,
+      "dimensions_mm": [
+        73.52000000000001,
+        2.56,
+        91.81487179450004
+      ],
+      "body_count": 5,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/MacroPad/PRN-MP-0001-P02-R01-Switch-Plate/PRN-MP-0001-P02-R01-Switch-Plate_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/MacroPad/PRN-MP-0001-P02-R01-Switch-Plate/PRN-MP-0001-P02-R01-Switch-Plate_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/MacroPad/PRN-MP-0001-P02-R01-Switch-Plate/PRN-MP-0001-P02-R01-Switch-Plate_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/MacroPad/PRN-MP-0001-P02-R01-Switch-Plate/PRN-MP-0001-P02-R01-Switch-Plate_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-MP-0003-P02-R01-Switch-Plate",
+      "id": "urn:adsk.wipprod:dm.lineage:C56uSuvgSUaNUDYOTTUuwA",
+      "source_path": "Personal/MacroPad/V3",
+      "version": 1,
+      "dimensions_mm": [
+        84.02,
+        103.59433313876116,
+        15.316651180686897
+      ],
+      "body_count": 1,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P02-R01-Switch-Plate/PRN-MP-0003-P02-R01-Switch-Plate_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P02-R01-Switch-Plate/PRN-MP-0003-P02-R01-Switch-Plate_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P02-R01-Switch-Plate/PRN-MP-0003-P02-R01-Switch-Plate_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P02-R01-Switch-Plate/PRN-MP-0003-P02-R01-Switch-Plate_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-MP-0003-P01-R01-Enclosure",
+      "id": "urn:adsk.wipprod:dm.lineage:GhOK6awuRGyB2MjoJ_DWjQ",
+      "source_path": "Personal/MacroPad/V3",
+      "version": 2,
+      "dimensions_mm": [
+        84.52,
+        103.52000000000001,
+        31.13185350331605
+      ],
+      "body_count": 1,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P01-R01-Enclosure/PRN-MP-0003-P01-R01-Enclosure_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P01-R01-Enclosure/PRN-MP-0003-P01-R01-Enclosure_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P01-R01-Enclosure/PRN-MP-0003-P01-R01-Enclosure_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P01-R01-Enclosure/PRN-MP-0003-P01-R01-Enclosure_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-MP-0003-P00-R01-Macropad-V3",
+      "id": "urn:adsk.wipprod:dm.lineage:x3ndI3QlQb2qE4aa04xrEg",
+      "source_path": "Personal/MacroPad/V3",
+      "version": 3,
+      "dimensions_mm": [
+        84.54,
+        104.63646916827038,
+        53.096683421134955
+      ],
+      "body_count": 15,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P00-R01-Macropad-V3/PRN-MP-0003-P00-R01-Macropad-V3_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P00-R01-Macropad-V3/PRN-MP-0003-P00-R01-Macropad-V3_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P00-R01-Macropad-V3/PRN-MP-0003-P00-R01-Macropad-V3_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/MacroPad/V3/PRN-MP-0003-P00-R01-Macropad-V3/PRN-MP-0003-P00-R01-Macropad-V3_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-MP-0002-P02-R01-Switch-Plate",
+      "id": "urn:adsk.wipprod:dm.lineage:zI1r3UxJRIuu3xgWt5TCfQ",
+      "source_path": "Personal/MacroPad/V2",
+      "version": 1,
+      "dimensions_mm": [
+        84.02,
+        103.59433313876116,
+        15.316651180686897
+      ],
+      "body_count": 1,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P02-R01-Switch-Plate/PRN-MP-0002-P02-R01-Switch-Plate_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P02-R01-Switch-Plate/PRN-MP-0002-P02-R01-Switch-Plate_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P02-R01-Switch-Plate/PRN-MP-0002-P02-R01-Switch-Plate_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P02-R01-Switch-Plate/PRN-MP-0002-P02-R01-Switch-Plate_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-MP-0002-P00-R01-Macropad-V2",
+      "id": "urn:adsk.wipprod:dm.lineage:AUullnXQSzyrugiholnlZw",
+      "source_path": "Personal/MacroPad/V2",
+      "version": 3,
+      "dimensions_mm": [
+        84.54,
+        104.63646916827038,
+        53.096683421134955
+      ],
+      "body_count": 14,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P00-R01-Macropad-V2/PRN-MP-0002-P00-R01-Macropad-V2_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P00-R01-Macropad-V2/PRN-MP-0002-P00-R01-Macropad-V2_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P00-R01-Macropad-V2/PRN-MP-0002-P00-R01-Macropad-V2_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P00-R01-Macropad-V2/PRN-MP-0002-P00-R01-Macropad-V2_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-MP-0002-P01-R01-Enclosure",
+      "id": "urn:adsk.wipprod:dm.lineage:Njhac-mfSdqpqOn7N82K-w",
+      "source_path": "Personal/MacroPad/V2",
+      "version": 2,
+      "dimensions_mm": [
+        84.52,
+        103.52000000000001,
+        31.13185350331605
+      ],
+      "body_count": 1,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P01-R01-Enclosure/PRN-MP-0002-P01-R01-Enclosure_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P01-R01-Enclosure/PRN-MP-0002-P01-R01-Enclosure_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P01-R01-Enclosure/PRN-MP-0002-P01-R01-Enclosure_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/MacroPad/V2/PRN-MP-0002-P01-R01-Enclosure/PRN-MP-0002-P01-R01-Enclosure_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-PH-P03-R01",
+      "id": "urn:adsk.wipprod:dm.lineage:iVe4EyyMSZyc20UgoYxQEw",
+      "source_path": "Personal/Pencil Holder",
+      "version": 21,
+      "dimensions_mm": [
+        40.02000000000001,
+        110.01999999999981,
+        195.55
+      ],
+      "body_count": 40,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Pencil Holder/PRN-PH-P03-R01/PRN-PH-P03-R01_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Pencil Holder/PRN-PH-P03-R01/PRN-PH-P03-R01_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Pencil Holder/PRN-PH-P03-R01/PRN-PH-P03-R01_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Pencil Holder/PRN-PH-P03-R01/PRN-PH-P03-R01_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-PH-P05-R22",
+      "id": "urn:adsk.wipprod:dm.lineage:8rxsPoCFRa2WXjoeEMkYIA",
+      "source_path": "Personal/Pencil Holder",
+      "version": 1,
+      "dimensions_mm": [
+        12.920000000000002,
+        2.684,
+        12.920000000000002
+      ],
+      "body_count": 1,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Pencil Holder/PRN-PH-P05-R22/PRN-PH-P05-R22_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Pencil Holder/PRN-PH-P05-R22/PRN-PH-P05-R22_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Pencil Holder/PRN-PH-P05-R22/PRN-PH-P05-R22_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Pencil Holder/PRN-PH-P05-R22/PRN-PH-P05-R22_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-PH-P05-R23",
+      "id": "urn:adsk.wipprod:dm.lineage:qDdFwNfRTJKPZOSgA3vuSw",
+      "source_path": "Personal/Pencil Holder",
+      "version": 1,
+      "dimensions_mm": [
+        12.920000000000012,
+        11.917749425451705,
+        15.423220116019763
+      ],
+      "body_count": 1,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Pencil Holder/PRN-PH-P05-R23/PRN-PH-P05-R23_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Pencil Holder/PRN-PH-P05-R23/PRN-PH-P05-R23_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Pencil Holder/PRN-PH-P05-R23/PRN-PH-P05-R23_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Pencil Holder/PRN-PH-P05-R23/PRN-PH-P05-R23_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-PC-0002-P00-R05-Velocity Viewer",
+      "id": "urn:adsk.wipprod:dm.lineage:d98hkt_USHOP6Mw0cU4CMQ",
+      "source_path": "Personal/Phone Case",
+      "version": 15,
+      "dimensions_mm": [
+        84.07000000000004,
+        167.2,
+        14.831006588722545
+      ],
+      "body_count": 86,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Phone Case/PRN-PC-0002-P00-R05-Velocity Viewer/PRN-PC-0002-P00-R05-Velocity Viewer_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Phone Case/PRN-PC-0002-P00-R05-Velocity Viewer/PRN-PC-0002-P00-R05-Velocity Viewer_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Phone Case/PRN-PC-0002-P00-R05-Velocity Viewer/PRN-PC-0002-P00-R05-Velocity Viewer_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Phone Case/PRN-PC-0002-P00-R05-Velocity Viewer/PRN-PC-0002-P00-R05-Velocity Viewer_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-PC-0002-P01-R05-Velocity",
+      "id": "urn:adsk.wipprod:dm.lineage:sAHZvmqPTh6ir5IFG60SvQ",
+      "source_path": "Personal/Phone Case",
+      "version": 7,
+      "dimensions_mm": [
+        84.05000000000003,
+        167.18,
+        14.811006588722543
+      ],
+      "body_count": 13,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Phone Case/PRN-PC-0002-P01-R05-Velocity/PRN-PC-0002-P01-R05-Velocity_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Phone Case/PRN-PC-0002-P01-R05-Velocity/PRN-PC-0002-P01-R05-Velocity_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Phone Case/PRN-PC-0002-P01-R05-Velocity/PRN-PC-0002-P01-R05-Velocity_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Phone Case/PRN-PC-0002-P01-R05-Velocity/PRN-PC-0002-P01-R05-Velocity_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "PRN-PC-0003-P00-R01-Wallet",
+      "id": "urn:adsk.wipprod:dm.lineage:8Uk5sqU8T1a3juCSbOgwuw",
+      "source_path": "Personal/Phone Case",
+      "version": 28,
+      "dimensions_mm": [
+        62.019999999999996,
+        92.63000000000007,
+        8.230000000002478
+      ],
+      "body_count": 81,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Phone Case/PRN-PC-0003-P00-R01-Wallet/PRN-PC-0003-P00-R01-Wallet_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Phone Case/PRN-PC-0003-P00-R01-Wallet/PRN-PC-0003-P00-R01-Wallet_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Phone Case/PRN-PC-0003-P00-R01-Wallet/PRN-PC-0003-P00-R01-Wallet_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Phone Case/PRN-PC-0003-P00-R01-Wallet/PRN-PC-0003-P00-R01-Wallet_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "RecordPlayer",
+      "id": "urn:adsk.wipprod:dm.lineage:74VFM0R8SMCspQxt9vK0JQ",
+      "source_path": "Personal/Record Player",
+      "version": 13,
+      "dimensions_mm": [
+        170.04000000000002,
+        179.54000000000002,
+        36.04
+      ],
+      "body_count": 112,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Record Player/RecordPlayer/RecordPlayer_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Record Player/RecordPlayer/RecordPlayer_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Record Player/RecordPlayer/RecordPlayer_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Record Player/RecordPlayer/RecordPlayer_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "Turntable",
+      "id": "urn:adsk.wipprod:dm.lineage:ObbS1Xj8RoytlCgRHpfn0Q",
+      "source_path": "Personal/Record Player",
+      "version": 14,
+      "dimensions_mm": [
+        170.03999999999996,
+        170.03999999999996,
+        39.53
+      ],
+      "body_count": 155,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Record Player/Turntable/Turntable_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Record Player/Turntable/Turntable_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Record Player/Turntable/Turntable_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Record Player/Turntable/Turntable_Top.png"
+        }
+      ]
+    },
+    {
+      "name": "VolumeSpeaker",
+      "id": "urn:adsk.wipprod:dm.lineage:ITx5IeX6RT6G1kpq8kQxZA",
+      "source_path": "Personal/Record Player",
+      "version": 7,
+      "dimensions_mm": [
+        33.29598772867049,
+        36.51986588846637,
+        20.019999999999996
+      ],
+      "body_count": 3,
+      "images": [
+        {
+          "view": "Isometric",
+          "path": "Personal/Record Player/VolumeSpeaker/VolumeSpeaker_Isometric.png"
+        },
+        {
+          "view": "Front",
+          "path": "Personal/Record Player/VolumeSpeaker/VolumeSpeaker_Front.png"
+        },
+        {
+          "view": "Right",
+          "path": "Personal/Record Player/VolumeSpeaker/VolumeSpeaker_Right.png"
+        },
+        {
+          "view": "Top",
+          "path": "Personal/Record Player/VolumeSpeaker/VolumeSpeaker_Top.png"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "name": "PRN-WTC-0003-P00-R01-Mk2",
+      "reason": "No solid or mesh geometry"
+    },
+    {
+      "name": "Dripper",
+      "reason": "No solid or mesh geometry"
+    }
+  ],
+  "failures": []
+}

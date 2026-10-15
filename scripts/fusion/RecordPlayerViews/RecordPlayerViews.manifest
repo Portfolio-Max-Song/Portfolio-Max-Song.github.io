@@ -1,0 +1,10 @@
+{
+  "autodeskProduct": "Fusion360",
+  "type": "script",
+  "author": "Codex",
+  "description": {
+    "": "Export clean exterior and uncovered interior record-player gallery views from a temporary model copy."
+  },
+  "supportedOS": "windows",
+  "editEnabled": true
+}
