@@ -10,7 +10,9 @@ export default defineConfig({
   site: 'https://portfolio-max-song.github.io',
   base: '/',
   image: {
-    // Generated variants for responsive srcsets.
+    // Every image, Markdown ones included, gets a srcset of resized variants
+    // instead of shipping one file at the photo's full resolution.
+    layout: 'constrained',
     responsiveStyles: true,
   },
   build: {

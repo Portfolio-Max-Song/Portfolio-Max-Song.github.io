@@ -8,21 +8,15 @@ the gaps worth closing before you start sending the link out.
 
 ## Next up — home page tweaks (requested, not yet started)
 
-All four are small and self-contained; nothing here is half-built.
+One left; nothing here is half-built.
 
 - [ ] **Centre the contact icons** under the last line of the home blurb.
       `.icons-inline` in site.css currently sets `justify-content: flex-start`.
-- [ ] **Put the headshot back, to the left of the home blurb.** It used to sit
-      left of the About band. `src/assets/images/headshot.jpg` is still in the
-      repo and nothing references it; the old float rules were removed, so this
-      needs a small flex wrapper around the photo and `.intro-text`.
-- [ ] **Contoro logo beside the Contoro link.** Their logo is at
-      `https://contoro.com/wp-content/uploads/2024/09/logo-color.png`
-      (greyscale variant: `logo-1.png`). contoro.com blocks direct downloads,
-      so save it manually into `src/assets/images/` and it can be inlined at
-      text size next to the link.
-- [ ] **Add "(TIW)" after Texas Inventionworks**, matching the "(TREL)" pattern
-      already used in the same sentence.
+- [x] ~~Put the headshot back.~~ Done — it sits beside the name in the home
+      page hero.
+- [x] ~~Contoro logo beside the Contoro link.~~ Done — `public/images/contoro-mark.png`,
+      drawn by `OrgMark`.
+- [x] ~~Add "(TIW)" after Texas Inventionworks.~~ Done.
 
 Links are already correct and live on the page: Contoro, Texas Inventionworks
 and TREL all point at the right URLs.
@@ -34,9 +28,7 @@ and TREL all point at the right URLs.
 
 ## Blocking-ish
 
-- [ ] **PL-8 dates.** `src/content/projects/pl8/index.md` currently has
-      `date: Dates to confirm`, and that string renders on the projects index.
-      Fix before pushing.
+- [x] ~~PL-8 dates.~~ Done — August 2024 – January 2025.
 - [ ] **Contoro job title.** The site says "Robotics Engineering Intern"
       (home blurb + the Contoro page's `org` field); your résumé says
       "Mechanical Engineering Co-op." Recruiters cross-check the two. Pick one

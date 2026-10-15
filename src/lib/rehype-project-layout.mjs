@@ -80,6 +80,25 @@ const wrap = (className, children) => ({
   children,
 });
 
+/**
+ * Pairs each image of a run with the caption that follows the run in the same
+ * order, as a list of figure cells. Returns the cells and the index after the
+ * last caption used.
+ */
+function figureCells(run, src, next) {
+  const captions = [];
+  while (captions.length < run.length && isCaption(src[next])) captions.push(src[next++]);
+  const cells = run.map((im, k) => wrap(['figure-cell'], captions[k] ? [im, captions[k]] : [im]));
+  return { cells, next };
+}
+
+/** The prose from `next` up to the next image or break, and the index after it. */
+function proseFrom(src, next) {
+  const text = [];
+  while (next < src.length && !imagesIn(src[next]) && !isBreak(src[next])) text.push(src[next++]);
+  return { text, next };
+}
+
 export default function rehypeProjectLayout() {
   return (tree, file) => {
     const src = tree.children.filter((n) => !isBlank(n));
@@ -150,11 +169,9 @@ export default function rehypeProjectLayout() {
       const gridSide = run.map((im) => im.properties?.title).find((t) => t === 'left-grid' || t === 'right-grid');
       if (run.length > 1 && gridSide) {
         run.forEach((im) => { if (im.properties?.title === gridSide) delete im.properties.title; });
-        const captions = [];
-        while (captions.length < run.length && isCaption(src[next])) captions.push(src[next++]);
-        const cells = run.map((im, k) => wrap(['figure-cell'], captions[k] ? [im, captions[k]] : [im]));
-        const text = [];
-        while (next < src.length && !imagesIn(src[next]) && !isBreak(src[next])) text.push(src[next++]);
+        let cells, text;
+        ({ cells, next } = figureCells(run, src, next));
+        ({ text, next } = proseFrom(src, next));
         out.push(
           wrap(['section-row', 'has-grid', ...(gridSide === 'right-grid' ? ['is-flipped'] : [])], [
             wrap(['row-media', 'row-media-grid'], cells),
@@ -175,9 +192,8 @@ export default function rehypeProjectLayout() {
         if (run.length === 1) {
           out.push(wrap(['figure-full', 'is-wide'], run));
         } else {
-          const captions = [];
-          while (captions.length < run.length && isCaption(src[next])) captions.push(src[next++]);
-          const cells = run.map((im, k) => wrap(['figure-cell'], captions[k] ? [im, captions[k]] : [im]));
+          let cells;
+          ({ cells, next } = figureCells(run, src, next));
           out.push(wrap(['figure-full', 'is-wide', 'is-pair'], cells));
         }
         i = next;
@@ -190,9 +206,8 @@ export default function rehypeProjectLayout() {
       const pairSide = run.map((im) => im.properties?.title).find((t) => t === 'left-pair' || t === 'right-pair');
       if (run.length > 1 && pairSide) {
         run.forEach((im) => { if (im.properties?.title === pairSide) delete im.properties.title; });
-        const captions = [];
-        while (captions.length < run.length && isCaption(src[next])) captions.push(src[next++]);
-        const cells = run.map((im, k) => wrap(['figure-cell'], captions[k] ? [im, captions[k]] : [im]));
+        let cells, text;
+        ({ cells, next } = figureCells(run, src, next));
         // Each image's column is as wide as its aspect ratio, so the two come
         // out the same height.
         const ratios = run.map((im) => aspectOf(file, im.properties?.src));
@@ -200,8 +215,7 @@ export default function rehypeProjectLayout() {
         if (ratios.every(Boolean)) {
           media.properties.style = `grid-template-columns: ${ratios.map((a) => `minmax(0, ${a.toFixed(3)}fr)`).join(' ')}`;
         }
-        const text = [];
-        while (next < src.length && !imagesIn(src[next]) && !isBreak(src[next])) text.push(src[next++]);
+        ({ text, next } = proseFrom(src, next));
         out.push(
           wrap(['section-row', 'has-side-pair', ...(pairSide === 'right-pair' ? ['is-flipped'] : [])], [
             media,
@@ -242,8 +256,8 @@ export default function rehypeProjectLayout() {
           media.push(src[next]);
           next += 1;
         }
-        const text = [];
-        while (next < src.length && !imagesIn(src[next]) && !isBreak(src[next])) text.push(src[next++]);
+        let text;
+        ({ text, next } = proseFrom(src, next));
         const classes = [
           'section-row',
           'has-caption',
@@ -265,15 +279,7 @@ export default function rehypeProjectLayout() {
         continue;
       }
 
-      const text = [];
-      let j = next;
-      while (j < src.length) {
-        const candidate = src[j];
-        if (imagesIn(candidate)) break;
-        if (isBreak(candidate)) break;
-        text.push(candidate);
-        j += 1;
-      }
+      const { text, next: j } = proseFrom(src, next);
 
       // An image with no prose after it has nothing to sit beside, so it
       // becomes a full-width figure rather than half a row with a hole in it.

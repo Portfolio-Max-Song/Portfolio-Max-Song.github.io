@@ -30,6 +30,9 @@ jobs:
 
       - run: npm ci
 
+      # Type errors in .astro/.ts files fail here, before anything deploys.
+      - run: npm run check
+
       - run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
