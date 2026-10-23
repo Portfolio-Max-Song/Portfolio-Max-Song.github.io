@@ -7,17 +7,23 @@
 
 :root {
   /* Palette */
-  --bg: #5e483d;
-  --surface-1: #674f43; /* icon chips */
-  --surface-2: #6a5145; /* row hover */
-  --surface-3: #6e5548; /* image placeholder */
-  --border: #836a5c; /* dividers, chip borders, link underlines */
-  --text-muted: #b39a8b; /* dates, tagline, captions */
-  --text-soft: #dcc4b5; /* section labels, icons */
+  --bg: #a36f49;
+  --surface-1: #674f43;
+  /* icon chips */
+  --surface-2: #6a5145;
+  /* row hover */
+  --surface-3: #6e5548;
+  /* image placeholder */
+  --border: #836a5c;
+  /* dividers, chip borders, link underlines */
+  --text-muted: #b39a8b;
+  /* dates, tagline, captions */
+  --text-soft: #dcc4b5;
+  /* section labels, icons */
   --text: #f2e4da;
   --text-hover: #ffffff;
   --overlay: rgba(27, 15, 9, 0.45);
-  --glass: rgba(94, 72, 61, 0.9);
+  --glass: rgba(163, 111, 73, 0.9);
 
   --font: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
@@ -239,7 +245,7 @@ a:hover {
   margin-top: 40.3px;
 }
 
-.intro p + p {
+.intro p+p {
   margin-top: 14.4px;
 }
 
@@ -248,7 +254,7 @@ a:hover {
 }
 
 /* The second list follows straight on from the first. */
-.home-section + .home-section {
+.home-section+.home-section {
   margin-top: 23px;
 }
 
@@ -431,7 +437,7 @@ a:hover {
 
 /* The About title sits a little closer to its prose than Projects' does to
    its grid. */
-.page-title + .about-body {
+.page-title+.about-body {
   margin-top: -8px;
 }
 
@@ -439,7 +445,7 @@ a:hover {
   max-width: 489.6px;
 }
 
-.about-body > * + * {
+.about-body>*+* {
   margin-top: 14.4px;
 }
 
@@ -496,6 +502,7 @@ a:hover {
 }
 
 @media (hover: hover) {
+
   .tile:hover .tile-image,
   .gallery-media:hover .tile-image {
     transform: scale(1.05);
@@ -688,17 +695,17 @@ a:hover {
   container: project-body / inline-size;
 }
 
-.project-body > * + * {
+.project-body>*+* {
   margin-top: 14.4px;
 }
 
 /* The body is a size container, so its children's outer margins no longer
    collapse into the title above and the skills below. */
-.project-body > :first-child {
+.project-body> :first-child {
   margin-top: 0;
 }
 
-.project-body > :last-child {
+.project-body> :last-child {
   margin-bottom: 0;
 }
 
@@ -714,7 +721,7 @@ a:hover {
   align-items: center;
 }
 
-.project-body > .section-row {
+.project-body>.section-row {
   margin-block: 23px;
 }
 
@@ -732,7 +739,7 @@ a:hover {
 /* A single image with no prose beside it. Width-capped by the panel, height-
    capped by the viewport, so a wide diagram fills the width while a portrait
    shot stays a sensible size. Nothing is cropped. */
-.project-body > .figure-full {
+.project-body>.figure-full {
   margin-top: 23px;
 }
 
@@ -766,7 +773,7 @@ a:hover {
   gap: 2.9px;
 }
 
-.figure-full.is-pair > .figure-cell {
+.figure-full.is-pair>.figure-cell {
   flex: 1 1 0;
   min-width: 0;
 }
@@ -783,7 +790,7 @@ a:hover {
     flex-wrap: wrap;
   }
 
-  .figure-full.is-pair:has(> .figure-cell:nth-child(5)) > .figure-cell {
+  .figure-full.is-pair:has(> .figure-cell:nth-child(5))>.figure-cell {
     flex: 0 0 calc((100% - 2 * 2.9px) / 3);
   }
 }
@@ -803,7 +810,7 @@ a:hover {
   gap: 5.8px;
 }
 
-.project-body > .page-carousel {
+.project-body>.page-carousel {
   margin-top: 23px;
 }
 
@@ -871,7 +878,7 @@ a:hover {
   gap: 5.8px;
 }
 
-.project-body > .image-grid {
+.project-body>.image-grid {
   margin-top: 23px;
 }
 
@@ -892,7 +899,7 @@ a:hover {
   align-items: stretch;
 }
 
-.project-body > .image-row {
+.project-body>.image-row {
   margin-top: 23px;
 }
 
@@ -909,7 +916,7 @@ a:hover {
   font-size: 0.9em;
 }
 
-.project-body > .text-centered {
+.project-body>.text-centered {
   text-align: center;
 }
 
@@ -921,7 +928,7 @@ a:hover {
   margin-top: 5.8px;
 }
 
-.section-row .row-text > * + * {
+.section-row .row-text>*+* {
   margin-top: 14.4px;
 }
 
@@ -939,14 +946,14 @@ a:hover {
 
 /* A side image scaled to a set percentage of its column ("right-80"),
    centred in the column with its caption under it. */
-.section-row.is-scaled .row-media > * {
+.section-row.is-scaled .row-media>* {
   width: var(--media-scale, 100%);
   margin-inline: auto;
 }
 
 /* A side image shown at 64% of its column, pushed against the text beside
    it with its caption kept under it. */
-.section-row.is-small .row-media > * {
+.section-row.is-small .row-media>* {
   width: 64%;
   margin-left: auto;
   margin-right: 0;
@@ -955,8 +962,8 @@ a:hover {
 /* The caption hangs below the image instead of counting toward the column's
    height, so the text beside it centres on the image itself. The row keeps
    room underneath for it. */
-.project-body > .section-row.has-pair,
-.project-body > .section-row.has-caption {
+.project-body>.section-row.has-pair,
+.project-body>.section-row.has-caption {
   margin-bottom: 28.8px;
 }
 
@@ -990,7 +997,7 @@ a:hover {
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
 }
 
-.section-row.is-small.is-flipped .row-media > *,
+.section-row.is-small.is-flipped .row-media>*,
 .section-row.has-caption.is-small.is-flipped .row-media .caption {
   width: 75%;
   margin-inline: auto;
@@ -1099,13 +1106,14 @@ a:hover {
 }
 
 @container project-body (max-width: 519px) {
+
   /* One column: the image goes above its prose, alternation and all. */
   .section-row {
     grid-template-columns: 1fr;
     gap: 17.3px;
   }
 
-  .project-body > .section-row {
+  .project-body>.section-row {
     margin-block: 17.3px;
   }
 
@@ -1120,7 +1128,7 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-  .section-row.has-pair > .row-text {
+  .section-row.has-pair>.row-text {
     order: 2;
   }
 
@@ -1129,8 +1137,8 @@ a:hover {
     position: static;
   }
 
-  .project-body > .section-row.has-pair,
-  .project-body > .section-row.has-caption {
+  .project-body>.section-row.has-pair,
+  .project-body>.section-row.has-caption {
     margin-bottom: 17.3px;
   }
 
@@ -1217,7 +1225,7 @@ a:hover {
   font-variant-numeric: tabular-nums;
 }
 
-.project-body tr > *:last-child {
+.project-body tr>*:last-child {
   text-align: right;
   white-space: nowrap;
 }
