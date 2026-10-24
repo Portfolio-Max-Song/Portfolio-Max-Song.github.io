@@ -7,23 +7,23 @@
 
 :root {
   /* Palette */
-  --bg: #a36f49;
-  --surface-1: #674f43;
+  --bg: #6a3e2c;
+  --surface-1: #754633;
   /* icon chips */
-  --surface-2: #6a5145;
+  --surface-2: #7c4b37;
   /* row hover */
-  --surface-3: #6e5548;
+  --surface-3: #83503c;
   /* image placeholder */
-  --border: #836a5c;
+  --border: #925f4b;
   /* dividers, chip borders, link underlines */
-  --text-muted: #b39a8b;
+  --text-muted: #c5a697;
   /* dates, tagline, captions */
-  --text-soft: #dcc4b5;
+  --text-soft: #e4cbc0;
   /* section labels, icons */
-  --text: #f2e4da;
+  --text: #f7ede7;
   --text-hover: #ffffff;
   --overlay: rgba(27, 15, 9, 0.45);
-  --glass: rgba(163, 111, 73, 0.9);
+  --glass: rgba(106, 62, 44, 0.9);
 
   --font: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
